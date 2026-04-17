@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { ArticleCard } from "@/components/site/ArticleCard";
 import { Rating } from "@/components/site/Rating";
 import { articles, reviews, videos } from "@/data/content";
-import heroBike from "@/assets/hero-bike.jpg";
 
 const HomePage = () => {
   const latest = articles.slice(0, 6);
@@ -15,9 +14,9 @@ const HomePage = () => {
   return (
     <>
       {/* HERO */}
-      <section className="relative overflow-hidden bg-ink">
+      <section className="relative overflow-hidden bg-ink h-[calc(100vh-80px)]">
         <img
-          src={heroBike}
+          src="/hero.jpeg"
           alt="Sport motorcycle on a wet city street"
           width={1920}
           height={1080}
@@ -42,9 +41,9 @@ const HomePage = () => {
                   Read latest stories <ArrowRight className="h-5 w-5" />
                 </Link>
               </Button>
-              <Button asChild size="xl" variant="outline" className="rounded-full bg-background/10 border-primary-foreground/30 text-primary-foreground hover:bg-background hover:text-ink">
+              {/* <Button asChild size="xl" variant="outline" className="rounded-full bg-background/10 border-primary-foreground/30 text-primary-foreground hover:bg-background hover:text-ink">
                 <Link to="/videos"><Play className="h-4 w-4" /> Watch trailer</Link>
-              </Button>
+              </Button> */}
             </div>
           </div>
         </div>
