@@ -30,10 +30,10 @@ export const Footer = () => {
         <div>
           <h4 className="font-display text-sm uppercase tracking-widest text-accent mb-4">Company</h4>
           <ul className="space-y-3 text-sm">
-            <li><Link to="/contact" className="text-primary-foreground/70 hover:text-accent transition-smooth">About Us</Link></li>
+            <li><Link to="/about" className="text-primary-foreground/70 hover:text-accent transition-smooth">About Us</Link></li>
             <li><Link to="/contact" className="text-primary-foreground/70 hover:text-accent transition-smooth">Contact</Link></li>
+            <li><Link to="/compare" className="text-primary-foreground/70 hover:text-accent transition-smooth">Compare Bikes</Link></li>
             <li><Link to="/contact" className="text-primary-foreground/70 hover:text-accent transition-smooth">Advertise</Link></li>
-            <li><Link to="/contact" className="text-primary-foreground/70 hover:text-accent transition-smooth">Careers</Link></li>
           </ul>
         </div>
 
