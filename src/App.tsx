@@ -10,6 +10,8 @@ import NewsDetailPage from "./pages/NewsDetailPage";
 import ReviewsPage from "./pages/ReviewsPage";
 import ReviewDetailPage from "./pages/ReviewDetailPage";
 import VideosPage from "./pages/VideosPage";
+import ComparePage from "./pages/ComparePage";
+import AboutPage from "./pages/AboutPage";
 import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
 
@@ -29,6 +31,8 @@ const App = () => (
             <Route path="/reviews" element={<ReviewsPage />} />
             <Route path="/reviews/:id" element={<ReviewDetailPage />} />
             <Route path="/videos" element={<VideosPage />} />
+            <Route path="/compare" element={<ComparePage />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
           </Route>
           <Route path="*" element={<NotFound />} />
