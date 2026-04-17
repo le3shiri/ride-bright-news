@@ -6,6 +6,52 @@ import news5 from "@/assets/news-5.jpg";
 import news6 from "@/assets/news-6.jpg";
 import reviewFeatured from "@/assets/review-featured.jpg";
 
+export type Author = {
+  name: string;
+  role: string;
+  bio: string;
+  initials: string;
+};
+
+export const authors: Record<string, Author> = {
+  "Marco Rossi": {
+    name: "Marco Rossi",
+    role: "Senior Editor",
+    bio: "Born in Bologna, Marco has covered Italian motorcycle culture for 18 years. Former club racer, lifelong tifoso.",
+    initials: "MR",
+  },
+  "Lena Park": {
+    name: "Lena Park",
+    role: "Electric & Tech Correspondent",
+    bio: "Lena writes about the future of mobility. She owns three EVs and one very loud two-stroke.",
+    initials: "LP",
+  },
+  "James Holloway": {
+    name: "James Holloway",
+    role: "Racing Editor",
+    bio: "Trackside in every paddock that matters. James has covered MotoGP since 2009.",
+    initials: "JH",
+  },
+  "Sofia Greco": {
+    name: "Sofia Greco",
+    role: "Lifestyle Editor",
+    bio: "Sofia explores the culture, fashion, and rituals that surround the motorcycle world.",
+    initials: "SG",
+  },
+  "David Chen": {
+    name: "David Chen",
+    role: "Adventure Correspondent",
+    bio: "100,000+ km across six continents. David tests bikes where the road ends.",
+    initials: "DC",
+  },
+  "Hannah Reyes": {
+    name: "Hannah Reyes",
+    role: "Safety & Gear Editor",
+    bio: "Former crash reconstruction specialist. Hannah translates safety data into rider-friendly advice.",
+    initials: "HR",
+  },
+};
+
 export type Article = {
   id: string;
   title: string;
@@ -15,6 +61,7 @@ export type Article = {
   date: string;
   author: string;
   readTime: string;
+  body?: string[];
 };
 
 export const articles: Article[] = [
