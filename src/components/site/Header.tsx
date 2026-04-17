@@ -23,13 +23,9 @@ export const Header = () => {
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/85 backdrop-blur-xl">
       <div className="container-x flex h-20 items-center justify-between">
         <Link to="/" className="flex items-center gap-2 group">
-          <div className="flex h-9 w-9 items-center justify-center rounded-full bg-ink text-primary-foreground font-display text-lg font-bold transition-smooth group-hover:bg-accent">
-            T
-          </div>
-          <div className="flex flex-col leading-none">
-            <span className="font-display text-2xl font-bold tracking-tight text-ink">Throttle</span>
-            <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Magazine</span>
-          </div>
+          {/* <div className="flex h-9 w-9 items-center justify-center rounded-full bg-ink text-primary-foreground font-display text-lg font-bold transition-smooth group-hover:bg-accent"> */}
+            <img src="/logoblack.svg" alt="Logo" className="w-100 h-10" />
+          {/* </div> */}
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">
@@ -62,9 +58,9 @@ export const Header = () => {
           >
             <Search className="h-5 w-5" />
           </Button>
-          <Button asChild variant="ink" size="sm" className="hidden sm:inline-flex rounded-full px-5">
+          {/* <Button asChild variant="ink" size="sm" className="hidden sm:inline-flex rounded-full px-5">
             <Link to="/contact">Subscribe</Link>
-          </Button>
+                  </Button> */}
           <Button
             variant="ghost"
             size="icon"
