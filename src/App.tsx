@@ -6,6 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { SiteLayout } from "@/components/site/SiteLayout";
 import HomePage from "./pages/HomePage";
 import NewsPage from "./pages/NewsPage";
+import NewsDetailPage from "./pages/NewsDetailPage";
 import ReviewsPage from "./pages/ReviewsPage";
 import ReviewDetailPage from "./pages/ReviewDetailPage";
 import VideosPage from "./pages/VideosPage";
@@ -24,7 +25,7 @@ const App = () => (
           <Route element={<SiteLayout />}>
             <Route path="/" element={<HomePage />} />
             <Route path="/news" element={<NewsPage />} />
-            <Route path="/news/:id" element={<NewsPage />} />
+            <Route path="/news/:id" element={<NewsDetailPage />} />
             <Route path="/reviews" element={<ReviewsPage />} />
             <Route path="/reviews/:id" element={<ReviewDetailPage />} />
             <Route path="/videos" element={<VideosPage />} />

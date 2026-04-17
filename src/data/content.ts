@@ -6,6 +6,52 @@ import news5 from "@/assets/news-5.jpg";
 import news6 from "@/assets/news-6.jpg";
 import reviewFeatured from "@/assets/review-featured.jpg";
 
+export type Author = {
+  name: string;
+  role: string;
+  bio: string;
+  initials: string;
+};
+
+export const authors: Record<string, Author> = {
+  "Marco Rossi": {
+    name: "Marco Rossi",
+    role: "Senior Editor",
+    bio: "Born in Bologna, Marco has covered Italian motorcycle culture for 18 years. Former club racer, lifelong tifoso.",
+    initials: "MR",
+  },
+  "Lena Park": {
+    name: "Lena Park",
+    role: "Electric & Tech Correspondent",
+    bio: "Lena writes about the future of mobility. She owns three EVs and one very loud two-stroke.",
+    initials: "LP",
+  },
+  "James Holloway": {
+    name: "James Holloway",
+    role: "Racing Editor",
+    bio: "Trackside in every paddock that matters. James has covered MotoGP since 2009.",
+    initials: "JH",
+  },
+  "Sofia Greco": {
+    name: "Sofia Greco",
+    role: "Lifestyle Editor",
+    bio: "Sofia explores the culture, fashion, and rituals that surround the motorcycle world.",
+    initials: "SG",
+  },
+  "David Chen": {
+    name: "David Chen",
+    role: "Adventure Correspondent",
+    bio: "100,000+ km across six continents. David tests bikes where the road ends.",
+    initials: "DC",
+  },
+  "Hannah Reyes": {
+    name: "Hannah Reyes",
+    role: "Safety & Gear Editor",
+    bio: "Former crash reconstruction specialist. Hannah translates safety data into rider-friendly advice.",
+    initials: "HR",
+  },
+};
+
 export type Article = {
   id: string;
   title: string;
@@ -15,6 +61,7 @@ export type Article = {
   date: string;
   author: string;
   readTime: string;
+  body?: string[];
 };
 
 export const articles: Article[] = [
@@ -148,6 +195,14 @@ export const reviews: Review[] = [
     pros: ["Silent and torquey", "Low running costs", "App-connected ride modes"],
     cons: ["Limited fast charging", "Range drops on highway"],
   },
+];
+
+export const articleBody = (a: Article): string[] => [
+  `${a.excerpt} What follows is our full account from the launch event, the press materials, and a first impression that already tells us this machine matters.`,
+  `Throughout a long week of riding — city traffic, mountain passes, and a long motorway slog at dusk — the bike revealed itself slowly. Engineering decisions that look conservative on paper became obvious strengths once the road opened up. The chassis is composed at speed, the brakes have the kind of progressive bite that gives confidence rather than fear, and the electronics fade into the background until you actually need them.`,
+  `Where it shines is harder to describe than where it disappoints, but we'll try. The throttle response in the second-from-soft mode is a small masterpiece — linear, predictable, and perfectly calibrated to the engine's character. Wind protection is better than the silhouette suggests, and the seat is friendly enough for genuinely long days.`,
+  `Of course, no machine is without compromise. The instrument cluster could be brighter in direct sun, the mirrors vibrate above 6,000 rpm, and the price has crept up again. None of these are deal-breakers, but in a market this competitive they are worth knowing about before you sign.`,
+  `Verdict: a confident, considered evolution of a formula that already worked. We'll have a full long-term test in the autumn, but our early impression is that ${a.author.split(" ")[0]} has been right to be excited.`,
 ];
 
 export type Video = {
