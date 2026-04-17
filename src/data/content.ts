@@ -197,6 +197,14 @@ export const reviews: Review[] = [
   },
 ];
 
+export const articleBody = (a: Article): string[] => [
+  `${a.excerpt} What follows is our full account from the launch event, the press materials, and a first impression that already tells us this machine matters.`,
+  `Throughout a long week of riding — city traffic, mountain passes, and a long motorway slog at dusk — the bike revealed itself slowly. Engineering decisions that look conservative on paper became obvious strengths once the road opened up. The chassis is composed at speed, the brakes have the kind of progressive bite that gives confidence rather than fear, and the electronics fade into the background until you actually need them.`,
+  `Where it shines is harder to describe than where it disappoints, but we'll try. The throttle response in the second-from-soft mode is a small masterpiece — linear, predictable, and perfectly calibrated to the engine's character. Wind protection is better than the silhouette suggests, and the seat is friendly enough for genuinely long days.`,
+  `Of course, no machine is without compromise. The instrument cluster could be brighter in direct sun, the mirrors vibrate above 6,000 rpm, and the price has crept up again. None of these are deal-breakers, but in a market this competitive they are worth knowing about before you sign.`,
+  `Verdict: a confident, considered evolution of a formula that already worked. We'll have a full long-term test in the autumn, but our early impression is that ${a.author.split(" ")[0]} has been right to be excited.`,
+];
+
 export type Video = {
   id: string;
   title: string;
