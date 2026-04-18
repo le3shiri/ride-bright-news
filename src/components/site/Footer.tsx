@@ -1,19 +1,27 @@
 import { Link } from "react-router-dom";
-import { Instagram, Youtube, Twitter, Facebook, Mail } from "lucide-react";
+import { Instagram, Youtube, Facebook, Mail, Music2 } from "lucide-react";
 
 export const Footer = () => {
+  const socialLinks = [
+    { Icon: Instagram, href: "https://www.instagram.com/iride_morocco?igsh=MTZtaGV5bDY0YndkMQ==", label: "Instagram" },
+    { Icon: Youtube, href: "https://youtube.com/@iridemorocco?si=FEmwtskipf4mM9wI", label: "YouTube" },
+    { Icon: Facebook, href: "https://www.facebook.com/share/14ZRDPTwFGL/?mibextid=wwXIfr", label: "Facebook" },
+    { Icon: Music2, href: "https://www.tiktok.com/@iride.morocco?_r=1&_t=ZS-95SNnrKrwQf", label: "TikTok" },
+    { Icon: Mail, href: "mailto:iridemorocco@gmail.com", label: "Email" },
+  ];
+
   return (
     <footer className="mt-32 border-t border-border bg-ink text-primary-foreground">
       <div className="container-x py-16 grid gap-12 md:grid-cols-4">
         <div className="md:col-span-1">
           <div className="flex items-center gap-2 mb-4">
             <div className="flex h-9 w-9 items-center justify-center rounded-full bg-accent text-accent-foreground font-display text-lg font-bold">
-              T
+              iR
             </div>
-            <span className="font-display text-2xl font-bold">Throttle</span>
+            <span className="font-display text-2xl font-bold">iRide Morocco</span>
           </div>
           <p className="text-sm text-primary-foreground/60 leading-relaxed">
-            The world's most read motorcycle magazine. News, reviews, and rides since 2014.
+            Leading the ride through Morocco. News, reviews, and motorcycle adventures since 2014.
           </p>
         </div>
 
@@ -56,15 +64,17 @@ export const Footer = () => {
       <div className="border-t border-primary-foreground/10">
         <div className="container-x py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-primary-foreground/50">
-            © {new Date().getFullYear()} Throttle Magazine. All rights reserved.
+            © {new Date().getFullYear()} iRide Morocco. All rights reserved.
           </p>
           <div className="flex items-center gap-3">
-            {[Instagram, Youtube, Twitter, Facebook, Mail].map((Icon, i) => (
+            {socialLinks.map(({ Icon, href, label }, i) => (
               <a
                 key={i}
-                href="#"
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex h-9 w-9 items-center justify-center rounded-full bg-primary-foreground/10 hover:bg-accent hover:text-accent-foreground transition-smooth"
-                aria-label="social"
+                aria-label={label}
               >
                 <Icon className="h-4 w-4" />
               </a>

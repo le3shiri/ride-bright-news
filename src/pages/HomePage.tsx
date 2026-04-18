@@ -33,7 +33,7 @@ const HomePage = () => {
               <span className="italic text-accent">Infinite</span> stories.
             </h1>
             <p className="mt-6 text-lg md:text-xl text-primary-foreground/80 max-w-2xl text-pretty">
-              The world's most read motorcycle magazine. Honest reviews, race-day reporting, and the rides that move us.
+              Leading the ride through Morocco. Honest reviews, race-day reporting, and the adventures that move us.
             </p>
             <div className="mt-10 flex flex-wrap gap-3">
               <Button asChild variant="hero" size="xl">
@@ -151,7 +151,7 @@ const HomePage = () => {
           <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-accent/30 blur-3xl" />
           <div className="relative max-w-2xl">
             <h2 className="font-display text-4xl md:text-5xl font-bold leading-tight">
-              Get the best of Throttle, every Sunday.
+              Get the best of iRide Morocco, every Sunday.
             </h2>
             <p className="mt-4 text-primary-foreground/70 text-lg">
               One curated email. Reviews, race recaps, and the week's most beautiful machines.

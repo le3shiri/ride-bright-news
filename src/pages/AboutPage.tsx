@@ -47,7 +47,7 @@ const AboutPage = () => {
             Built by riders, <span className="italic text-accent">for riders.</span>
           </h1>
           <p className="mt-8 text-xl text-muted-foreground leading-relaxed max-w-3xl text-pretty">
-            Throttle started in 2014 as a one-man blog out of a San Francisco garage. Twelve years later, we're a global team of editors, photographers, and racers who share a single belief: the motorcycle is the most honest machine ever built.
+            iRide Morocco started in 2014 as a passion project for the Moroccan motorcycle community. Twelve years later, we're a global team of editors, photographers, and racers who share a single belief: the motorcycle is the most honest machine ever built.
           </p>
         </div>
       </section>
@@ -55,7 +55,7 @@ const AboutPage = () => {
       {/* Cover image */}
       <section className="container-x py-16">
         <div className="aspect-[16/9] overflow-hidden rounded-3xl bg-ink shadow-elev">
-          <img src={aboutTeam} alt="The Throttle Magazine editorial team" loading="lazy" className="h-full w-full object-cover" />
+          <img src={aboutTeam} alt="The iRide Morocco editorial team" loading="lazy" className="h-full w-full object-cover" />
         </div>
       </section>
 
@@ -85,7 +85,7 @@ const AboutPage = () => {
               Mainstream motoring media often treats motorcycles as a footnote. We treat them as the main event. Every bike we cover is ridden — usually for weeks, sometimes for months — before we write a word.
             </p>
             <p>
-              We believe great journalism is independent journalism. Throttle is reader-funded through subscriptions and a small number of carefully chosen partners. Editorial decisions are made by editors, not advertisers. That separation is non-negotiable.
+              We believe great journalism is independent journalism. iRide Morocco is reader-funded through subscriptions and a small number of carefully chosen partners. Editorial decisions are made by editors, not advertisers. That separation is non-negotiable.
             </p>
           </div>
         </div>

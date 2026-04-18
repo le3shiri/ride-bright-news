@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, Phone, MapPin, Instagram, Youtube, Twitter, Facebook, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Instagram, Youtube, Facebook, Send, Music2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
 
@@ -11,6 +11,13 @@ const ContactPage = () => {
     toast({ title: "Message sent!", description: "We'll get back to you within 24 hours." });
     setForm({ name: "", email: "", message: "" });
   };
+
+  const socialLinks = [
+    { Icon: Instagram, href: "https://www.instagram.com/iride_morocco?igsh=MTZtaGV5bDY0YndkMQ==", label: "Instagram" },
+    { Icon: Youtube, href: "https://youtube.com/@iridemorocco?si=FEmwtskipf4mM9wI", label: "YouTube" },
+    { Icon: Facebook, href: "https://www.facebook.com/share/14ZRDPTwFGL/?mibextid=wwXIfr", label: "Facebook" },
+    { Icon: Music2, href: "https://www.tiktok.com/@iride.morocco?_r=1&_t=ZS-95SNnrKrwQf", label: "TikTok" },
+  ];
 
   return (
     <>
@@ -72,22 +79,22 @@ const ContactPage = () => {
             <div>
               <h3 className="font-display text-2xl font-bold text-ink mb-4">Reach us directly</h3>
               <div className="space-y-4">
-                <a href="mailto:hello@throttle.mag" className="flex items-start gap-4 group">
+                <a href="mailto:iridemorocco@gmail.com" className="flex items-start gap-4 group">
                   <div className="flex h-11 w-11 items-center justify-center rounded-full bg-highlight-soft text-accent flex-shrink-0">
                     <Mail className="h-5 w-5" />
                   </div>
                   <div>
                     <p className="text-xs uppercase tracking-widest text-muted-foreground">Email</p>
-                    <p className="font-display text-lg font-semibold text-ink group-hover:text-accent transition-smooth">hello@throttle.mag</p>
+                    <p className="font-display text-lg font-semibold text-ink group-hover:text-accent transition-smooth">iridemorocco@gmail.com</p>
                   </div>
                 </a>
-                <a href="tel:+15551234567" className="flex items-start gap-4 group">
+                <a href="tel:+212661796563" className="flex items-start gap-4 group">
                   <div className="flex h-11 w-11 items-center justify-center rounded-full bg-highlight-soft text-accent flex-shrink-0">
                     <Phone className="h-5 w-5" />
                   </div>
                   <div>
                     <p className="text-xs uppercase tracking-widest text-muted-foreground">Phone</p>
-                    <p className="font-display text-lg font-semibold text-ink group-hover:text-accent transition-smooth">+1 (555) 123-4567</p>
+                    <p className="font-display text-lg font-semibold text-ink group-hover:text-accent transition-smooth">+212 661 79 65 63</p>
                   </div>
                 </a>
                 <div className="flex items-start gap-4">
@@ -95,8 +102,8 @@ const ContactPage = () => {
                     <MapPin className="h-5 w-5" />
                   </div>
                   <div>
-                    <p className="text-xs uppercase tracking-widest text-muted-foreground">Studio</p>
-                    <p className="font-display text-lg font-semibold text-ink">847 Fillmore St, San Francisco</p>
+                    <p className="text-xs uppercase tracking-widest text-muted-foreground">Location</p>
+                    <p className="font-display text-lg font-semibold text-ink">Morocco</p>
                   </div>
                 </div>
               </div>
@@ -106,8 +113,8 @@ const ContactPage = () => {
               <h3 className="font-display text-2xl font-bold">Follow the ride</h3>
               <p className="mt-2 text-sm text-primary-foreground/70">Daily content across every platform.</p>
               <div className="mt-6 flex gap-3">
-                {[Instagram, Youtube, Twitter, Facebook].map((Icon, i) => (
-                  <a key={i} href="#" className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-foreground/10 hover:bg-accent hover:text-accent-foreground transition-smooth" aria-label="social">
+                {socialLinks.map(({ Icon, href, label }, i) => (
+                  <a key={i} href={href} target="_blank" rel="noopener noreferrer" className="flex h-12 w-12 items-center justify-center rounded-full bg-primary-foreground/10 hover:bg-accent hover:text-accent-foreground transition-smooth" aria-label={label}>
                     <Icon className="h-5 w-5" />
                   </a>
                 ))}
