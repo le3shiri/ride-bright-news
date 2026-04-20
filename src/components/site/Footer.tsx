@@ -3,7 +3,7 @@ import { Instagram, Youtube, Facebook, Mail, Music2 } from "lucide-react";
 
 export const Footer = () => {
   const socialLinks = [
-    { Icon: Instagram, href: "https://www.instagram.com/iride_morocco?igsh=MTZtaGV5bDY0YndkMQ==", label: "Instagram" },
+    { Icon: Instagram, href: "https://www.instagram.com/iride.ma", label: "Instagram" },
     { Icon: Youtube, href: "https://youtube.com/@iridemorocco?si=FEmwtskipf4mM9wI", label: "YouTube" },
     { Icon: Facebook, href: "https://www.facebook.com/share/14ZRDPTwFGL/?mibextid=wwXIfr", label: "Facebook" },
     { Icon: Music2, href: "https://www.tiktok.com/@iride.morocco?_r=1&_t=ZS-95SNnrKrwQf", label: "TikTok" },
