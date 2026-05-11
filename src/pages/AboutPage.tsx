@@ -2,49 +2,53 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Award, Globe, Users, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import aboutTeam from "@/assets/about-team.jpg";
-
-const stats = [
-  { value: "12+", label: "Years on the road" },
-  { value: "180", label: "Countries reached" },
-  { value: "2.4M", label: "Monthly readers" },
-  { value: "4,200+", label: "Reviews published" },
-];
-
-const values = [
-  {
-    icon: Award,
-    title: "Honest reviews",
-    text: "We buy or borrow — never accept paid placements. If a bike disappoints, we say so.",
-  },
-  {
-    icon: Globe,
-    title: "Global perspective",
-    text: "Correspondents in eight countries cover racing, culture, and launches firsthand.",
-  },
-  {
-    icon: Users,
-    title: "Reader first",
-    text: "Every story answers a question a real rider has. No fluff, no filler.",
-  },
-  {
-    icon: Zap,
-    title: "Future curious",
-    text: "From electric powertrains to AI-assisted safety, we cover what's next without hype.",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 const AboutPage = () => {
+  const { t } = useTranslation();
+
+  const stats = [
+    { value: "12+", label: t('about.stats.years') },
+    { value: "180", label: t('about.stats.countries') },
+    { value: "2.4M", label: t('about.stats.readers') },
+    { value: "4,200+", label: t('about.stats.reviews') },
+  ];
+
+  const values = [
+    {
+      icon: Award,
+      title: t('about.values.honest'),
+      text: t('about.values.honestText'),
+    },
+    {
+      icon: Globe,
+      title: t('about.values.global'),
+      text: t('about.values.globalText'),
+    },
+    {
+      icon: Users,
+      title: t('about.values.reader'),
+      text: t('about.values.readerText'),
+    },
+    {
+      icon: Zap,
+      title: t('about.values.future'),
+      text: t('about.values.futureText'),
+    },
+  ];
+
   return (
     <>
       {/* Hero */}
       <section className="border-b border-border bg-surface">
         <div className="container-x py-16 md:py-24">
-          <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-3">Our story</p>
-          <h1 className="font-display text-5xl md:text-7xl font-bold text-ink leading-[1.05] text-balance max-w-4xl">
-            Built by riders, <span className="italic text-accent">for riders.</span>
-          </h1>
+          <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-3">{t('about.tagline')}</p>
+          <h1 
+            className="font-display text-5xl md:text-7xl font-bold text-ink leading-[1.05] text-balance max-w-4xl"
+            dangerouslySetInnerHTML={{ __html: t('about.heroTitle') }}
+          />
           <p className="mt-8 text-xl text-muted-foreground leading-relaxed max-w-3xl text-pretty">
-            iRide Morocco started in 2014 as a passion project for the Moroccan motorcycle community. Twelve years later, we're a global team of editors, photographers, and racers who share a single belief: the motorcycle is the most honest machine ever built.
+            {t('about.heroDesc')}
           </p>
         </div>
       </section>
@@ -74,24 +78,20 @@ const AboutPage = () => {
           <div>
             <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-3">Mission</p>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-ink leading-tight">
-              Tell the truth about<br />two-wheeled machines.
+              {t('about.missionTitle')}
             </h2>
           </div>
           <div className="space-y-6 text-lg text-foreground leading-relaxed">
-            <p>
-              Mainstream motoring media often treats motorcycles as a footnote. We treat them as the main event. Every bike we cover is ridden — usually for weeks, sometimes for months — before we write a word.
-            </p>
-            <p>
-              We believe great journalism is independent journalism. iRide Morocco is reader-funded through subscriptions and a small number of carefully chosen partners. Editorial decisions are made by editors, not advertisers. That separation is non-negotiable.
-            </p>
+            <p>{t('about.missionDesc1')}</p>
+            <p>{t('about.missionDesc2')}</p>
           </div>
         </div>
       </section>
 
       {/* Values */}
       <section className="container-x py-20 md:py-28">
-        <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-3">What we stand for</p>
-        <h2 className="font-display text-4xl md:text-5xl font-bold text-ink mb-12">Our values</h2>
+        <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-3">{t('about.valuesTagline')}</p>
+        <h2 className="font-display text-4xl md:text-5xl font-bold text-ink mb-12">{t('about.valuesTitle')}</h2>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {values.map(({ icon: Icon, title, text }) => (
             <div key={title} className="rounded-2xl bg-card border border-border p-6 hover:shadow-elev transition-smooth">
@@ -111,13 +111,13 @@ const AboutPage = () => {
           <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-accent/30 blur-3xl" />
           <div className="relative max-w-2xl">
             <h2 className="font-display text-4xl md:text-5xl font-bold leading-tight">
-              Got a story for us?
+              {t('about.ctaTitle')}
             </h2>
             <p className="mt-4 text-primary-foreground/70 text-lg">
-              Tips, press releases, partnerships — we read every email and reply within one business day.
+              {t('about.ctaDesc')}
             </p>
             <Button asChild variant="hero" size="xl" className="mt-8">
-              <Link to="/contact">Get in touch <ArrowRight className="h-5 w-5" /></Link>
+              <Link to="/contact">{t('about.getInTouch')} <ArrowRight className="h-5 w-5" /></Link>
             </Button>
           </div>
         </div>

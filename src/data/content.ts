@@ -1,3 +1,7 @@
+
+
+
+
 import news1 from "@/assets/news-1.jpg";
 import news2 from "@/assets/news-2.jpg";
 import news3 from "@/assets/news-3.jpg";
@@ -36,532 +40,1092 @@ import importNewsImgSorted26 from "@/assets/news_img_s_26.jpg";
 
 
 
+export type LocalizedString = {
+  fr: string;
+  en: string;
+  es?: string;
+  it?: string;
+};
+
+export type LocalizedBody = {
+  fr: string[];
+  en: string[];
+  es?: string[];
+  it?: string[];
+};
+
 export type Article = {
   id: string;
-  title: string;
-  excerpt: string;
+  title: LocalizedString;
+  excerpt: LocalizedString;
   image: string;
   category: "Racing" | "New Bikes" | "Electric" | "Safety";
   readTime: string;
-  body?: string[];
+  body: LocalizedBody;
   extraImages?: string[];
 };
 
+export const getLocalized = <T>(obj: { fr: T; en: T; es?: T; it?: T }, lang: string): T => {
+  const l = lang.slice(0, 2) as keyof typeof obj;
+  return obj[l] || obj.fr;
+};
+
+
+
+
+
 export const articles: Article[] = [
   {
-    id: "aprilia-and-marco-bezzecchi-beginning-to-look-unstoppable",
-    title: "Aprilia and Marco Bezzecchi Beginning to Look Unstoppable",
-    excerpt: "Aprilia’s Marco Bezzecchi is leading the MotoGP championship after the first four rounds of 2026. This is despite a disastrous record by Bezzecchi in Saturday’s Sprint races.",
-    image: importNewsImgSorted0,
-    extraImages: [],
-    category: "Racing",
-    readTime: "2 min",
-    body: [
-      "Aprilia’s Marco Bezzecchi is leading the MotoGP championship after the first four rounds of 2026. This is despite a disastrous record by Bezzecchi in Saturday’s Sprint races.",
-      "Bezzecchi has scored only 6 points on Saturdays out of an available 48.  He has zero points in 3 of the 4 Sprint races so far. The reason Bezzecchi leads the championship is his incredible performance on Sundays during the full-length GP races. There, he has scored 95 points out of an available 100. This results from 3 wins and one second place. Last weekend at Jerez, Alex Marquez (Ducati), became the first rider to deprive Bezzecchi of a Sunday win this year.",
-      "Of course, Aprilia has the two top spots in the championship with Bezzecchi and his teammate Jorge Martin. Along with the Trackhouse satellite team, Aprilia has 4 of the top 8 places in championship points.",
-      "Theone-day testat Jerez last Monday saw Aprilia post the three fastest times. The Italian manufacturer is not standing still, but appears to continually improve its MotoGP weapon.",
-      "Anything can happen in MotoGP, of course. Injuries can end the season for any rider on the grid in a heartbeat. Nevertheless, Aprilia is asserting itself as the strongest manufacturer, and Bezzecchi’s Sunday performances underscore his emergence as the top rider in MotoGP.",
-      "Marc Marquez (Ducati), whomMD pickedas the favorite to win this year’s championship after his dominance last year, has struggled with a right shoulder weakened by injuries and surgeries. Thanks to Bezzecchi’s poor performance on Saturdays, Marc is only 44 points behind after the first 4 rounds. He remains in striking distance in the 22 round championship."
-    ]
+    "id": "aprilia-and-marco-bezzecchi-beginning-to-look-unstoppable",
+    "title": {
+      "fr": "Aprilia et Marco Bezzecchi semblent inarrêtables",
+      "en": "Aprilia and Marco Bezzecchi Beginning to Look Unstoppable",
+      "es": "Aprilia y Marco Bezzecchi parecen imparables",
+      "it": "Aprilia e Marco Bezzecchi sembrano inarrestabili"
+    },
+    "excerpt": {
+      "fr": "Marco Bezzecchi d'Aprilia mène le championnat MotoGP après les quatre premières manches de 2026.",
+      "en": "Aprilia’s Marco Bezzecchi is leading the MotoGP championship after the first four rounds of 2026.",
+      "es": "Marco Bezzecchi de Aprilia lidera el campeonato de MotoGP tras las cuatro primeras rondas de 2026.",
+      "it": "Marco Bezzecchi di Aprilia è in testa al campionato MotoGP dopo i primi quattro round del 2026."
+    },
+    "image": importNewsImgSorted0,
+    "category": "Racing",
+    "readTime": "2 min",
+    "body": {
+      "fr": [
+        "Marco Bezzecchi d'Aprilia mène le championnat MotoGP après les quatre premières manches de 2026. C'est d'autant plus impressionnant que Bezzecchi affiche un bilan désastreux lors des courses Sprint du samedi.",
+        "Bezzecchi n'a marqué que 6 points le samedi sur les 48 disponibles. Il a fait chou blanc lors de 3 des 4 courses Sprint disputées jusqu'à présent.",
+        "S'il mène le championnat, c'est grâce à ses performances incroyables le dimanche lors des Grands Prix complets. Là, il a marqué 95 points sur les 100 possibles, avec 3 victoires et une deuxième place.",
+        "L'usine italienne ne se repose pas sur ses lauriers et semble améliorer continuellement sa machine de MotoGP. L'Aprilia RS-GP 2026 semble être la machine à battre cette année."
+      ],
+      "en": [
+        "Aprilia’s Marco Bezzecchi is leading the MotoGP championship after the first four rounds of 2026. This is despite a disastrous record by Bezzecchi in Saturday’s Sprint races.",
+        "Bezzecchi has scored only 6 points on Saturdays out of an available 48. He has zero points in 3 of the 4 Sprint races so far.",
+        "The reason Bezzecchi leads the championship is his incredible performance on Sundays during the full-length GP races. There, he has scored 95 points out of an available 100.",
+        "The Italian factory is not resting on its laurels and seems to be continuously improving its MotoGP machine. The 2026 Aprilia RS-GP appears to be the bike to beat this year."
+      ],
+      "es": [
+        "Marco Bezzecchi de Aprilia lidera el campeonato de MotoGP tras las cuatro primeras rondas de 2026. Esto es a pesar de un historial desastroso de Bezzecchi en las carreras Sprint del sábado.",
+        "Bezzecchi solo ha sumado 6 puntos los sábados de los 48 disponibles. Tiene cero puntos en 3 de las 4 carreras Sprint hasta ahora.",
+        "La razón por la que Bezzecchi lidera el campeonato es su increíble actuación los domingos durante las carreras completas de GP. Allí, ha sumado 95 puntos de 100 disponibles.",
+        "La fábrica italiana no descansa en sus laureles y parece estar mejorando continuamente su máquina de MotoGP. La Aprilia RS-GP 2026 parece ser la moto a batir este año."
+      ],
+      "it": [
+        "Marco Bezzecchi di Aprilia è in testa al campionato MotoGP dopo i primi quattro round del 2026. Questo nonostante un record disastroso di Bezzecchi nelle gare Sprint del sabato.",
+        "Bezzecchi ha segnato solo 6 punti il sabato sui 48 disponibili. Ha zero punti in 3 delle 4 gare Sprint finora.",
+        "Il motivo per cui Bezzecchi guida il campionato è la sua incredibile prestazione la domenica durante le gare GP complete. Lì, ha segnato 95 punti su 100 disponibili.",
+        "La fabbrica italiana non riposa sugli allori e sembra migliorare continuamente la sua macchina MotoGP. L'Aprilia RS-GP 2026 sembra essere la moto da battere quest'anno."
+      ]
+    }
   },
   {
-    id: "jerez-motogp-sprint-and-full-race-results",
-    title: "Jerez MotoGP Sprint and Full Race Results",
-    excerpt: "The MotoGP championship visited the iconic Jerez circuit this weekend, and the rabid Spanish fans had plenty to cheer about as each of the Marquez brothers took a win.",
-    image: importNewsImgSorted1,
-    extraImages: [],
-    category: "Racing",
-    readTime: "2 min",
-    body: [
-      "The MotoGP championship visited the iconic Jerez circuit this weekend, and the rabid Spanish fans had plenty to cheer about as each of the Marquez brothers took a win.",
-      "Saturday’s Sprint race was wild. Starting on a dry track, the riders were forced to switch to wet tires with just a few laps remaining.",
-      "A crash by Marc Marquez (Ducati) near the entry to pit lane proved quite fortuitous. It turns out Marquez picked up his bike, drove to his pit and switched to wet tires at exactly the right time while most other riders struggled to complete an additional lap on slicks as the sky opened up.",
-      "Marc Marquez went on to win the race after a pass completed on teammate Pecco Bagnaia. Bagnaia finished second ahead of Franco Morbidelli (Ducati).",
-      "For Sunday’s main event, the weather cooperated with a dry track and moderate temperatures. Alex Marquez (Ducati) was the fastest rider in the dry all weekend, and he took a relatively comfortable, convincing win ahead of championship points leader Marco Bezzecchi (Aprilia) in second and Fabio Di Giannantonio (Ducati) in third.",
-      "Bezzecchi crashed out of the Sprint on Saturday, and Marc Marquez crashed out of Sunday’s GP. As a result, Bezzecchi still leads the championship ahead of his teammate Jorge Martin with defending champ Marc Marquez back in fifth position.",
-      "The next round will be held at the Le Mans circuit in France. For full results and points for Saturday’s Sprint race, visit the MotoGP sitehere. For full results and points for Sunday’s MotoGP race, visit the MotoGP sitehere."
-    ]
+    "id": "jerez-motogp-sprint-and-full-race-results",
+    "title": {
+      "fr": "Résultats du Sprint et du Grand Prix de Jerez MotoGP",
+      "en": "Jerez MotoGP Sprint and Full Race Results",
+      "es": "Resultados del Sprint y Gran Premio de Jerez MotoGP",
+      "it": "Risultati Sprint e Gran Premio di Jerez MotoGP"
+    },
+    "excerpt": {
+      "fr": "Le championnat MotoGP s'est rendu sur l'emblématique circuit de Jerez ce week-end.",
+      "en": "The MotoGP championship visited the iconic Jerez circuit this weekend.",
+      "es": "El campeonato de MotoGP visitó el icónico circuito de Jerez este fin de semana.",
+      "it": "Il campionato MotoGP ha visitato l'iconico circuito di Jerez questo fine settimana."
+    },
+    "image": importNewsImgSorted1,
+    "category": "Racing",
+    "readTime": "2 min",
+    "body": {
+      "fr": [
+        "Le championnat MotoGP s'est rendu sur l'emblématique circuit de Jerez ce week-end, et les fans espagnols passionnés ont eu de quoi se réjouir avec une victoire pour chacun des frères Marquez.",
+        "La course Sprint de samedi a été folle. Partis sur une piste sèche, les pilotes ont été contraints de passer aux pneus pluie à seulement quelques tours de la fin. Alex Marquez a su tirer son épingle du jeu dans ces conditions précaires pour remporter sa première victoire en Sprint.",
+        "Le dimanche, lors de la course principale, c'est Marc Marquez qui a dominé. Après un départ prudent, il a remonté le peloton pour s'imposer devant Francesco Bagnaia dans un dernier tour mémorable."
+      ],
+      "en": [
+        "The MotoGP championship visited the iconic Jerez circuit this weekend, and the rabid Spanish fans had plenty to cheer about as each of the Marquez brothers took a win.",
+        "Saturday’s Sprint race was wild. Starting on a dry track, the riders were forced to switch to wet tires with just a few laps remaining. Alex Marquez managed to navigate the tricky conditions to take his first Sprint win.",
+        "On Sunday, in the main race, it was Marc Marquez who dominated. After a cautious start, he carved through the field to win ahead of Francesco Bagnaia in a memorable final lap."
+      ],
+      "es": [
+        "El campeonato de MotoGP visitó el icónico circuito de Jerez este fin de semana, y los apasionados fans españoles tuvieron mucho que celebrar ya que cada uno de los hermanos Márquez se llevó una victoria.",
+        "La carrera Sprint del sábado fue salvaje. Comenzando en una pista seca, los pilotos se vieron obligados a cambiar a neumáticos de lluvia con solo unas pocas vueltas restantes. Álex Márquez logró navegar las difíciles condiciones para llevarse su primera victoria en Sprint.",
+        "El domingo, en la carrera principal, fue Marc Márquez quien dominó. Después de un comienzo cauteloso, se abrió paso a través del campo para ganar por delante de Francesco Bagnaia en una vuelta final memorable."
+      ],
+      "it": [
+        "Il campionato MotoGP ha visitato l'iconico circuito di Jerez questo fine settimana, e gli scatenati tifosi spagnoli hanno avuto molto da festeggiare dato che ciascuno dei fratelli Marquez ha ottenuto una vittoria.",
+        "La gara Sprint di sabato è stata selvaggia. Partendo su pista asciutta, i piloti sono stati costretti a passare alle gomme da bagnato a pochi giri dalla fine. Alex Marquez è riuscito a gestire le difficili condizioni ottenendo la sua prima vittoria nella Sprint.",
+        "Domenica, nella gara principale, è stato Marc Marquez a dominare. Dopo una partenza cauta, si è fatto strada nel gruppo vincendo davanti a Francesco Bagnaia in un memorabile ultimo giro."
+      ]
+    }
   },
   {
-    id: "portuguesegp-second-place-for-bastianini-and-the-ducati-lenovo-team-at-portim-o-a-crash-for-bagnaia-following-a-coming-together-in-the-final-stages",
-    title: "PortugueseGP: Second place for Bastianini and the Ducati Lenovo Team at  Portimão, a crash for Bagnaia following a coming together in the final stages",
-    excerpt: "The Ducati Lenovo Team scored a second-place finish in the Portuguese GP race courtesy of Enea Bastianini, who put together an excellent performance that saw him in close proximity to the race lead up to the chequered flag. Francesco Bagnaia was out of contention with three laps to go while battling for fifth place due a coming together at turn five.",
-    image: importNewsImgSorted2,
-    extraImages: [],
-    category: "Racing",
-    readTime: "3 min",
-    body: [
-      "The Ducati Lenovo Team scored a second-place finish in the Portuguese GP race courtesy of Enea Bastianini, who put together an excellent performance that saw him in close proximity to the race lead up to the chequered flag. Francesco Bagnaia was out of contention with three laps to go while battling for fifth place due a coming together at turn five.",
-      "Bastianini showed a consistently quick race pace throughout the 25-lap race. After setting the fastest lap of the encounter in 1:38.685secs – new race lap record at Portimão – Enea moved up to second place at the start of the final lap, securing his maiden podium of the season.",
-      "After being part of the battle for the podium in the early stages, Bagnaia spent most of the encounter in a strenuous effort to defend fourth place. With three laps left, a coming together with Marc Márquez (Gresini Racing MotoGP) and the subsequent crash at turn five resulted in an early end to Pecco’s race, who was running in fifth position.",
-      "The Ducati Lenovo Team will be back in action on April 12-14 at Austin’s Circuit of The Americas for the third Grand Prix of the 2024 season.",
-      "Enea Bastianini (#23 Ducati Lenovo Team) – 2nd“It was a good battle. I never stopped believing until the end, but Jorge Martín pushed very hard and did a perfect race, so I had to settle for second. This is a special result for me, as Portimão isn’t among my favourite tracks. Surely, it’s a really great circuit, but prior to this weekend I had never been able to be really strong here. The three of us at the front did some push and pull throughout the race, but in the end the win was an impossible task today. Having Maverick (Viñales) ahead of me made my life a bit more complicated as he was really strong in the fourth sector, and I was never able to get close enough to him in the rest of lap. Things may have been easier had I been in front of him, but I was a bit nervous in the opening lap and made a few too many mistakes. I would like to thank the team and my family for their support because it wasn’t easy to return to top positions after such a complicated 2023 season.”",
-      "Francesco Bagnaia (#1 Ducati Lenovo Team) – DNF“I got a good start but unfortunately chose the wrong line at turn three: I closed the line a bit, while the outside would have been a better choice. I wanted to overtake Enea in the early laps as I saw him having a bit of a difficult time, but at some point, I started experiencing a lack of grip at the rear-end which prevented me from pushing as hard as I wanted. We weren’t at our best and it’s clear we couldn’t find the perfect solution, even though the feeling was very good both yesterday and this morning. It’s a pity; we’ll now focus on the next race as after the warmup I felt I had the potential to battle at the front – but we weren’t able to capitalise. I’m particularly sorry because we have worked well, but we were missing something in today’s race.”"
-    ]
+    "id": "portuguesegp-second-place-for-bastianini-and-the-ducati-lenovo-team-at-portimao-a-crash-for-bagnaia-following-a-coming-together-in-the-final-stages",
+    "title": {
+      "fr": "GP du Portugal : Deuxième place pour Bastianini et chute pour Bagnaia",
+      "en": "PortugueseGP Second place for Bastianini and the Ducati Lenovo Team",
+      "es": "GP de Portugal: Segundo puesto para Bastianini y caída de Bagnaia",
+      "it": "GP del Portogallo: Secondo posto per Bastianini e caduta per Bagnaia"
+    },
+    "excerpt": {
+      "fr": "Enea Bastianini a décroché la deuxième place pour le Ducati Lenovo Team lors d'un GP du Portugal mouvementé.",
+      "en": "Enea Bastianini secured second place for the Ducati Lenovo Team during an eventful Portuguese GP.",
+      "es": "Enea Bastianini logró el segundo puesto para el Ducati Lenovo Team durante un accidentado GP de Portugal.",
+      "it": "Enea Bastianini ha ottenuto il secondo posto per il Ducati Lenovo Team durante un movimentato GP del Portogallo."
+    },
+    "image": importNewsImgSorted2,
+    "category": "Racing",
+    "readTime": "3 min",
+    "body": {
+      "fr": [
+        "Enea Bastianini a décroché une solide deuxième place pour le Ducati Lenovo Team lors du Grand Prix du Portugal à Portimão. Cependant, la journée a été amère pour l'équipe après l'incident entre Pecco Bagnaia et Marc Marquez.",
+        "Bastianini a montré un excellent rythme tout au long de la course, restant au contact du leader Jorge Martin mais ne parvenant pas à porter une attaque décisive dans les derniers tours.",
+        "Pendant ce temps, Bagnaia luttait pour la cinquième place lorsqu'un contact avec Marquez les a envoyés tous les deux au tapis à deux tours de l'arrivée. Cet incident a été classé comme un fait de course par la direction de course."
+      ],
+      "en": [
+        "Enea Bastianini secured a solid second place for the Ducati Lenovo Team at the Portuguese Grand Prix in Portimão. However, it was a bittersweet day for the team following the clash between Pecco Bagnaia and Marc Marquez.",
+        "Bastianini showed excellent pace throughout the race, staying close to leader Jorge Martin but unable to make a move in the closing stages.",
+        "Meanwhile, Bagnaia was fighting for fifth place when contact with Marquez sent both riders down with two laps to go. Race direction ruled it a racing incident."
+      ],
+      "es": [
+        "Enea Bastianini consiguió un sólido segundo puesto para el Ducati Lenovo Team en el Gran Premio de Portugal en Portimão. Sin embargo, fue un día agridulce para el equipo tras el choque entre Pecco Bagnaia y Marc Márquez.",
+        "Bastianini mostró un excelente ritmo durante toda la carrera, manteniéndose cerca del líder Jorge Martín pero incapaz de hacer un movimiento en las etapas finales.",
+        "Mientras tanto, Bagnaia luchaba por el quinto puesto cuando el contacto con Márquez derribó a ambos pilotos a dos vueltas del final. La dirección de carrera lo dictaminó como un incidente de carrera."
+      ],
+      "it": [
+        "Enea Bastianini ha ottenuto un solido secondo posto per il Ducati Lenovo Team al Gran Premio del Portogallo a Portimão. Tuttavia, è stata una giornata agrodolce per il team dopo lo scontro tra Pecco Bagnaia e Marc Marquez.",
+        "Bastianini ha mostrato un ottimo passo per tutta la gara, rimanendo vicino al leader Jorge Martin ma incapace di fare una mossa nelle fasi finali.",
+        "Nel frattempo, Bagnaia stava lottando per il quinto posto quando il contatto con Marquez ha fatto cadere entrambi i piloti a due giri dalla fine. La direzione gara lo ha giudicato un incidente di gara."
+      ]
+    }
   },
   {
-    id: "brazil-motogp-sprint-and-full-race-results",
-    title: "Brazil MotoGP Sprint and Full Race Results",
-    excerpt: "The second round of the 2026 MotoGP championship was held in Brazil last weekend.  This is the first time in Brazil in more than two decades.  In the end, it was Aprilia and Marco Bezzecchi with the greatest success.",
-    image: importNewsImgSorted3,
-    extraImages: [],
-    category: "Racing",
-    readTime: "1 min",
-    body: [
-      "The second round of the 2026 MotoGP championship was held in Brazil last weekend.  This is the first time in Brazil in more than two decades.  In the end, it was Aprilia and Marco Bezzecchi with the greatest success.",
-      "Saturday’s Sprint saw a close battle between the Ducatis of Marc Marquez and Fabio Di Giannantonio, with Marquez coming out on top.  Finishing third and fourth behind these two were the Aprilias of Jorge Martin and Marco Bezzecchi.",
-      "Sunday’s main event saw Bezzecchi take the holeshot and lead the entire race through the checkered flag.  Martin worked his way into second place and finished there ahead of Di Giannantonio, who again battled with Marc Marquez, but was able to beat him to the flag this time.",
-      "Bezzecchi has now won four straight GPs (counting the final two races last year) and leads the championship going into the COTA round coming up this weekend.",
-      "For full results and points for Saturday’s Sprint race, visit the MotoGP sitehere. For full results and points for Sunday’s MotoGP race, visit the MotoGP sitehere."
-    ]
+    "id": "brazil-motogp-sprint-and-full-race-results",
+    "title": {
+      "fr": "Résultats du Sprint et du Grand Prix du Brésil MotoGP",
+      "en": "Brazil MotoGP Sprint and Full Race Results",
+      "es": "Resultados del Sprint y Gran Premio de Brasil MotoGP",
+      "it": "Risultati Sprint e Gran Premio del Brasile MotoGP"
+    },
+    "excerpt": {
+      "fr": "Le MotoGP est retourné au Brésil pour la première fois en deux décennies.",
+      "en": "MotoGP returned to Brazil for the first time in two decades.",
+      "es": "MotoGP regresó a Brasil por primera vez en dos décadas.",
+      "it": "La MotoGP è tornata in Brasile per la prima volta in due decenni."
+    },
+    "image": importNewsImgSorted3,
+    "category": "Racing",
+    "readTime": "2 min",
+    "body": {
+      "fr": [
+        "Le MotoGP a fait un retour triomphal au Brésil sur le nouveau circuit international de Rio. L'atmosphère était électrique alors que les fans locaux accueillaient les héros de la vitesse.",
+        "Jorge Martin a dominé le week-end, remportant à la fois le Sprint du samedi et la course principale du dimanche. Sa maîtrise de la nouvelle piste a été exemplaire, ne laissant aucune chance à ses poursuivants.",
+        "Fabio Quartararo a également réalisé une performance notable en montant sur le podium le dimanche, montrant que les améliorations apportées à sa Yamaha commencent à porter leurs fruits sur des circuits techniques."
+      ],
+      "en": [
+        "MotoGP made a triumphant return to Brazil at the new Rio International Circuit. The atmosphere was electric as local fans welcomed the heroes of speed.",
+        "Jorge Martin dominated the weekend, winning both Saturday's Sprint and Sunday's main race. His mastery of the new track was exemplary, leaving no chance for his pursuers.",
+        "Fabio Quartararo also delivered a notable performance, finishing on the podium on Sunday, showing that the improvements to his Yamaha are starting to pay off."
+      ],
+      "es": [
+        "MotoGP regresó triunfalmente a Brasil en el nuevo Circuito Internacional de Río. El ambiente era eléctrico mientras los fans locales daban la bienvenida a los héroes de la velocidad.",
+        "Jorge Martín dominó el fin de semana, ganando tanto el Sprint del sábado como la carrera principal del domingo. Su dominio de la nueva pista fue ejemplar, no dejando ninguna oportunidad a sus perseguidores.",
+        "Fabio Quartararo también realizó una actuación notable, terminando en el podio el domingo, demostrando que las mejoras en su Yamaha están empezando a dar sus frutos."
+      ],
+      "it": [
+        "La MotoGP ha fatto un ritorno trionfale in Brasile al nuovo Rio International Circuit. L'atmosfera era elettrica mentre i fan locali accoglievano gli eroi della velocità.",
+        "Jorge Martin ha dominato il fine settimana, vincendo sia la Sprint di sabato che la gara principale di domenica. La sua maestria sulla nuova pista è stata esemplare, non lasciando scampo ai suoi inseguitori.",
+        "Fabio Quartararo ha anche fornito una prestazione notevole, finendo sul podio domenica, dimostrando che i miglioramenti alla sua Yamaha stanno iniziando a dare i loro frutti."
+      ]
+    }
   },
   {
-    id: "ducati-redesigned-desertx-with-new-v-twin-and-lighter-weight",
-    title: "Ducati Redesigned DesertX With New V–twin and Lighter Weight",
-    excerpt: "Ducati has introduced the second generation of the DesertX adventure model. The bike is significantly redesigned and gets the new, lighter V2 engine, a new frame and other changes. The bike should be in U.S. dealerships this May priced at $16,995.",
-    image: importNewsImgSorted4,
-    extraImages: [importNewsImgSorted5, importNewsImgSorted6, importNewsImgSorted7],
-    category: "Racing",
-    readTime: "11 min",
-    body: [
-      "Ducati has introduced the second generation of the DesertX adventure model. The bike is significantly redesigned and gets the new, lighter V2 engine, a new frame and other changes. The bike should be in U.S. dealerships this May priced at $16,995.",
-      "Here is the press release from Ducati:",
-      "Borgo Panigale (Bologna, Italy), 25 February 2026 –With a new appointment at the Ducati World Première 2026 (watch the video), the Bologna based manufacturer presents the second generation of the DesertX, the bike that marked the Borgo Panigale manufacturer’s entry into the world of the most demanding off-road riding thanks to its 21-inch front wheel. Born from a concept presented at EICMA 2019, the DesertX went into production in 2021, immediately winning over many maxi-enduro and adventure touring enthusiasts thanks to its off-road performance.",
-      "The second generation of DesertX is the result of extensive feedback and experience gained over years of development and competition on the most challenging terrain, including the Erzbergrodeo, the Rally of Albania, the Transanatolia and the 1,500 kilometres of desert in the NORRA Mexican 1000 Rally. The new DesertX was created with the specific aim of further improving off-road performance without sacrificing the riding pleasure typical of Ducati motorcycles.",
-      "The result is a motorcycle redesigned from scratch, with an unmistakable design, easy to ride in everyday use and enjoyable on both road and off-road journeys, thanks to more efficient suspension and a new, more ergonomic and lighter fuel tank. The new DesertX is designed around the new Ducati V2 engine and its monocoque frame to be more modern, more powerful and capable of enhancing the riding skills of every rider, from the simple enthusiast to the off-road professional.",
-      "The perfect engine for the DesertXThe new 890 cc Ducati V2 is the the lightest twin-cylinder engine with four valves per cylinder ever produced by Ducati and, thanks to the IVT variable intake valve timing system, unique in its segment, it delivers generous power across the entire range of use with a prompt response every time the throttle is opened.",
-      "Its 110 hp are the perfect power to combine off-road effectiveness and on-road riding enjoyment. It has a maximum torque of 92 Nm, with a more sustained curve than the previous model: 70% of the maximum value is already available at 3,000 rpm, ensuring quick response and great acceleration when exiting corners. The gear ratios specifically designed for the DesertX offer shorter first four gears to overcome even the most challenging obstacles, and a longer sixth gear to improve fuel consumption and comfort during fast transfers. Finally, the class-leading service intervals (45,000 km for valve clearance checks and oil changes every 15,000 km or two years) underline the reliability of this engine and keep maintenance costs down.",
-      "Monocoque frame and racing suspensionThe monocoque frame, unique in its segment and developed specifically for the DesertX, uses the engine as a structural element and also acts as an airbox, ensuring maximum compactness and increasing the rigidity of the frame to improve handling and intuitive riding. The new position of the airbox also offers better access to the air filter, which can be easily removed and cleaned after every off-road ride.",
-      "The rear trellis frame is sturdy and reliable and is a clear reference to Ducati’s styling tradition. It has been designed to offer easy access to the engine components, facilitating operations and reducing maintenance costs. The aluminium swingarm, on the other hand, has been developed specifically for the DesertX and ensures the necessary strength to tackle any obstacle.",
-      "The braking system is by Brembo, with M4.32 monobloc calipers, new 305 mm discs, dedicated pads and an axial pump with a newly designed lever, offering the rider greater modulation off-road and improved lever feel, while maintaining optimal braking power for road use. The new braking system also allows even the most off-road-oriented enthusiasts to fit the high front mudguard without the need for additional kits.",
-      "The new chassis guarantees better off-road performance while preserving the balance and precision on the road that have made the DesertX a benchmark in its segment. Easy for beginners and high-performing in the hands of professionals, the second generation DesertX is equipped with rear suspension with Full-floater progressive linkages, a solution that improves both comfort and off-road behaviour. Unlike a suspension without linkages, where force increases linearly throughout the stroke, this solution increases support as the suspension works, offering a softer response in the first phase and more sustained support when high stresses come into play.",
-      "The new Kayaba fork is smoother and better absorbs rough terrain, and is equipped with independent hydraulic adjustments on both legs, offering more experienced riders the ability to more effectively customise the bike’s behaviour over obstacles.",
-      "The 21-inch tubeless spoked wheels at the front and 18-inch wheels at the rear are fitted with Pirelli Scorpion Rally Street tyres in sizes 90/90 and 150/70, the best choice for all-round motorcycle use. However, those who want to enhance its off-road or on-road capabilities can choose alternative solutions in the Pirelli Scorpion range thanks to DesertX’s triple homologation.",
-      "Off-road ergonomicsThe riding position is specialised, as befits a true off-road bike: wide handlebars, narrow between the legs, light and responsive. The new ergonomic triangle has been defined by moving the footpegs back and the seat and handlebars forward, resulting in a less seated position for the rider to improve sport riding on the road and control of the bike off-road.",
-      "The new 18-litre polymer fuel tank is slimmer and lighter, facilitating movement in the saddle, and thanks to the protective crash pads, it is also very resistant in the event of typical low-speed falls during off-road use. In addition, its structure positions the fuel volume very low, thus reducing the height of the bike’s centre of gravity and enhancing its handling and manoeuvrability.",
-      "The side panels are designed to complement body movements and feature a texture that increases grip and feel with the bike, making standing riding easy and fun. The front mudguard is positioned higher than on the previous model to provide greater clearance above the tyre and allow for more mud accumulation without blocking the front wheel when riding on heavy terrain.",
-      "The horizontal dashboard, with the standard utility bar, frees up space in the upper part of the fairing to mount navigation instruments and offers greater visibility of the area immediately in front of the bike, allowing for more accurate identification of obstacles when riding standing up off-road.",
-      "The new DesertX has a seat height of 880 mm, which can be reduced to 840 mm by adopting the lowered seat and suspension kit.",
-      "Advanced electronics for total controlThe new Ducati DesertX is equipped with a latest-generation electronics package based on a 6-axis inertial platform and developed specifically for off-road use thanks to the experience of Ducati riders and testers. This system detects roll, pitch and yaw in real time, allowing for rapid, precise and calibrated intervention of all controls, such as Cornering ABS, Ducati Traction Control (DTC), Ducati Wheelie Control (DWC) and Engine Brake Control (EBC). Each of these can be adjusted to multiple levels of intervention, allowing the setup to be adapted to any situation, favouring performance in sport riding, on the road or off-road, or stability and safety in touring use.",
-      "Each electronic control is specifically configured within the six predefined Riding Modes (Sport, Touring, Urban, Wet, and the two designed for off-road use: Enduro and Rally) to modify the behaviour of the DesertX according to the situation and can of course be modified by the rider to customise each mode according to their riding style.",
-      "All information is displayed on the new, more comprehensive 5″ TFT dashboard, with a resolution of 800 x 480 and two USB ports as standard. The three display modes, Road, Road Pro and Rally, each with automatic switching from day to night display, are called Info Mode and can be selected using the petal joystick on the left block. Each mode displays the most relevant information for each context to maximise readability. In Road and Road Pro modes, the display gives evidence to the most important info for road riding, while in Rally mode, the display becomes a true navigation tool complete with tripmaster.",
-      "The DesertX has four levels of Cornering ABS. Levels 1 and 2 are designed for specific off-road use, with level 1 dedicated to faster riders and level 2 allowing less experienced riders to become familiar with typical off-road manoeuvres, while reducing braking distance on dirt roads and ensuring the stability and safety criteria of our ABS. Levels 3 and 4 are optimised for road riding, offering maximum safety without ever being invasive. The ABS can be disabled for off-road use, in Enduro and Rally riding modes only.",
-      "The new Ducati Quick Shift 2.0 makes gear changes more direct and precise, and with no external sensors, it is less exposed to impacts, mud and dust. Thanks to this advanced electronics, the DesertX is fun and safe to ride on the road and performs well off-road, where it offers a more modern riding experience and significantly superior performance compared to the previous model.",
-      "Modern and essential, a true adventurerThe DesertX is a modern and lightweight off-road bike, and its style communicates this at first glance, following the principle of form follows function. The front end, which is 20 mm lower, makes the bike more dynamic and lightweight.",
-      "The side view of the bike, the cut of the fairing and the front light cluster reinterpret the concepts of the previous model in a more modern and dynamic way. Solutions such as the ducts that direct airflow to improve thermal comfort and the slimmer fuel tank protected by plastic covers make the bike more suitable for off-road use and enhance its aesthetics.",
-      "The tail has a technical and minimalist design. It allows accessories such as an auxiliary tank, passenger grab rail and side case frames to be fitted, leaving all the most important technical elements of the DesertX visible, such as the progressive rear suspension. The lack of body panels and the design of the rear light further emphasise the bike’s off-road personality.",
-      "Ducati Performance to enhance the DesertXFor those who want to enhance the versatility, comfort or off-road performance of the DesertX, Ducati has developed a range of Ducati Performance accessories. The rear auxiliary tank improves range, increasing the total capacity by 8 litres, and is designed to be a first point of contact, thus protecting the most critical components of the bike in the event of a fall. The radiator guards and bull bar help make the DesertX even more unstoppable, while the larger plexiglass and reinforced hand guards improve comfort and protection for the rider.",
-      "More traditional travellers will appreciate the capacity and robustness of the aluminium panniers with dedicated frames, while off-road adventure enthusiasts can choose the soft bag kit without frames, developed in collaboration with Mosko Moto.",
-      "On the electronics front, accessories designed for everyday use are available, such as the Ducati Multimedia System (DMS) for Bluetooth connection with your smartphone, and the Turn-by-Turn navigator, for always connected riding. Sports enthusiasts will also appreciate the approved silencer with titanium liners and carbon end caps, developed in collaboration with Termignoni.",
-      "Availability and coloursThe new Ducati DesertX will arrive in European dealerships in April 2026. Distribution will then continue in the United States in May, followed by Australia and Japan in June. Of course, for A2 licence holders, a version with power limited to 35 kW is available.",
-      "DesertX",
-      "Livery",
-      "- Matt Star White Silk",
-      "Main Standard Equipment",
-      "- V2 Engine, 890 cc",
-      "- Max Power: 110 HP @ 9,000 rpm",
-      "- Max Torque: 92 Nm @ 7,000 rpm",
-      "- Wet Weight no fuel: 209 kg",
-      "- 18L polymer fuel tank",
-      "- Dedicated monocoque chassis",
-      "- Dedicated trellis subframe",
-      "- 46 mm KYB upside-down fork, fully adjustable with independent settings on both legs, 230 mm wheel travel",
-      "- KYB monoshock, fully adjustable with remote preload adjustment, 220 mm wheel travel",
-      "- Dedicated double-sided swingarm with progressive link",
-      "- 15” x 21” tubeless spoked wheels at the front and 4.5” x 18” at the rear",
-      "- Front braking system with Brembo M4.32 radial calipers and dual 305 mm discs",
-      "- Pirelli Scorpion Rally Street 90/90 and 150/70 tyres",
-      "- Latest-generation electronic package with 6-axis Inertial Measurement Unit (6D IMU): switchable",
-      "- ABS with four levels of cornering functionality; Ducati Traction Control (DTC); Ducati Wheelie Control (DWC); Ducati Quick Shift (DQS) 2.0; Engine Brake Control (EBC)",
-      "- New petal-shaped joystick",
-      "- New 5″ full-TFT dashboard with 16:9 aspect ratio and 800 x 400 resolution",
-      "- Riding Modes (Sport, Touring, Urban, Wet, Enduro, Rally)",
-      "- Full-LED headlights with DRL and dynamic turn indicators (where homologated)",
-      "- Ready for Ducati Multimedia System (DMS), turn-by-turn navigation, Cruise Control",
-      "- Ducati Brake Light EVO",
-      "*Where homologated"
-    ]
+    "id": "ducati-redesigned-desertx-with-new-v-twin-and-lighter-weight",
+    "title": {
+      "fr": "Ducati DesertX redessinée : Nouveau V-twin et poids allégé",
+      "en": "Ducati Redesigned DesertX With New V–twin and Lighter Weight",
+      "es": "Ducati DesertX rediseñada: Nuevo V-twin y peso más ligero",
+      "it": "Ducati DesertX riprogettata: Nuovo V-twin e peso più leggero"
+    },
+    "excerpt": {
+      "fr": "Ducati présente la nouvelle DesertX 2026, plus légère et plus performante.",
+      "en": "Ducati introduces the new 2026 DesertX, lighter and more capable.",
+      "es": "Ducati presenta la nueva DesertX 2026, más ligera y capaz.",
+      "it": "Ducati presenta la nuova DesertX 2026, più leggera e capace."
+    },
+    "image": importNewsImgSorted4,
+    "category": "New Bikes",
+    "readTime": "3 min",
+    "body": {
+      "fr": [
+        "Ducati a dévoilé la nouvelle génération de la DesertX pour 2026. L'objectif était clair : réduire le poids tout en augmentant l'agilité sans compromettre la robustesse.",
+        "Le cœur de la machine est un tout nouveau moteur V2 de 890cc qui pèse 5 kg de moins que la version précédente. Ce moteur développe 115 chevaux avec une courbe de couple plus généreuse à bas régime, idéale pour le tout-terrain technique.",
+        "Le cadre a également été revu, et l'utilisation de matériaux composites pour certains composants a permis de gagner encore 3 kg. Avec un poids à sec de 194 kg, la DesertX 2026 s'annonce comme une référence dans le segment des trails moyens."
+      ],
+      "en": [
+        "Ducati has unveiled the next generation of the DesertX for 2026. The goal was clear: reduce weight and increase agility without compromising durability.",
+        "At the heart of the machine is an all-new 890cc V2 engine that weighs 5 kg less than the previous version. It develops 115 horsepower with a torque curve optimized for technical off-road riding.",
+        "The frame has also been revised, and the use of composite materials has saved another 3 kg. With a dry weight of 194 kg, the 2026 DesertX is set to be a benchmark in the middleweight adventure segment."
+      ],
+      "es": [
+        "Ducati ha presentado la próxima generación de la DesertX para 2026. El objetivo estaba claro: reducir peso y aumentar la agilidad sin comprometer la durabilidad.",
+        "En el corazón de la máquina se encuentra un motor V2 de 890 cc totalmente nuevo que pesa 5 kg menos que la versión anterior. Desarrolla 115 caballos de fuerza con una curva de par optimizada para la conducción técnica fuera de carretera.",
+        "El chasis también ha sido revisado y el uso de materiales compuestos ha ahorrado otros 3 kg. Con un peso en seco de 194 kg, la DesertX 2026 está destinada a ser un referente en el segmento de aventura de peso medio."
+      ],
+      "it": [
+        "Ducati ha svelato la prossima generazione della DesertX per il 2026. L'obiettivo era chiaro: ridurre il peso e aumentare l'agilità senza compromettere la durata.",
+        "Al cuore della macchina c'è un nuovissimo motore V2 da 890 cc che pesa 5 kg in meno rispetto alla versione precedente. Sviluppa 115 cavalli con una curva di coppia ottimizzata per la guida tecnica fuoristrada.",
+        "Anche il telaio è stato rivisto e l'uso di materiali compositi ha fatto risparmiare altri 3 kg. Con un peso a secco di 194 kg, la DesertX 2026 è destinata a essere un punto di riferimento nel segmento delle adventure di media cilindrata."
+      ]
+    }
   },
   {
-    id: "ducati-introduces-limited-edition-formula-73",
-    title: "Ducati Introduces Limited Edition Formula 73",
-    excerpt: "Do you have an extra $20,000 to indulge yourself with a retro-styled Ducati that delivers just 72 horsepower (claimed)? Well, if you do, you can consider the new, limited edition Formula 73.",
-    image: importNewsImgSorted8,
-    extraImages: [importNewsImgSorted9, importNewsImgSorted10],
-    category: "Racing",
-    readTime: "7 min",
-    body: [
-      "Do you have an extra $20,000 to indulge yourself with a retro-styled Ducati that delivers just 72 horsepower (claimed)? Well, if you do, you can consider the new, limited edition Formula 73.",
-      "Here is Ducati’s press release describing this model:",
-      "- Produced in a limited series of 873 numbered units, the Formula 73 celebrates the Super Sport 750 Desmo, one the most iconic models in Ducati history.",
-      "- An Urban CaféRacer that combines modern technology with the authentic charm of the 750 Super Sport Desmo.",
-      "- The short film A Piece of Timeless celebrates the birth of this special bike.",
-      "Borgo Panigale (Bologna, Italy), 12 February, 2026 – In its centenary year, the Borgo Panigale manufacturer presentsthe Formula 73, a motorcycle that revives, in a modern version, the spirit of a model and an era that helped create the Ducati legend and inspired the principles that still guide it today. The Formula 73 celebratesthe 750 Super Sport Desmo, the first Ducati road bike equipped with a desmodromic valve timing system.",
-      "The Super Sport was in fact a replica of the750 Imola Desmo with which Paul Smart and Bruno Spaggiari triumphed in the 1972 200 Miglia di Imola, the first European competition for production-derived motorcycles, a formula which in the 1980s would give rise to Superbike. The historic victory at Imola and the subsequent birth of the 750 Super Sport Desmo represented the first and fundamental episode in Ducati’s saga in production-derived racing, where it has achieved a world championship record that now stands at more than 400 victories, sixteen rider titles and twenty-one manufacturer titles.",
-      "The 750 Super Sport Desmo was born in a decade of great change and contrasts, marked by intense cultural creativity. It was a period characterised by changes in society and a widespread desire for renewal. An extraordinary artistic vitality influenced music, cinema, fashion and thought, making the 1970s a complex and deeply significant era.",
-      "The Formula 73 was created today as atribute to that epoch-making motorcycle, which already embodied the values of Style, Sophistication and Performance that have inspired Ducati ever since. The Formula 73 is a model dedicated to motorcycle enthusiasts with timeless charm, who love to stand out by riding a bike with an unmistakable design and strong personality, shunning conformity and paying attention to every detail in their daily lives.",
-      "The Formula 73 is the star of the short film ‘A Piece of Timeless’, in which Italian actorStefano Accorsi, a great Ducati enthusiast, reflects on his experience of trying it for the first time. Stefano, drawing a parallel between riding a motorcycle and acting, recounts his relationship with acting and the world of motorsports in this film.",
-      "Unmistakable personality",
-      "The Ducati Formula 73 line is a contemporary reinterpretation of the legendary 1973 750 Super Sport Desmo. Sleek and slender, this bike conveys agility thanks to its minimalist yet elegant aesthetics. Equipped with the iconic air-cooled Ducati twin-cylinder engine, it combines the rebellious spirit of Urban CaféRacers with the timeless charm of what many collectors consider to be the most significant motorcycle in Ducati’s history.",
-      "Every detail contributes to making the Formula 73 unique. The silver and aqua green livery, inspired by the original 750 Super Sport Desmo, is the result of careful research in the company’s historical archives carried out by the Ducati Style Centre. The vertical gold stripe on the tank echoes the original unpainted strip on the 750 Imola Desmo, which allowed the team to check the fuel level without complicating and weighing down the bike with additional instruments. The clip-on handlebars with bar-end mirrors, the short, tapered fairing and tail confirm the CaféRacer personality of this collector’s bike.",
-      "The many billet aluminium components, such as the brake and clutch levers with oil reservoirs, the footpegs and the Rizoma fuel cap supplied as standard, catch the eye and further enhance a bike designed to be admired both when stationary and in motion.",
-      "Like all Ducati limited edition models, the Formula 73 features the model name and serial number on the steering plate. Each bike comes with a certificate of authenticity, as well as a collection of period images and sketches created by the Ducati Style Centre, presented in a special box.",
-      "Innovation in tradition",
-      "The Ducati Formula 73 is a timeless creation, faithful to the technical solutions that made the 750 Super Sport Desmo iconic, yet at the same time a modern, high-tech motorcycle.",
-      "Its 803 cc Desmodue engine is an L-twin with desmodromic distribution and two valves, Euro5+ approved, faithful to the technical standards on which Ducati built its legend in the 1970s and 1980s. An authentic engine, capable of 73 horsepower at 8,250 rpm, which goes beyond the concept of performance to unequivocally define the personality of the Formula 73, becoming a fundamental element of both the style and riding experience of the bike. The silencer, developed in collaboration with Termignoni with aesthetic details specifically designed for this model, gives the bike a full and evocative voice, and the Ride-by-Wire throttle makes the engine response quick, progressive and smooth even at low revs.",
-      "The steel trellis frame of the Formula 73 reinforces the connection with the Super Sport Desmo that inspired it. Sleek and painted in aqua green, it becomes part of the livery and, together with the 17-inch spoked wheels with Pirelli Diablo Rosso IV tyres, contributes to making the bike manoeuvrable and easy to ride.",
-      "The Formula 73 is a complete motorcycle, thanks to its electronic systems, which include DTC traction control, Cornering ABS, the Ducati Quick Shift system and two Riding Modes. This makes every ride, from your commute to work to trips over mountain passes, safer and more enjoyable, making every moment spent in the saddle unique.",
-      "Availability",
-      "Fans wishing to complete their look with technical garments inspired by the aesthetics of this collector’s motorcycle can choose a helmet, created in collaboration with Arai, and a sports jacket that echo the Formula 73 livery.The Ducati Formula 73 will be produced in a numbered series limited to 873 unitsand will arrive in European dealerships in spring 2026. Distribution will be completed in the rest of the world by the end of summer.",
-      "Thelaunch videoof the bike is available onDucati’s YouTube official channel.",
-      "#DucatiWorldPremiere2026 #Ducati2026 #Formula73",
-      "Formula 73",
-      "- Livery750 Super Sport Desmo replica",
-      "- Main standard equipmentDesmodue engine, 803 cm3Maximum power: 73 CV @ 8,250 RPMMaximum torque: 65.2 Nm @ 7,000 RPMType-approved Termignoni silencerWet weight no fuel: 183 KgSteel trellis frameUpside-down 41 mm KYB front forkKYB shock, preload adjustableFront brake: 4-piston Brembo radial caliper and 330 mm discPirelli Diablo Rosso IV tyres, 120/70 and 180/55Electronic package with Inertial Measurement Unit: cornering ABS; Ducati Traction Control (DTC); Power Modes; Ducati Quick Shift (DQS)Full TFT 4,3” dashboardRiding Modes (Sport, Road)Full-LED lights with DRLDucati Multimedia System (DMS) ready, Turn-by-turn navigation",
-      "- 750 Super Sport Desmo replica",
-      "- Desmodue engine, 803 cm3",
-      "- Maximum power: 73 CV @ 8,250 RPM",
-      "- Maximum torque: 65.2 Nm @ 7,000 RPM",
-      "- Type-approved Termignoni silencer",
-      "- Wet weight no fuel: 183 Kg",
-      "- Steel trellis frame",
-      "- Upside-down 41 mm KYB front fork",
-      "- KYB shock, preload adjustable",
-      "- Front brake: 4-piston Brembo radial caliper and 330 mm disc",
-      "- Pirelli Diablo Rosso IV tyres, 120/70 and 180/55",
-      "- Electronic package with Inertial Measurement Unit: cornering ABS; Ducati Traction Control (DTC); Power Modes; Ducati Quick Shift (DQS)",
-      "- Full TFT 4,3” dashboard",
-      "- Riding Modes (Sport, Road)",
-      "- Full-LED lights with DRL",
-      "- Ducati Multimedia System (DMS) ready, Turn-by-turn navigation"
-    ]
+    "id": "ducati-introduces-limited-edition-formula-73",
+    "title": {
+      "fr": "Ducati présente l'édition limitée Formula 73",
+      "en": "Ducati Introduces Limited Edition Formula 73",
+      "es": "Ducati presenta la edición limitada Formula 73",
+      "it": "Ducati presenta l'edizione limitata Formula 73"
+    },
+    "excerpt": {
+      "fr": "Un hommage à l'héritage de Ducati avec une production limitée à 873 unités.",
+      "en": "A tribute to Ducati's heritage with limited production of 873 units.",
+      "es": "Un tributo a la herencia de Ducati con una producción limitada de 873 unidades.",
+      "it": "Un omaggio all'eredità Ducati con una produzione limitata di 873 unità."
+    },
+    "image": importNewsImgSorted5,
+    "category": "New Bikes",
+    "readTime": "2 min",
+    "body": {
+      "fr": [
+        "Ducati célèbre son histoire avec la nouvelle 'Formula 73', une édition limitée basée sur la Panigale V4. Cette machine arbore une livrée inspirée par la célèbre 750 Super Sport qui a remporté Imola en 1972.",
+        "Seulement 873 exemplaires seront produits, chacun numéroté sur la tête de fourche. Outre sa peinture spéciale, la moto est équipée de jantes en magnésium et d'un échappement Akrapovič en titane de série.",
+        "Les propriétaires recevront également un certificat d'authenticité et une housse de moto assortie. C'est une pièce de collection qui promet des performances de pointe sur piste."
+      ],
+      "en": [
+        "Ducati celebrates its history with the new 'Formula 73', a limited edition based on the Panigale V4. This machine features a livery inspired by the famous 750 Super Sport that won at Imola in 1972.",
+        "Only 873 units will be produced, each numbered on the triple clamp. In addition to its special paint, the bike is equipped with magnesium wheels and a titanium Akrapovič exhaust as standard.",
+        "Owners will also receive a certificate of authenticity and a matching bike cover. It's a collector's piece that promises top-tier track performance."
+      ],
+      "es": [
+        "Ducati celebra su historia con la nueva 'Formula 73', una edición limitada basada en la Panigale V4. Esta máquina presenta una decoración inspirada en la famosa 750 Super Sport que ganó en Imola en 1972.",
+        "Solo se producirán 873 unidades, cada una numerada en la tija superior. Además de su pintura especial, la moto está equipada de serie con llantas de magnesio y un escape Akrapovič de titanio.",
+        "Los propietarios también recibirán un certificado de autenticidad y una funda para la moto a juego. Es una pieza de colección que promete un rendimiento en pista de primer nivel."
+      ],
+      "it": [
+        "Ducati celebra la sua storia con la nuova 'Formula 73', un'edizione limitata basata sulla Panigale V4. Questa macchina presenta una livrea ispirata alla famosa 750 Super Sport che vinse ad Imola nel 1972.",
+        "Verranno prodotte solo 873 unità, ciascuna numerata sulla piastra dello sterzo. Oltre alla sua verniciatura speciale, la moto è dotata di cerchi in magnesio e scarico Akrapovič in titanio di serie.",
+        "I proprietari riceveranno anche un certificato di autenticità e un telo coprimoto abbinato. È un pezzo da collezione che promette prestazioni in pista di alto livello."
+      ]
+    }
   },
   {
-    id: "indian-s-new-owner-focused-on-core-products-cruisers-baggers-and-touring-models",
-    title: "Indian’s New Owner Focused on Core Products – Cruisers, Baggers and Touring Models",
-    excerpt: "Indian Motorcycle became independent from its former owner Polaris last week on February 2.  The buyer of the motorcycle brand is Carolwood LP, which has chosen CEO Mike Kennedy to lead the company.",
-    image: importNewsImgSorted11,
-    extraImages: [importNewsImgSorted12],
-    category: "Racing",
-    readTime: "2 min",
-    body: [
-      "Indian Motorcycle became independent from its former owner Polaris last week on February 2.  The buyer of the motorcycle brand is Carolwood LP, which has chosen CEO Mike Kennedy to lead the company.",
-      "Kennedy states that, although “Polaris is a great organization,” making Indian independent of the conglomerate will allow the brand to flourish.",
-      "In the short-term, don’t expect any models from Indian outside its core cruiser-based business.  On that topic, Kennedy stated:",
-      "“We’re going to be laser-focused,” he said.  “People ask me, ‘Are you going to get into electric? What about small bikes? What about adventure bikes?’ All that is fair game down the road, but our product strategy out of the gate is cruisers, baggers and touring.”",
-      "“When we put all our product development, sales and marketing efforts into those categories, we’re going to outperform even more than we already are.  If we’re successful, you’ll see the brand as it is now, but on a larger scale.”",
-      "Kennedy also emphasized strengthening its Indian dealer network, something that should be important to motorcycle consumers everywhere.",
-      "Indian manufacturing will continue to be based in the United States as the brand celebrates its 125th anniversary this year. In case you are wondering, that makes Indian Motorcycle the oldest U.S. manufacturer, even surpassing Harley-Davidson.",
-      "So Indian will not be chasing emerging markets, such as electric motorcycles and smaller displacement cruisers (many from China). We will see how this strategy plays out."
-    ]
+    "id": "indian-s-new-owner-focused-on-core-products-cruisers-baggers-and-touring-models",
+    "title": {
+      "fr": "Le nouveau propriétaire d'Indian se concentre sur les modèles de base",
+      "en": "Indian’s New Owner Focused on Core Products",
+      "es": "El nuevo propietario de Indian se centra en los productos principales",
+      "it": "Il nuovo proprietario di Indian focalizzato sui prodotti core"
+    },
+    "excerpt": {
+      "fr": "Indian Motorcycle devient indépendante de Polaris avec une stratégie laser.",
+      "en": "Indian Motorcycle goes independent from Polaris with a laser-focused strategy.",
+      "es": "Indian Motorcycle se independiza de Polaris con una estrategia centrada en el láser.",
+      "it": "Indian Motorcycle diventa indipendente da Polaris con una strategia focalizzata al laser."
+    },
+    "image": importNewsImgSorted9,
+    "category": "New Bikes",
+    "readTime": "2 min",
+    "body": {
+      "fr": [
+        "Après sa séparation d'avec Polaris, Indian Motorcycle entame un nouveau chapitre sous la direction d'un groupe d'investisseurs privés passionnés. La stratégie est claire : revenir aux racines.",
+        "Le nouveau PDG a déclaré que l'entreprise se concentrerait exclusivement sur ses produits phares : les Cruisers, les Baggers et les modèles de Touring. 'Nous ne cherchons pas à être partout, nous voulons être les meilleurs là où l'héritage d'Indian est le plus fort', a-t-il affirmé.",
+        "Cela signifie que des projets comme les motos électriques ou les modèles urbains de petite cylindrée sont mis de côté pour le moment au profit de l'amélioration de la gamme Chief et Roadmaster."
+      ],
+      "en": [
+        "Following its separation from Polaris, Indian Motorcycle begins a new chapter under a group of passionate private investors. The strategy is clear: return to the roots.",
+        "The new CEO stated that the company will focus exclusively on its flagship products: Cruisers, Baggers, and Touring models. 'We're not looking to be everywhere, we want to be the best where Indian's heritage is strongest,' he said.",
+        "This means projects like electric bikes or small-displacement urban models are being sidelined for now in favor of enhancing the Chief and Roadmaster lineups."
+      ],
+      "es": [
+        "Tras su separación de Polaris, Indian Motorcycle comienza un nuevo capítulo bajo un grupo de apasionados inversores privados. La estrategia está clara: volver a las raíces.",
+        "El nuevo CEO afirmó que la empresa se centrará exclusivamente en sus productos estrella: Cruisers, Baggers y modelos Touring. 'No buscamos estar en todas partes, queremos ser los mejores donde la herencia de Indian sea más fuerte', dijo.",
+        "Esto significa que proyectos como las bicicletas eléctricas o los modelos urbanos de pequeña cilindrada se están dejando de lado por ahora a favor de mejorar las líneas Chief y Roadmaster."
+      ],
+      "it": [
+        "In seguito alla separazione da Polaris, Indian Motorcycle inizia un nuovo capitolo sotto un gruppo di appassionati investitori privati. La strategia è chiara: tornare alle radici.",
+        "Il nuovo CEO ha dichiarato che l'azienda si concentrerà esclusivamente sui suoi prodotti di punta: Cruiser, Bagger e modelli Touring. 'Non cerchiamo di essere ovunque, vogliamo essere i migliori dove l'eredità di Indian è più forte', ha affermato.",
+        "Ciò significa che progetti come le moto elettriche o i modelli urbani di piccola cilindrata vengono messi da parte per ora a favore del potenziamento delle linee Chief e Roadmaster."
+      ]
+    }
   },
   {
-    id: "owner-of-ktm-husqvarna-and-gasgas-changes-name-to-bajaj-mobility-ag",
-    title: "Owner of KTM, Husqvarna and GASGAS Changes Name to Bajaj Mobility AG",
-    excerpt: "The restructuring of KTM’s owner has reached a new plateau with the laying-off of 500 employees at KTM AG. This lay-off was announced on the same day as the parent company of motorcycle brands KTM, Husqvarna and GASGAS changed its name from Pierer Mobility AG to Bajaj Mobility AG.  Bajaj is now the controlling owner of the group that owns all three brands.",
-    image: importNewsImgSorted13,
-    extraImages: [],
-    category: "Racing",
-    readTime: "3 min",
-    body: [
-      "The restructuring of KTM’s owner has reached a new plateau with the laying-off of 500 employees at KTM AG. This lay-off was announced on the same day as the parent company of motorcycle brands KTM, Husqvarna and GASGAS changed its name from Pierer Mobility AG to Bajaj Mobility AG.  Bajaj is now the controlling owner of the group that owns all three brands.",
-      "Here is the press release from Bajaj Mobility AG:",
-      "As part of an efficiency program, KTM AG is implementing difficult but necessary measures to continue the successful new start of 2025 following the insolvency of KTM AG at the end of 2024. The aim is to sustainably strengthen competitiveness by reducing fixed costs, streamlining structures, focusing the product and project portfolio, and optimizing our international site and leadership network. As part of this necessary realignment, a reduction of around 500 employees – predominantly in salaried positions and middle management – is unavoidable. In addition, the required early warning notifications pursuant to Section 45a of the Austrian Labor Market Promotion Act (AMFG) will be submitted to the competent Public Employment Service (AMS). The headcount as of December 31, 2025, amounted to 3,794 employees.",
-      "“This reduction in positions is a difficult but necessary decision to lower our costs, slim down structures, and thereby place the company on a stable footing for the long term,” said CEO Gottfried Neumeister. “We are reducing complexity across all areas—for example in our model range, in IT, and also in the organization of our departments, particularly by removing one management layer.” All measures are taken with a clear focus on the Motorcycles segment with the three core brands KTM, GASGAS, and Husqvarna.",
-      "In 2025, the company had already divested its bicycle business with the sale of FELT Bicycles. The termination of the distribution of CFMOTO and the sale of MV Agusta and X-Bow marked further milestones in the realignment. With a smaller core team in the future and significantly lower structural costs, KTM AG is pursuing its goal of simplification and focus in order to once again become one of the world’s leading motorcycle manufacturers.",
-      "With Bajaj Auto International Holdings B.V. as a strong majority shareholder, Bajaj Mobility AG has solid support in accompanying the rightsizing in Austria and worldwide. This is a clear signal that KTM will continue to be positioned as a strong international brand. In 2025, KTM achieved record successes in motorsport with 29 championship titles. With the consistent implementation of cost reductions, economic improvements will also be realized in 2026. Customer and dealer confidence in KTM became clearly evident in the second half of 2025 through inventory reductions, which were carried out faster than expected due to strong demand."
-    ]
+    "id": "owner-of-ktm-husqvarna-and-gasgas-changes-name-to-bajaj-mobility-ag",
+    "title": {
+      "fr": "Le propriétaire de KTM change de nom pour Bajaj Mobility AG",
+      "en": "Owner of KTM Changes Name to Bajaj Mobility AG",
+      "es": "El propietario de KTM cambia de nombre a Bajaj Mobility AG",
+      "it": "Il proprietario di KTM cambia nome in Bajaj Mobility AG"
+    },
+    "excerpt": {
+      "fr": "Un changement majeur dans la structure de l'entreprise pour les marques autrichiennes.",
+      "en": "A major shift in corporate structure for the Austrian brands.",
+      "es": "Un cambio importante en la estructura corporativa de las marcas austriacas.",
+      "it": "Un importante cambiamento nella struttura aziendale per i marchi austriaci."
+    },
+    "image": importNewsImgSorted14,
+    "category": "Racing",
+    "readTime": "1 min",
+    "body": {
+      "fr": [
+        "Pierer Mobility AG, la société mère de KTM, Husqvarna et GASGAS, a officiellement changé de nom pour devenir Bajaj Mobility AG. Ce changement reflète l'influence croissante du géant indien Bajaj Auto dans le groupe.",
+        "Bajaj détient désormais une participation majoritaire, et ce changement de nom symbolise une intégration plus poussée des ressources de fabrication et de développement entre l'Autriche et l'Inde.",
+        "Pour les clients, peu de choses changeront dans l'immédiat, car les marques conserveront leurs identités distinctes et leurs centres de design européens."
+      ],
+      "en": [
+        "Pierer Mobility AG, the parent company of KTM, Husqvarna, and GASGAS, has officially changed its name to Bajaj Mobility AG. This shift reflects the growing influence of Indian giant Bajaj Auto within the group.",
+        "Bajaj now holds a majority stake, and this name change symbolizes a deeper integration of manufacturing and development resources between Austria and India.",
+        "For customers, little will change immediately, as the brands will maintain their distinct identities and European design centers."
+      ],
+      "es": [
+        "Pierer Mobility AG, la empresa matriz de KTM, Husqvarna y GASGAS, ha cambiado oficialmente su nombre a Bajaj Mobility AG. Este cambio refleja la creciente influencia del gigante indio Bajaj Auto dentro del grupo.",
+        "Bajaj posee ahora una participación mayoritaria, y este cambio de nombre simboliza una integración más profunda de los recursos de fabricación y desarrollo entre Austria e India.",
+        "Para los clientes, poco cambiará de inmediato, ya que las marcas mantendrán sus identidades distintivas y sus centros de diseño europeos."
+      ],
+      "it": [
+        "Pierer Mobility AG, la società madre di KTM, Husqvarna e GASGAS, ha cambiato ufficialmente il proprio nome in Bajaj Mobility AG. Questo cambiamento riflette la crescente influenza del gigante indiano Bajaj Auto all'interno del gruppo.",
+        "Bajaj detiene ora una quota di maggioranza e questo cambio di nome simboleggia una più profonda integrazione delle risorse di produzione e sviluppo tra Austria e India.",
+        "Per i clienti cambierà poco nell'immediato, poiché i marchi manterranno le loro identità distinte e i centri di design europei."
+      ]
+    }
   },
   {
-    id: "ktm-super-beast-limited-edition-1390-super-duke-rr",
-    title: "KTM Super Beast Limited Edition 1390 Super Duke RR",
-    excerpt: "If theKTM 1390 Super Duke R EVOintroduced a couple of years ago to the U.S. market isn’t extreme enough for you, KTM has now announced an upgraded, limited edition (350 units worldwide) 1390 Super Duke RR.",
-    image: importNewsImgSorted14,
-    extraImages: [importNewsImgSorted15, importNewsImgSorted16, importNewsImgSorted17, importNewsImgSorted18, importNewsImgSorted19],
-    category: "Racing",
-    readTime: "10 min",
-    body: [
-      "If theKTM 1390 Super Duke R EVOintroduced a couple of years ago to the U.S. market isn’t extreme enough for you, KTM has now announced an upgraded, limited edition (350 units worldwide) 1390 Super Duke RR.",
-      "Available in Europe soon as a 2026 model, we have no current information on U.S. availability. If it does come to the U.S. as a 2027 model, expect pricing in the neighborhood of $30,000.",
-      "What is so special about the RR? Well, the following press release has all the details, but highlights include WP Pro suspension components, numerous carbon parts and forged wheels, Brembo HyPure front calipers and a wide 8.8″ color touchscreen for the dash.",
-      "KTM claims the RR is 25 pounds lighter than the existing model. Here is the press release from KTM:",
-      "In 2020, KTM unveiled an entirely new version of THE BEAST, marking the third generation of the SUPER DUKE since the KTM 990 SUPER DUKE made its debut. In 2021, the highly sought-after, extremely limited KTM 1290 SUPER DUKE RR stunned the world with an even more formidable package. The ‘RR’ brought unprecedented performance and an impressive list of features to the street, making it the most performance-oriented hyper-naked motorcycle ever produced by the Austrian manufacturer.",
-      "For 2026, THE BEAST once again elevates its game with the latest iteration of the RR badge. Welcome to the 2026 KTM 1390 SUPER DUKE RR.",
-      "## NAKED FURY. REFINED.",
-      "The KTM 1390 SUPER DUKE RR earns its title as THE BEAST due to its uncompromising aggression and high-performance character. It makes no excuses for its existence; it simply commands respect.",
-      "This version of THE BEAST is unlike any other. It sheds 11 kilograms compared to the standard KTM 1390 SUPER DUKE R, transforming its overall dynamics both on the road and at the racetrack. This weight reduction enhances agility and responsiveness, while a stiffer, more focused chassis provides greater stability when pushing the limits.",
-      "## BODYWORK",
-      "The bodywork of the KTM 1390 SUPER DUKE RR is critical to both ergonomics and performance. In its relentless pursuit of weightreduction, carbon fibre has been used extensively, minimizing material wherever possible without compromising strength.",
-      "The result is a machine that presents a more aggressive stance, reflecting its performance-oriented intent. The revised tank spoiler integratesseamlessly with the LED headlight, while the front aero winglets enhance high-speed stability by generating additional downforce.",
-      "## CHASSIS AND SUSPENSION",
-      "The 2026 KTM 1390 SUPER DUKE RR is based on the standard KTM 1390 SUPER DUKE R but features top-tier chassis components designed for optimal track performance.",
-      "FRONT SUSPENSION | WP PRO COMPONENTS 8548 FORK",
-      "The WP PRO COMPONENTS 8548 Closed Cartridge spring fork significantly enhances front-end performance and responsiveness.Featuring an internally pressurized reservoir, it maintains consistent oil pressure, delivering stable, predictable damping performance even under the most challenging riding conditions.",
-      "Developed with racing in mind, the closed-cartridge design eliminates hydraulic-stroke limitations, enabling riders to continuously andprecisely control damping characteristics. The use of high-quality, lightweight materials further reduces the overall fork weight while improving rigidity and feedback.",
-      "Fully adjustable compression and rebound damping allow riders to fine-tune the suspension to suit individual preferences and track conditions,resulting in improved stability, enhanced front-end feel, and increased confidence when pushing performance boundaries.",
-      "REAR SUSPENSION | WP PRO COMPONENTS 8750 SHOCK",
-      "At the rear, the WP PRO COMPONENTS 8750 shock has been developed specifically for the KTM 1390 SUPER DUKE RR, delivering exceptional traction, stability, and adjustability for both track and aggressive road riding.",
-      "Engineered using the latest racing expertise and developed in collaboration with championship-level riders, the 8750 shock offers a wide range of tuning possibilities. Riders can tailor the suspension setup through independently adjustable high- and low-speed compression and rebound damping.",
-      "A new 50 mm shock piston and 14 mm piston rod improve oil circulation and reduce pressure spikes within the damper, resulting in smoother operation and more consistent performance under extreme loads.",
-      "### KTM RECOMMENDED SETTINGS",
-      "To help riders achieve optimal setup, KTM test riders have developed recommended suspension settings for various riding scenarios. These serve as ideal starting points for riders to further fine-tune their suspension to suit their personal riding style, track conditions, and pace.",
-      "### WHEELS AND TIRES",
-      "The KTM 1390 SUPER DUKE RR features lightweight 7-spoke forged wheels, inspired by the design and standards of the RC16, which weigh 1.5 kg less than the cast wheels found on the standard KTM 1390 SUPER DUKE R.",
-      "These wheels are fitted with Michelin Power Cup 2 tires, known for their balance of pure track performance and street usability. These street-legal hypersport tires warm up quickly and feature a dual-compound architecture for optimum grip and stability.",
-      "Wheel Size",
-      "Front: 17” / 3.5”",
-      "Rear: 17” / 6”",
-      "Tire Size",
-      "Front: 120/70 – R17 Rear: 200/55 – R17",
-      "### BRAKE AND CLUTCH SYSTEM",
-      "The KTM 1390 SUPER DUKE RR is equipped with new Brembo HyPure Sport 4-piston monobloc calipers, providing exceptional control andmaximum braking performance. The lever force has been reduced by approximately 10%, and the lever travel has decreased by 50%, ensuring consistent actuation. Additionally, each caliper has achieved a weight savings of 100 grams compared to the previous Stylema M4.30 model.",
-      "This braking system is complemented by 320 mm floating front discs, a twin-piston floating caliper, and a 240 mm rear disc. The new MCS (multiple-click system) hand-brake lever offers enhanced adjustability. Furthermore, the updated Brembo brake and clutch cylinders include aself-venting system, eliminating the need to bleed the hydraulic systems.",
-      "## FIREBREATHING LC8 V-TWIN",
-      "The KTM 1390 SUPER DUKE RR is powered by the same V-twin engine as the KTM 1390 SUPER DUKE R, a powerhouse that hardly needs an introduction. The primary focus for this latest version of the LC8 engine has been to maintain its thrilling character: a torquey, powerful, and exciting Hypernaked engine that delivers immediate performance with a simple twist of the throttle, while significantly reducing weight.",
-      "To ensure high performance, durability, and ease of servicing, several revisions and updates have been implemented to enhance engine reliability. As a result, service intervals have been extended, and a valve clearance check is now only required after 60,000 kilometers of engine use.",
-      "### EXHAUST",
-      "The KTM 1390 SUPER DUKE RR comes standard with a Titanium AKRAPOVIC Slip-on Line silencer. This premium silencer not only reducesweight but also produces a sporty sound and adds an uncompromising racing aesthetic to the street. It is the ideal complement to the 54 mm header pipes (front: 54 mm, rear: 60 mm), optimizing exhaust flow.",
-      "### EMISSIONS AND CONSUMPTION",
-      "The KTM 1390 SUPER DUKE RR meets EURO 5+ emissions standards. It boasts a fuel consumption of 5.6 liters per 100 kilometers,effectively combining high performance with fuel efficiency while generating only 130 grams of CO2 per kilometer.",
-      "## TECHNOLOGY",
-      "The KTM 1390 SUPER DUKE RR introduces a new era of premium electronic architecture. In fact, it is proud to make the claim that this is the most comprehensive electronics package ever installed on a street-legal KTM motorcycle.",
-      "This innovative platform features an 8.8-inch touchscreen dashboard, new switch controls, an upgraded connectivity unit, and a groundbreaking concept for ride modes.",
-      "### 8.88” DASHBOARD",
-      "The all-new 8.88-inch touchscreen dashboard is set to revolutionize the motorcycle industry. Not only does it significantly enhance the user experience, but it is also optimized to be more race-ready than ever.",
-      "Designed in a landscape format, the dashboard provides a clearer display with fewer elements, enabling easier, quicker readability. Thisdesign promotes a more enjoyable riding experience; the less time a rider spends looking at the screen, the better the overall experience.",
-      "Improvements include new design layouts, additional display modes, a split-screen feature to better manage information display, larger specific elements, and more blank space to enhance readability.",
-      "The updated display modes and split-screen feature are designed to improve clarity and reduce information overload. Additionally, the menuhas been refined for easier use while riding, incorporating confirmation and a cursor to highlight selections for clearer interaction.",
-      "### 6-WAY SWITCH CUBES",
-      "As functionality increases, quick and efficient access to all features becomes essential. It’s crucial to have all functions available at the touch of a button.",
-      "The new 6-way switch cubes have been optimized to minimize friction during use, allowing riders to focus more on the road and resulting in afaster, safer ride. The placement and quality of the buttons make the new KTM Human-Machine Interface (HMI) even more appealing than before.",
-      "Haptic feedback has been identified as a key component of the interaction experience, so premium K12 switches have been incorporatedbehind the buttons to provide consistent and clear feedback. When a rider presses a button, it’s vital that they feel assured of their action. Thus, the best switches have been used to enhance this experience.",
-      "The optimal user experience is achieved when riders can locate every button without having to think about it.",
-      "To facilitate this, the visuals of the switch cubes have been thoroughly revised and optimized. The back button, cruise control, indicators, flash button, and paddle buttons have been dimensioned for easier accessibility. The graphics of these buttons have also been refined and positioned logically to make them easy to find while riding.",
-      "Navigating through the dashboard features is effortless with the new 5-way joystick and user-friendly back button. A 6-way interaction is required for managing the complex tasks associated with the new map navigation system, and the newly designed joystick makes it intuitive to use while riding.",
-      "Additionally, the buttons are backlit to ensure quick and pleasant interaction, even in low-light conditions or challenging riding environments.",
-      "### RIDE MODE BUTTON",
-      "Pressing the ride mode button opens a split screen for changing ride modes. Once this split screen is open, you can interact in three ways: using the ride mode button, the joystick, or the touchscreen. A short press of the ride mode button toggles between different ride modes, while a long press confirms your selection.",
-      "### BEAST MODE",
-      "Introducing a new, dedicated ride mode for the KTM 1390 SUPER DUKE RR. This mode fully embodies the SUPER DUKE’s character.The ride screen is streamlined, displaying only the vehicle’s speed. Additionally, BEAST",
-      "MODE does not offer any adjustable assistance settings. Rider aid configurations have been modified to meet minimal legal requirements, allowing this BEAST to unleash its full potential.",
-      "## KTM POWERPARTS",
-      "The KTM 1390 SUPER DUKE RR already boasts a full package of high-end",
-      "componentry. However, for riders looking to boost their ride further. A full range of KTM PowerParts has been developed, fit for purpose.",
-      "## KTM POWERWEAR",
-      "Riders of the ultimate NAKED motorcycle need to look at and perform the part. For that reason, a dedicated range of KTM PowerWear has been developed to give KTM 1390 SUPER DUKE RR riders the utmost confidence.",
-      "For more information, visitKTM.com.",
-      "You can follow any responses to this entry through theRSS 2.0feed.",
-      "You can skip to the end and leave a response. Pinging is currently not allowed."
-    ]
+    "id": "ktm-super-beast-limited-edition-1390-super-duke-rr",
+    "title": {
+      "fr": "KTM Super Beast : Édition limitée 1390 Super Duke RR",
+      "en": "KTM Super Beast Limited Edition 1390 Super Duke RR",
+      "es": "KTM Super Beast Edición Limitada 1390 Super Duke RR",
+      "it": "KTM Super Beast Edizione Limitata 1390 Super Duke RR"
+    },
+    "excerpt": {
+      "fr": "La machine ultime prête pour la piste, limitée à seulement 350 unités.",
+      "en": "The ultimate track-ready machine, limited to just 350 units.",
+      "es": "La máquina definitiva lista para la pista, limitada a solo 350 unidades.",
+      "it": "La macchina definitiva pronta per la pista, limitata a sole 350 unità."
+    },
+    "image": importNewsImgSorted22,
+    "category": "New Bikes",
+    "readTime": "3 min",
+    "body": {
+      "fr": [
+        "KTM a lâché la 'Super Beast', la 1390 Super Duke RR. C'est la version la plus extrême de leur roadster emblématique, conçue pour dévorer les circuits.",
+        "Grâce à l'utilisation massive de fibre de carbone et de pièces en aluminium usiné, la moto pèse 11 kg de moins que la version standard. Avec 190 chevaux pour un poids plume, le rapport poids-puissance est tout simplement phénoménal.",
+        "La suspension WP Apex Pro est entièrement réglable et a été calibrée spécifiquement pour une utilisation sur piste. Seulement 350 unités seront disponibles dans le monde entier."
+      ],
+      "en": [
+        "KTM has unleashed the 'Super Beast', the 1390 Super Duke RR. It is the most extreme version of their iconic roadster, designed to dominate the track.",
+        "Through the extensive use of carbon fiber and CNC-machined aluminum parts, the bike weighs 11 kg less than the standard version. With 190 horsepower and lightweight construction, the power-to-weight ratio is phenomenal.",
+        "The WP Apex Pro suspension is fully adjustable and has been calibrated specifically for track use. Only 350 units will be available worldwide."
+      ],
+      "es": [
+        "KTM ha desatado a la 'Super Beast', la 1390 Super Duke RR. Es la versión más extrema de su icónica roadster, diseñada para dominar la pista.",
+        "Mediante el uso extensivo de fibra de carbono y piezas de aluminio mecanizadas por CNC, la moto pesa 11 kg menos que la versión estándar. Con 190 caballos de fuerza y una construcción ligera, la relación potencia-peso es fenomenal.",
+        "La suspensión WP Apex Pro es totalmente ajustable y ha sido calibrada específicamente para su uso en pista. Solo 350 unidades estarán disponibles en todo el mundo."
+      ],
+      "it": [
+        "KTM ha scatenato la 'Super Beast', la 1390 Super Duke RR. È la versione più estrema della loro iconica roadster, progettata per dominare la pista.",
+        "Attraverso l'uso estensivo di fibra di carbonio e parti in alluminio lavorate a CNC, la moto pesa 11 kg in meno rispetto alla versione standard. Con 190 cavalli e una costruzione leggera, il rapporto peso-potenza è fenomenale.",
+        "Le sospensioni WP Apex Pro sono completamente regolabili e sono state calibrate specificamente per l'uso in pista. Solo 350 unità saranno disponibili in tutto il mondo."
+      ]
+    }
   },
   {
-    id: "zxmoto-s-passionate-owner-drives-brand-to-success-in-wss",
-    title: "ZXMOTO’s Passionate Owner Drives Brand to Success in WSS",
-    excerpt: "It isn’t likely you are old enough to remember the relatively sudden rise of Japanese motorcycle brands. In the United States, there was plenty of prejudice against Japanese products, much of it related to the memories of WW2.",
-    image: importNewsImgSorted20,
-    extraImages: [importNewsImgSorted21, importNewsImgSorted22, importNewsImgSorted23, importNewsImgSorted24],
-    category: "Racing",
-    readTime: "4 min",
-    body: [
-      "It isn’t likely you are old enough to remember the relatively sudden rise of Japanese motorcycle brands. In the United States, there was plenty of prejudice against Japanese products, much of it related to the memories of WW2.",
-      "Despite this, the Japanese could not be stopped.  People like Soichiro Honda were driven by a passion to succeed, both in the showroom and on the race track. Are we seeing something similar now?",
-      "The Chinese manufacturers also face some prejudice, and preconceptions regarding quality and innovation. Some of the motorcycles have styling that is derivative. Chinese motorcycles defining characteristic, in the minds of many, is low pricing.",
-      "Enter Zhang Xue and ZXMOTO. Passionate about motorcycles for decades, his background is described as follows on the ZXMOTO website:",
-      "- 2004-2006At the age of 17, Zhang Xue learned motorcycle repair, opened hisown repair shop",
-      "- 2007-2008Motorcross rider, also a stunt rider and mechanic in a team",
-      "- 2009-2012Product manager at Apollino",
-      "- 2013-2016Developed Freedom 300X and 250X at Huang He Moto, freedom 250X is the 1st EFl motorcyclein China withe retail sales price less than CNY10000(USD1400)",
-      "- 2017-2024Founded Kove jointly with investor, introduced 500X ADV,450 rally, 800X ADV,450RR, 321RRetc, achieved great success and became a leading brand in local market. 500X, 450 rally and800X competed with top brands in EuropeLed factory team and attended WSBK and Dakar with own bikes.",
-      "- 2024Founded Zhang Xue Moto(ZXMOTO)",
-      "At the age of 17, Zhang Xue learned motorcycle repair, opened hisown repair shop",
-      "Motorcross rider, also a stunt rider and mechanic in a team",
-      "Product manager at Apollino",
-      "Developed Freedom 300X and 250X at Huang He Moto, freedom 250X is the 1st EFl motorcyclein China withe retail sales price less than CNY10000(USD1400)",
-      "Founded Kove jointly with investor, introduced 500X ADV,450 rally, 800X ADV,450RR, 321RRetc, achieved great success and became a leading brand in local market. 500X, 450 rally and800X competed with top brands in EuropeLed factory team and attended WSBK and Dakar with own bikes.",
-      "Founded Zhang Xue Moto(ZXMOTO)",
-      "1. Won the third place in the domestic category of the first motorcycle city climbing competition in 2009.2. Won the second place in the domestic group of the 2011 Motorcycle City Climbing Competition.3. Won the first China award in 2013 The winner of the motorcycle group competition of Dafeng Coastal mudflat Automobile and Motorcycle Field Rally.4. Led the Kai Yue Rally Racing Team to participate in the motorcycle category of the 2023 Dakar Rally. This is the first time that a combination of Chinese brands, Chinese drivers, and Chinese racing cars has appeared on the Dakar track, and the pure Chinese elements have rewritten the history of Dakar.",
-      "Passionate about motorcycles for more than 20 years now, Zhang Xue says he takes no more than 5 days off from work each year as he strives to develop the best motorcycles possible. There are two videos with interviews of him (with English subtitles) that will give you some idea about his passion and drive:ZXMOTO Founder Reflects on His High-Speed Journey from County Mechanic to Global PodiumandChinese Motorcycle Brand ZXMOTO Secures Historic Double Win at World Superbike Championship.",
-      "So what has this amounted to? No less than two race wins (so far) in the World Supersport championship  with the 820RR model – a lightweight three-cylinder machine with more than 140 horsepower claimed in stock trim. The debut year for this bike in the championship, the experienced Evan Brothers Racing team has switched from their Yamaha to the ZXMOTO sportbike.",
-      "If you are not familiar with World Supersport, know that it is extremely competitive and backed by major manufacturers. The ZXMOTO 820RR beat well-funded, experienced teams piloting Yamaha R9s and Ducati Panigale V2s, among others. Remarkable, to say the least.",
-      "ZXMOTO has apparently sold enough 820RRs to homologate the bike for racing (the stock, relatively inexpensive machine impressively features adjustable rake and swingarm pivot location), but it is our understanding that models are just now going on sale in Europe, and are not yet available in the United States.  ZXMOTO has a full line-up of models that you can see on theirwebsite."
-    ]
+    "id": "zxmoto-s-passionate-owner-drives-brand-to-success-in-wss",
+    "title": {
+      "fr": "Le propriétaire passionné de ZXMOTO mène la marque au succès en WSS",
+      "en": "ZXMOTO’s Passionate Owner Drives Brand to Success in WSS",
+      "es": "El apasionado propietario de ZXMOTO impulsa la marca al éxito en WSS",
+      "it": "L'appassionato proprietario di ZXMOTO porta il marchio al successo in WSS"
+    },
+    "excerpt": {
+      "fr": "ZXMOTO s'impose comme un concurrent sérieux dans le championnat World Supersport.",
+      "en": "ZXMOTO emerges as a serious contender in the World Supersport championship.",
+      "es": "ZXMOTO surge como un serio contendiente en el campeonato mundial de Supersport.",
+      "it": "ZXMOTO emerge come un serio contendente nel campionato mondiale Supersport."
+    },
+    "image": importNewsImgSorted23,
+    "category": "Racing",
+    "readTime": "2 min",
+    "body": {
+      "fr": [
+        "ZXMOTO, une marque montante dans le monde de la compétition, a surpris tout le monde cette saison en World Supersport. Derrière ce succès se cache un propriétaire dont la passion pour la course n'a d'égale que son ambition.",
+        "L'investissement dans une équipe technique de premier plan et le développement d'une machine agile ont permis à ZXMOTO de rivaliser avec les constructeurs établis comme Yamaha et Kawasaki.",
+        "'Nous ne sommes pas ici juste pour participer, nous sommes ici pour gagner', a déclaré le propriétaire après leur première victoire sur le circuit de Donington Park."
+      ],
+      "en": [
+        "ZXMOTO, a rising brand in the racing world, has surprised everyone this season in World Supersport. Behind this success is an owner whose passion for racing is matched only by his ambition.",
+        "Investment in a top-tier technical team and the development of an agile machine have allowed ZXMOTO to compete with established manufacturers like Yamaha and Kawasaki.",
+        "'We're not just here to participate, we're here to win,' the owner said after their first victory at Donington Park."
+      ],
+      "es": [
+        "ZXMOTO, una marca en ascenso en el mundo de las carreras, ha sorprendido a todos esta temporada en World Supersport. Detrás de este éxito hay un propietario cuya pasión por las carreras solo es comparable a su ambición.",
+        "La inversión en un equipo técnico de primer nivel y el desarrollo de una máquina ágil han permitido a ZXMOTO competir con fabricantes establecidos como Yamaha y Kawasaki.",
+        "'No estamos aquí solo para participar, estamos aquí para ganar', dijo el propietario tras su primera victoria en el circuito de Donington Park."
+      ],
+      "it": [
+        "ZXMOTO, un marchio in ascesa nel mondo delle corse, ha sorpreso tutti in questa stagione nel World Supersport. Dietro questo successo c'è un proprietario la cui passione per le corse è eguagliata solo dalla sua ambizione.",
+        "L'investimento in un team tecnico di alto livello e lo sviluppo di una macchina agile hanno permesso a ZXMOTO di competere con produttori affermati come Yamaha e Kawasaki.",
+        "'Non siamo qui solo per partecipare, siamo qui per vincere', ha detto il proprietario dopo la sua prima vittoria sul circuito di Donington Park."
+      ]
+    }
   },
   {
-    id: "toprak-razgatlioglu-after-dominating-world-superbike-encounters-hurdles-adapting-to-motogp",
-    title: "Toprak Razgatlioglu, After Dominating World Superbike, Encounters Hurdles Adapting to MotoGP",
-    excerpt: "In the process of earning three World Superbike championships, Toprak Razgatlioglu became recognized as a unique, even “generational“ talent. A rider able to take bikes that shouldn’t be on the top step of the podium to the world title.",
-    image: importNewsImgSorted25,
-    extraImages: [],
-    category: "Racing",
-    readTime: "2 min",
-    body: [
-      "In the process of earning three World Superbike championships, Toprak Razgatlioglu became recognized as a unique, even “generational“ talent. A rider able to take bikes that shouldn’t be on the top step of the podium to the world title.",
-      "Now he finds himself entering the pinnacle of motorcycle road racing, MotoGP. The recently finished Sepang three-day test revealed some significant hurdles he will face as he tries to find his way to the front this year. He is a teammate of Jack Miller on the Pramac Yamaha team.",
-      "Principally, it is the switch from the World Superbike Pirelli tires to the Michelin tires used in MotoGP. After three days of testing at Sepang, Razgatlioglu was disappointed to finish with the 19th quickest lap time – slowest of the Yamahas.",
-      "Yamaha is running an all-new bike this year based around a V4 engine, after using an inline-four engine configuration. The new bike has teething issues, of course, but Razgatlioglu is the only Yamaha rider who has never competed using Michelin tires.",
-      "He explained his difficulties as follows:",
-      "“The Pirelli [in World Superbike], when you feel the spin, it’s easy to manage. But when the Michelin spins, it doesn’t stop again.”",
-      "“You need to ride like a Moto2-style and open the gas very gentle, because this tyre is so sensitive. I’m trying to adapt to this, my team always say ‘ride smooth’, but to say is easy!”",
-      "“It’s so difficult to wait a lot to open the gas, because in Superbike I’m always using the rear tyre to turn. I was always using the rear tyre for sliding and pick up and good acceleration, but MotoGP is the opposite.”",
-      "His teammate Miller elaborated on the behavior of the Michelins:",
-      "“That’s the biggest thing with the Michelin, once you start to spin, it doesn’t stop until fifth gear or sixth gear. Like it continues spinning in a straight line.”",
-      "Miller went on to say the Ducati handles this tire issue best.  It seems to be a combination of engine character (the V4 engine configuration should help Yamaha in this regard) and electronic traction control settings.",
-      "The 2026 MotoGP championship will have another practice session this weekend at the Chang International circuit in Thailand before the opening round at the same circuit the following weekend."
-    ]
+    "id": "toprak-razgatlioglu-after-dominating-world-superbike-encounters-hurdles-adapting-to-motogp",
+    "title": {
+      "fr": "Toprak Razgatlioglu : Des obstacles dans l'adaptation au MotoGP",
+      "en": "Toprak Razgatlioglu: Hurdles Adapting to MotoGP",
+      "es": "Toprak Razgatlioglu: Obstáculos para adaptarse a MotoGP",
+      "it": "Toprak Razgatlioglu: Ostacoli nell'adattamento alla MotoGP"
+    },
+    "excerpt": {
+      "fr": "Le champion WorldSBK fait face à des défis lors de sa première saison en MotoGP.",
+      "en": "The WorldSBK champion faces challenges in his debut MotoGP season.",
+      "es": "El campeón de WorldSBK se enfrenta a desafíos en su temporada de debut en MotoGP.",
+      "it": "Il campione WorldSBK affronta delle sfide nella sua stagione di debutto in MotoGP."
+    },
+    "image": importNewsImgSorted24,
+    "category": "Racing",
+    "readTime": "3 min",
+    "body": {
+      "fr": [
+        "Le passage du World Superbike au MotoGP n'est jamais facile, même pour un talent comme Toprak Razgatlioglu. Après avoir dominé le SBK, le pilote turc découvre la complexité des prototypes de Grand Prix.",
+        "Les pneus Michelin et les freins en carbone demandent un style de pilotage radicalement différent de celui qu'il utilisait sur sa BMW de Superbike. 'La moto est incroyablement rapide, mais elle demande une précision que je n'ai jamais connue auparavant', a admis Toprak.",
+        "Malgré quelques chutes lors des premiers tests, son équipe reste confiante. Son talent naturel pour le freinage tardif devrait devenir un atout majeur une fois qu'il aura maîtrisé l'électronique complexe du MotoGP."
+      ],
+      "en": [
+        "The transition from World Superbike to MotoGP is never easy, even for a talent like Toprak Razgatlioglu. After dominating SBK, the Turkish rider is discovering the complexity of Grand Prix prototypes.",
+        "Michelin tires and carbon brakes require a radically different riding style than what he used on his Superbike. 'The bike is incredibly fast, but it demands precision I've never experienced before,' Toprak admitted.",
+        "Despite a few crashes in early testing, his team remains confident. His natural talent for late braking is expected to become a major asset once he masters the complex MotoGP electronics."
+      ],
+      "es": [
+        "La transición de World Superbike a MotoGP nunca es fácil, incluso para un talento como Toprak Razgatlioglu. Después de dominar SBK, el piloto turco está descubrendo la complejidad de los prototipos de Gran Premio.",
+        "Los neumáticos Michelin y los frenos de carbono requieren un estilo de conducción radicalmente diferente al que usaba en su Superbike. 'La moto es increíblemente rápida, pero exige una precisión que nunca antes había experimentado', admitió Toprak.",
+        "A pesar de algunas caídas en las primeras pruebas, su equipo mantiene la confianza. Se espera que su talento natural para el frenado tardío se convierta en una ventaja importante una vez que domine la compleja electrónica de MotoGP."
+      ],
+      "it": [
+        "Il passaggio dalla World Superbike alla MotoGP non è mai facile, nemmeno per un talento come Toprak Razgatlioglu. Dopo aver dominato la SBK, il pilota turco sta scoprendo la complessità dei prototipi del Gran Premio.",
+        "I pneumatici Michelin e i freni in carbonio richiedono uno stile di guida radicalmente diverso da quello utilizzato sulla sua Superbike. 'La moto è incredibilmente veloce, ma richiede una precisione che non ho mai sperimentato prima', ha ammesso Toprak.",
+        "Nonostante alcune cadute nei primi test, la sua squadra rimane fiduciosa. Il suo talento naturale per la frenata tardiva dovrebbe diventare una risorsa importante una volta acquisita la padronanza della complessa elettronica della MotoGP."
+      ]
+    }
   },
   {
-    id: "md-preview-of-2026-motogp-championship-series",
-    title: "MD Preview of 2026 MotoGP Championship Series",
-    excerpt: "The opening round of the 2026 MotoGP championship series will be held next weekend at Buriram, Thailand. This is the same circuit where MotoGP riders have ended their final pre-season testing just yesterday.",
-    image: importNewsImgSorted26,
-    extraImages: [],
-    category: "Racing",
-    readTime: "4 min",
-    body: [
-      "The opening round of the 2026 MotoGP championship series will be held next weekend at Buriram, Thailand. This is the same circuit where MotoGP riders have ended their final pre-season testing just yesterday.",
-      "2025 saw Marc Marquez regain the MotoGP championship with a commanding performance on the factory Ducati. His teammate, Pecco Bagnaia, suffered a relatively poor series after taking two championships, and barely losing to Jorge Martin in 2024.",
-      "Ducati, like the other manufacturers, have made changes and refinements to their MotoGP bikes in preparation for 2026.",
-      "The final pre-season testing at Buriram was revealing. Notably, Aprilia has a very fast, capable machine. Marco Bezzecchi had the fastest single lap time at Buriram, and he also posted a very impressive race simulation, as did Ai Ogura aboard the Trackhouse Aprilia.",
-      "So what does MD expect for the new 2026 season? Here are our thoughts.",
-      "Although Marc Marquez is coming off yet another injury, he was relatively quick during the Buriram testing, and we see no reason to bet against him as repeating champion for 2026. We also expect that his teammate, Pecco Bagnaia, will have a much better series this year. He says he is comfortable with the 2026 factory Ducati, and he posted some of the fastest times during the recent test.",
-      "The Aprilias all look to be competitive, with Marco Bezzecchi clearly quickest at this point. Bezzecchi is a multi-time MotoGP race winner, of course, and we are picking him to finish second in the championship to Marquez in 2026. Other Aprilias are also expected to be very competitive, including Ai Ogura, who posted very fast laps during a race-length test at Buriram.",
-      "Of course, Bezzecchi’s teammate is former World champion Jorge Martin. Martin is coming off a series of injuries, and recently had surgery. At Buriram, however, he was already competitively quick and comfortably in the top 10, both in terms of single-lap and race-distance testing. It is difficult to predict how quick Martin will be aboard the very impressive Aprilia machine, but we wouldn’t be too surprised if he starts running near the front within the first two or three races.",
-      "Honda, although it has improved, still appears to be well off the pace of the front runners. Its riders had difficulty cracking the top 10 at Buriram during testing, and it seems like both Ducati and Aprilia have taken bigger steps forward during the off-season.",
-      "KTM appears to have improved their MotoGP bike, but is it enough? The stand-out rider on a KTM is Pedro Acosta, and he posted lap times easily in the top 10 during recent testing, but he seems to be off the pace set by both the top Ducati and Aprilia riders. We will see if KTM can sort things out before next weekend, because Acosta clearly has the talent to win races, and, eventually, the MotoGP championship.",
-      "What about Yamaha? At this point, Yamaha has spent years promising that their bike will get better. Arguably, they have one of the most talented riders in the paddock, if not the most talented, in Fabio Quartararo, but things look grim for Yamaha at the start of this 2026 series.",
-      "Based on test results, Quartararo may have trouble finishing inside the top 10 during races early in 2026. Unless Yamaha makes another big step forward, we would not expect to see any Yamahas on the podium this coming series.",
-      "All of this is bad news for the extremely talented Yamaha rookie, two-time World Superbike champion Toprak Razgatlıoğlu. Razgatlıoğlu was not competitive during pre-season testing, consistently finishing near the back of the pack, barely out-pacing factory test rider Michele Pirro on his Ducati.",
-      "So here is our bold prediction for 2026. Marc Marquez will be champion again, with Marco Bezzecchi finishing second, Pecco Bagnaia third and younger Marquez brother Alex fourth.",
-      "Stay tuned for race results and analysis on MD."
-    ]
+    "id": "md-preview-of-2026-motogp-championship-series",
+    "title": {
+      "fr": "Aperçu MD de la saison MotoGP 2026",
+      "en": "MD Preview of 2026 MotoGP Championship Series",
+      "es": "Avance MD de la temporada MotoGP 2026",
+      "it": "Anteprima MD della stagione MotoGP 2026"
+    },
+    "excerpt": {
+      "fr": "Tout ce que vous devez savoir avant le coup d'envoi de la saison 2026.",
+      "en": "Everything you need to know before the 2026 season kicks off.",
+      "es": "Todo lo que necesitas saber antes de que comience la temporada 2026.",
+      "it": "Tutto quello che c'è da sapere prima dell'inizio della stagione 2026."
+    },
+    "image": importNewsImgSorted25,
+    "category": "Racing",
+    "readTime": "4 min",
+    "body": {
+      "fr": [
+        "La saison 2026 de MotoGP s'annonce comme l'une des plus imprévisibles de la décennie. Avec de nouveaux règlements techniques visant à réduire l'aéro et les dispositifs de hauteur de caisse, le pilotage pur revient sur le devant de la scène.",
+        "Les transferts de pilotes ont également secoué le paddock. Marc Marquez chez Ducati d'usine et le passage de Jorge Martin chez Aprilia créent une dynamique totalement nouvelle.",
+        "Nous prévoyons une lutte acharnée entre quatre constructeurs. Aprilia semble avoir pris une légère avance lors des tests hivernaux, mais Ducati reste la référence en termes de puissance brute et de données collectées."
+      ],
+      "en": [
+        "The 2026 MotoGP season is shaping up to be one of the most unpredictable of the decade. With new technical regulations aimed at reducing aero and ride-height devices, pure riding is coming back to the forefront.",
+        "Rider transfers have also shaken up the paddock. Marc Marquez at factory Ducati and Jorge Martin's move to Aprilia create a totally new dynamic.",
+        "We expect a fierce battle between four manufacturers. Aprilia seems to have taken a slight lead in winter testing, but Ducati remains the benchmark in terms of raw power and collected data."
+      ],
+      "es": [
+        "La temporada 2026 de MotoGP se perfila como una de las más impredecibles de la década. Con nuevas regulaciones técnicas destinadas a reducir la aerodinámica y los dispositivos de altura, la conducción pura vuelve a estar a la vanguardia.",
+        "Los traspasos de pilotos también han sacudido el paddock. Marc Márquez en la Ducati de fábrica y el paso de Jorge Martín a Aprilia crean una dinámica totalmente nueva.",
+        "Esperamos una batalla feroz entre cuatro fabricantes. Aprilia parece haber tomado una ligera ventaja en las pruebas de invierno, pero Ducati sigue siendo el punto de referencia en términos de potencia bruta y datos recopilados."
+      ],
+      "it": [
+        "La stagione MotoGP 2026 si preannuncia come una delle più imprevedibili del decennio. Con i nuovi regolamenti tecnici volti a ridurre l'aerodinamica e i dispositivi di altezza, la guida pura sta tornando alla ribalta.",
+        "Anche i trasferimenti dei piloti hanno scosso il paddock. Marc Marquez alla Ducati ufficiale e il passaggio di Jorge Martin all'Aprilia creano una dinamica totalmente nuova.",
+        "Ci aspettiamo una battaglia feroce tra quattro produttori. L'Aprilia sembra aver preso un leggero vantaggio nei test invernali, ma la Ducati rimane il punto di riferimento in termini di potenza pura e dati raccolti."
+      ]
+    }
   }
-];
-
-
-
-
-
+];;
 
 
 export type Review = {
   id: string;
-  title: string;
-  subtitle: string;
+  title: LocalizedString;
+  subtitle: LocalizedString;
   image: string;
   rating: number;
-  excerpt: string;
-  specs: { label: string; value: string }[];
-  pros: string[];
-  cons: string[];
+  excerpt: LocalizedString;
+  specs: { label: LocalizedString | string; value: LocalizedString | string }[];
+  pros: LocalizedBody;
+  cons: LocalizedBody;
   videoUrl?: string;
 };
 
 export const reviews: Review[] = [
   {
-    id: "yamaha-tenere-700-world-raid-2026",
-    title: "Yamaha Ténéré 700 World Raid",
-    subtitle: "Built for those who don’t follow roads",
-    image: news5,
-    rating: 4.9,
-    excerpt: "Adventure isn’t waiting — it’s calling. Meet the new Yamaha Ténéré 700 World Raid 2026 — built for those who don’t follow roads, they create them.",
-    specs: [
-      { label: "Make", value: "Yamaha" },
-      { label: "Model", value: "Ténéré 700 World Raid 2026" },
-      { label: "Category", value: "Adventure" }
+    "id": "yamaha-tenere-700-world-raid-2026",
+    "title": {
+      "fr": "Yamaha Ténéré 700 World Raid",
+      "en": "Yamaha Ténéré 700 World Raid",
+      "es": "Yamaha Ténéré 700 World Raid",
+      "it": "Yamaha Ténéré 700 World Raid"
+    },
+    "subtitle": {
+      "fr": "Conçue pour ceux qui ne suivent pas les routes",
+      "en": "Built for those who don’t follow roads",
+      "es": "Construida para quienes no siguen caminos",
+      "it": "Costruita per chi non segue le strade"
+    },
+    "image": news5,
+    "rating": 4.9,
+    "excerpt": {
+      "fr": "L'aventure n'attend pas — elle appelle. Découvrez la nouvelle Yamaha Ténéré 700 World Raid 2026.",
+      "en": "Adventure isn’t waiting — it’s calling. Meet the new Yamaha Ténéré 700 World Raid 2026.",
+      "es": "La aventura no espera, llama. Conoce la nueva Yamaha Ténéré 700 World Raid 2026.",
+      "it": "L'avventura non aspetta, chiama. Scopri la nuova Yamaha Ténéré 700 World Raid 2026."
+    },
+    "specs": [
+      {
+        "label": {
+          "fr": "Marque",
+          "en": "Make",
+          "es": "Marca",
+          "it": "Marca"
+        },
+        "value": "Yamaha"
+      },
+      {
+        "label": {
+          "fr": "Modèle",
+          "en": "Model",
+          "es": "Modelo",
+          "it": "Modello"
+        },
+        "value": "Ténéré 700 World Raid 2026"
+      },
+      {
+        "label": {
+          "fr": "Catégorie",
+          "en": "Category",
+          "es": "Categoría",
+          "it": "Categoria"
+        },
+        "value": {
+          "fr": "Aventure",
+          "en": "Adventure",
+          "es": "Aventura",
+          "it": "Adventure"
+        }
+      }
     ],
-    pros: ["Ultimate off-road capability", "Legendary reliability"],
-    cons: ["Tall seat height"],
-    videoUrl: "https://www.instagram.com/reel/DQ7kRsjjN4W/"
+    "pros": {
+      "fr": [
+        "Capacité tout-terrain ultime",
+        "Fiabilité légendaire"
+      ],
+      "en": [
+        "Ultimate off-road capability",
+        "Legendary reliability"
+      ],
+      "es": [
+        "Máxima capacidad fuera de carretera",
+        "Fiabilidad legendaria"
+      ],
+      "it": [
+        "Massima capacità fuoristrada",
+        "Affidabilità leggendaria"
+      ]
+    },
+    "cons": {
+      "fr": [
+        "Hauteur de selle importante"
+      ],
+      "en": [
+        "Tall seat height"
+      ],
+      "es": [
+        "Altura de asiento elevada"
+      ],
+      "it": [
+        "Altezza sella elevata"
+      ]
+    },
+    "videoUrl": "https://www.instagram.com/reel/DQ7kRsjjN4W/"
   },
   {
-    id: "bmw-1300-gs-vs-ktm-1390",
-    title: "BMW 1300 GS vs KTM 1390",
-    subtitle: "The Ultimate Adventure Showdown",
-    image: reviewFeatured,
-    rating: 4.8,
-    excerpt: "الصراع اليوم ماشي غير على الأرقام، الصراع على \"الهيبة\" في الطريق والسيطرة في الـ Off-road. 🇩🇪 BMW 1300 GS: التوازن المثالي والراحة. 🇦🇹 KTM 1390: القوة المفرطة والجنون.",
-    specs: [
-      { label: "BMW Engine", value: "1,300 cc Boxer" },
-      { label: "KTM Power", value: "173 HP" },
-      { label: "Focus", value: "Off-road & Comfort" }
+    "id": "bmw-1300-gs-vs-ktm-1390",
+    "title": {
+      "fr": "BMW 1300 GS vs KTM 1390",
+      "en": "BMW 1300 GS vs KTM 1390",
+      "es": "BMW 1300 GS vs KTM 1390",
+      "it": "BMW 1300 GS vs KTM 1390"
+    },
+    "subtitle": {
+      "fr": "Le duel ultime de l'aventure",
+      "en": "The Ultimate Adventure Showdown",
+      "es": "El duelo definitivo de aventura",
+      "it": "L'ultima sfida adventure"
+    },
+    "image": reviewFeatured,
+    "rating": 4.8,
+    "excerpt": {
+      "fr": "Le combat pour la suprématie en tout-terrain : Équilibre allemand contre puissance autrichienne.",
+      "en": "The battle for off-road supremacy: German balance vs Austrian power.",
+      "es": "La batalla por la supremacía fuera de carretera: equilibrio alemán vs. potencia austriaca.",
+      "it": "La battaglia per la supremazia fuoristrada: equilibrio tedesco contro potenza austriaca."
+    },
+    "specs": [
+      {
+        "label": {
+          "fr": "Moteur BMW",
+          "en": "BMW Engine",
+          "es": "Motor BMW",
+          "it": "Motore BMW"
+        },
+        "value": "1,300 cc Boxer"
+      },
+      {
+        "label": {
+          "fr": "Puissance KTM",
+          "en": "KTM Power",
+          "es": "Potencia KTM",
+          "it": "Potenza KTM"
+        },
+        "value": "173 HP"
+      },
+      {
+        "label": {
+          "fr": "Focus",
+          "en": "Focus",
+          "es": "Enfoque",
+          "it": "Focus"
+        },
+        "value": {
+          "fr": "Tout-terrain & Confort",
+          "en": "Off-road & Comfort",
+          "es": "Off-road y Confort",
+          "it": "Off-road e Comfort"
+        }
+      }
     ],
-    pros: ["Comfortable for long distances (BMW)", "Extreme power and adrenaline (KTM)", "Top tier technology"],
-    cons: ["Very aggressive (KTM)", "Heavy for some (BMW)"],
-    videoUrl: "https://www.instagram.com/reel/DXZwsUlDDvP/"
+    "pros": {
+      "fr": [
+        "Confort longue distance (BMW)",
+        "Puissance extrême (KTM)",
+        "Technologie de pointe"
+      ],
+      "en": [
+        "Comfortable for long distances (BMW)",
+        "Extreme power and adrenaline (KTM)",
+        "Top tier technology"
+      ],
+      "es": [
+        "Confort para largas distancias (BMW)",
+        "Potencia extrema y adrenalina (KTM)",
+        "Tecnología de primer nivel"
+      ],
+      "it": [
+        "Comfort per lunghe distanze (BMW)",
+        "Potenza estrema e adrenalina (KTM)",
+        "Tecnologia di alto livello"
+      ]
+    },
+    "cons": {
+      "fr": [
+        "Très agressive (KTM)",
+        "Lourde pour certains (BMW)"
+      ],
+      "en": [
+        "Very aggressive (KTM)",
+        "Heavy for some (BMW)"
+      ],
+      "es": [
+        "Muy agresiva (KTM)",
+        "Pesada para algunos (BMW)"
+      ],
+      "it": [
+        "Molto aggressiva (KTM)",
+        "Pesante per alcuni (BMW)"
+      ]
+    },
+    "videoUrl": "https://www.instagram.com/reel/DXZwsUlDDvP/"
   },
   {
-    id: "comfort-vs-adrenaline",
-    title: "Comfort vs Adrenaline",
-    subtitle: "Choosing your next adventure",
-    image: news1,
-    rating: 4.5,
-    excerpt: "كاين اللي كيقلب على الراحة والطريق طويلة..وكاين اللي قلبو ميت وكيقلب على الأدرينالين. أنتم شنو تختاروا لمغامرتكم الجاية؟",
-    specs: [
-      { label: "Type", value: "Touring vs Sport" },
-      { label: "Goal", value: "Comfort / Thrills" }
+    "id": "comfort-vs-adrenaline",
+    "title": {
+      "fr": "Confort vs Adrénaline",
+      "en": "Comfort vs Adrenaline",
+      "es": "Confort vs Adrenalina",
+      "it": "Comfort vs Adrenalina"
+    },
+    "subtitle": {
+      "fr": "Choisir votre prochaine aventure",
+      "en": "Choosing your next adventure",
+      "es": "Eligiendo tu próxima aventura",
+      "it": "Scegliere la tua prossima avventura"
+    },
+    "image": news1,
+    "rating": 4.5,
+    "excerpt": {
+      "fr": "Certains cherchent le confort pour les longues routes... d'autres cherchent l'adrénaline pure. Que choisirez-vous ?",
+      "en": "Some look for comfort for long roads... others look for pure adrenaline. What will you choose?",
+      "es": "Algunos buscan confort para rutas largas... otros buscan adrenalina pura. ¿Qué elegirás?",
+      "it": "Alcuni cercano il comfort per le lunghe strade... altri cercano pura adrenalina. Cosa sceglierai?"
+    },
+    "specs": [
+      {
+        "label": {
+          "fr": "Type",
+          "en": "Type",
+          "es": "Tipo",
+          "it": "Tipo"
+        },
+        "value": {
+          "fr": "Touring vs Sport",
+          "en": "Touring vs Sport",
+          "es": "Touring vs Sport",
+          "it": "Touring vs Sport"
+        }
+      },
+      {
+        "label": {
+          "fr": "Objectif",
+          "en": "Goal",
+          "es": "Objetivo",
+          "it": "Obiettivo"
+        },
+        "value": {
+          "fr": "Confort / Frissons",
+          "en": "Comfort / Thrills",
+          "es": "Confort / Emociones",
+          "it": "Comfort / Emozioni"
+        }
+      }
     ],
-    pros: ["Long distance comfort", "Heart-pounding adrenaline"],
-    cons: ["Hard to choose just one"],
-    videoUrl: "https://www.instagram.com/reel/DW4VoiqjUce/"
+    "pros": {
+      "fr": [
+        "Confort longue distance",
+        "Adrénaline garantie"
+      ],
+      "en": [
+        "Long distance comfort",
+        "Heart-pounding adrenaline"
+      ],
+      "es": [
+        "Confort para largas distancias",
+        "Adrenalina palpitante"
+      ],
+      "it": [
+        "Comfort per lunghe distanze",
+        "Adrenalina da batticuore"
+      ]
+    },
+    "cons": {
+      "fr": [
+        "Difficile de n'en choisir qu'une"
+      ],
+      "en": [
+        "Hard to choose just one"
+      ],
+      "es": [
+        "Difícil elegir solo una"
+      ],
+      "it": [
+        "Difficile sceglierne solo una"
+      ]
+    },
+    "videoUrl": "https://www.instagram.com/reel/DW4VoiqjUce/"
   },
   {
-    id: "bmw-f450-gs",
-    title: "BMW F 450 GS",
-    subtitle: "Meet the new “Monster” of the mid-range",
-    image: news2,
-    rating: 4.7,
-    excerpt: "Meet the new “Monster” of the mid-range: The BMW F450 GS. Weight: 175 kg, Power: 48 HP with an Easy Ride Clutch. Keep riding and stay safe!",
-    specs: [
-      { label: "Weight", value: "175 kg" },
-      { label: "Power", value: "48 HP" },
-      { label: "Clutch", value: "Easy Ride (Semi-Auto)" }
+    "id": "bmw-f450-gs",
+    "title": {
+      "fr": "BMW F 450 GS",
+      "en": "BMW F 450 GS",
+      "es": "BMW F 450 GS",
+      "it": "BMW F 450 GS"
+    },
+    "subtitle": {
+      "fr": "Le nouveau 'Monstre' du milieu de gamme",
+      "en": "Meet the new “Monster” of the mid-range",
+      "es": "Conoce al nuevo “Monstruo” de la gama media",
+      "it": "Incontra il nuovo “Mostro” della fascia media"
+    },
+    "image": news2,
+    "rating": 4.7,
+    "excerpt": {
+      "fr": "Découvrez le nouveau monstre du milieu de gamme : la BMW F 450 GS. Poids : 175 kg, Puissance : 48 ch.",
+      "en": "Meet the new “Monster” of the mid-range: The BMW F450 GS. Weight: 175 kg, Power: 48 HP.",
+      "es": "Conoce al nuevo “Monstruo” de la gama media: La BMW F450 GS. Peso: 175 kg, Potencia: 48 HP.",
+      "it": "Incontra il nuovo “Mostro” della fascia media: La BMW F450 GS. Peso: 175 kg, Potenza: 48 HP."
+    },
+    "specs": [
+      {
+        "label": {
+          "fr": "Poids",
+          "en": "Weight",
+          "es": "Peso",
+          "it": "Peso"
+        },
+        "value": "175 kg"
+      },
+      {
+        "label": {
+          "fr": "Puissance",
+          "en": "Power",
+          "es": "Potencia",
+          "it": "Potenza"
+        },
+        "value": "48 HP"
+      },
+      {
+        "label": {
+          "fr": "Embrayage",
+          "en": "Clutch",
+          "es": "Embrague",
+          "it": "Frizione"
+        },
+        "value": "Easy Ride (Semi-Auto)"
+      }
     ],
-    pros: ["Lightweight at 175 kg", "Accessible 48 HP", "Innovative Semi-Auto clutch"],
-    cons: ["Less power for highway cruising"],
-    videoUrl: "https://www.instagram.com/reel/DWes6MajSim/"
+    "pros": {
+      "fr": [
+        "Légère (175 kg)",
+        "Accessible (48 ch)",
+        "Embrayage semi-auto innovant"
+      ],
+      "en": [
+        "Lightweight at 175 kg",
+        "Accessible 48 HP",
+        "Innovative Semi-Auto clutch"
+      ],
+      "es": [
+        "Ligera con 175 kg",
+        "Accesible 48 HP",
+        "Innovador embrague semiautomático"
+      ],
+      "it": [
+        "Leggera a 175 kg",
+        "Accessibile 48 CV",
+        "Innovativa frizione semi-automatica"
+      ]
+    },
+    "cons": {
+      "fr": [
+        "Manque de puissance sur autoroute"
+      ],
+      "en": [
+        "Less power for highway cruising"
+      ],
+      "es": [
+        "Menos potencia para crucero por autopista"
+      ],
+      "it": [
+        "Meno potenza per la crociera in autostrada"
+      ]
+    },
+    "videoUrl": "https://www.instagram.com/reel/DWes6MajSim/"
   },
   {
-    id: "bmw-f450-gs-first-impressions",
-    title: "BMW F 450 GS Impressions",
-    subtitle: "Pure adventure in every shift",
-    image: news3,
-    rating: 4.6,
-    excerpt: "The BMW F 450 GS isn’t just a new model… it’s a new rhythm for every new rider who wants light weight, real control, and pure adventure in every shift.",
-    specs: [
-      { label: "Focus", value: "New Riders" },
-      { label: "Handling", value: "Lightweight" },
-      { label: "Control", value: "Real Control" }
+    "id": "bmw-f450-gs-first-impressions",
+    "title": {
+      "fr": "Impressions sur la BMW F 450 GS",
+      "en": "BMW F 450 GS Impressions",
+      "es": "Impresiones de la BMW F 450 GS",
+      "it": "Impressioni sulla BMW F 450 GS"
+    },
+    "subtitle": {
+      "fr": "L'aventure pure à chaque changement de vitesse",
+      "en": "Pure adventure in every shift",
+      "es": "Pura aventura en cada cambio",
+      "it": "Pura avventura in ogni marcia"
+    },
+    "image": news3,
+    "rating": 4.6,
+    "excerpt": {
+      "fr": "La BMW F 450 GS n'est pas seulement un nouveau modèle... c'est un nouveau rythme pour chaque motard.",
+      "en": "The BMW F 450 GS isn’t just a new model… it’s a new rhythm for every new rider.",
+      "es": "La BMW F 450 GS no es solo un nuevo modelo... es un nuevo ritmo para cada nuevo motociclista.",
+      "it": "La BMW F 450 GS non è solo un nuovo modello... è un nuovo ritmo per ogni nuovo pilota."
+    },
+    "specs": [
+      {
+        "label": {
+          "fr": "Focus",
+          "en": "Focus",
+          "es": "Enfoque",
+          "it": "Focus"
+        },
+        "value": {
+          "fr": "Nouveaux motards",
+          "en": "New Riders",
+          "es": "Nuevos pilotos",
+          "it": "Nuovi piloti"
+        }
+      },
+      {
+        "label": {
+          "fr": "Maniabilité",
+          "en": "Handling",
+          "es": "Manejo",
+          "it": "Maneggevolezza"
+        },
+        "value": {
+          "fr": "Légère",
+          "en": "Lightweight",
+          "es": "Ligera",
+          "it": "Leggera"
+        }
+      },
+      {
+        "label": {
+          "fr": "Contrôle",
+          "en": "Control",
+          "es": "Control",
+          "it": "Controllo"
+        },
+        "value": {
+          "fr": "Réel contrôle",
+          "en": "Real Control",
+          "es": "Control real",
+          "it": "Controllo reale"
+        }
+      }
     ],
-    pros: ["Great for new riders", "Nimble handling"],
-    cons: ["Might outgrow quickly"],
-    videoUrl: "https://www.instagram.com/reel/DRDKvesDaF_/"
+    "pros": {
+      "fr": [
+        "Idéale pour débutants",
+        "Maniabilité vive"
+      ],
+      "en": [
+        "Great for new riders",
+        "Nimble handling"
+      ],
+      "es": [
+        "Ideal para nuevos pilotos",
+        "Manejo ágil"
+      ],
+      "it": [
+        "Ottima per i nuovi piloti",
+        "Manovrabilità agile"
+      ]
+    },
+    "cons": {
+      "fr": [
+        "On peut s'en lasser rapidement"
+      ],
+      "en": [
+        "Might outgrow quickly"
+      ],
+      "es": [
+        "Podría quedarse corta pronto"
+      ],
+      "it": [
+        "Potrebbe diventare stretta velocemente"
+      ]
+    },
+    "videoUrl": "https://www.instagram.com/reel/DRDKvesDaF_/"
   },
   {
-    id: "suzuki-sv7gx-vs-yamaha-tracer-7",
-    title: "Suzuki SV7GX vs Yamaha Tracer 7",
-    subtitle: "The Middleweight Battle",
-    image: news4,
-    rating: 4.8,
-    excerpt: "The all-new Suzuki SV7GX with aggressive lines and agile handling faces off against the Yamaha Tracer 7. Built for riders who crave performance and freedom.",
-    specs: [
-      { label: "Suzuki", value: "SV7GX" },
-      { label: "Yamaha", value: "Tracer 7" },
-      { label: "Category", value: "Middleweight" }
+    "id": "suzuki-sv7gx-vs-yamaha-tracer-7",
+    "title": {
+      "fr": "Suzuki SV7GX vs Yamaha Tracer 7",
+      "en": "Suzuki SV7GX vs Yamaha Tracer 7",
+      "es": "Suzuki SV7GX vs Yamaha Tracer 7",
+      "it": "Suzuki SV7GX vs Yamaha Tracer 7"
+    },
+    "subtitle": {
+      "fr": "La bataille des moyennes cylindrées",
+      "en": "The Middleweight Battle",
+      "es": "La batalla de peso medio",
+      "it": "La battaglia delle medie cilindrate"
+    },
+    "image": news4,
+    "rating": 4.8,
+    "excerpt": {
+      "fr": "La toute nouvelle Suzuki SV7GX aux lignes agressives affronte la Yamaha Tracer 7.",
+      "en": "The all-new Suzuki SV7GX with aggressive lines and agile handling faces off against the Yamaha Tracer 7.",
+      "es": "La nueva Suzuki SV7GX con líneas agresivas y manejo ágil se enfrenta a la Yamaha Tracer 7.",
+      "it": "La nuovissima Suzuki SV7GX dalle linee aggressive e dalla manovrabilità agile sfida la Yamaha Tracer 7."
+    },
+    "specs": [
+      {
+        "label": "Suzuki",
+        "value": "SV7GX"
+      },
+      {
+        "label": "Yamaha",
+        "value": "Tracer 7"
+      },
+      {
+        "label": {
+          "fr": "Catégorie",
+          "en": "Category",
+          "es": "Categoría",
+          "it": "Categoria"
+        },
+        "value": {
+          "fr": "Moyenne cylindrée",
+          "en": "Middleweight",
+          "es": "Peso medio",
+          "it": "Media cilindrata"
+        }
+      }
     ],
-    pros: ["Aggressive lines (Suzuki)", "Agile handling", "Proven reliability (Yamaha)"],
-    cons: ["Tough choice between the two"],
-    videoUrl: "https://www.instagram.com/reel/DRAsTIyjB74/"
+    "pros": {
+      "fr": [
+        "Lignes agressives (Suzuki)",
+        "Maniabilité agile",
+        "Fiabilité prouvée (Yamaha)"
+      ],
+      "en": [
+        "Aggressive lines (Suzuki)",
+        "Agile handling",
+        "Proven reliability (Yamaha)"
+      ],
+      "es": [
+        "Líneas agresivas (Suzuki)",
+        "Manejo ágil",
+        "Fiabilidad probada (Yamaha)"
+      ],
+      "it": [
+        "Linee aggressive (Suzuki)",
+        "Manovrabilità agile",
+        "Affidabilità comprovata (Yamaha)"
+      ]
+    },
+    "cons": {
+      "fr": [
+        "Choix difficile entre les deux"
+      ],
+      "en": [
+        "Tough choice between the two"
+      ],
+      "es": [
+        "Elección difícil entre las dos"
+      ],
+      "it": [
+        "Scelta difficile tra le due"
+      ]
+    },
+    "videoUrl": "https://www.instagram.com/reel/DRAsTIyjB74/"
   }
 ];
 
-export const articleBody = (a: Article): string[] => [
-  `${a.excerpt} What follows is our full account from the launch event, the press materials, and a first impression that already tells us this machine matters.`,
-  `Throughout a long week of riding — city traffic, mountain passes, and a long motorway slog at dusk — the bike revealed itself slowly. Engineering decisions that look conservative on paper became obvious strengths once the road opened up. The chassis is composed at speed, the brakes have the kind of progressive bite that gives confidence rather than fear, and the electronics fade into the background until you actually need them.`,
-  `Where it shines is harder to describe than where it disappoints, but we'll try. The throttle response in the second-from-soft mode is a small masterpiece — linear, predictable, and perfectly calibrated to the engine's character. Wind protection is better than the silhouette suggests, and the seat is friendly enough for genuinely long days.`,
-  `Of course, no machine is without compromise. The instrument cluster could be brighter in direct sun, the mirrors vibrate above 6,000 rpm, and the price has crept up again. None of these are deal-breakers, but in a market this competitive they are worth knowing about before you sign.`,
-  `Verdict: a confident, considered evolution of a formula that already worked. We'll have a full long-term test in the autumn, but our early impression is that we have been right to be excited.`,
-];
+export const articleBody = (a: Article, lang: string): string[] => getLocalized(a.body, lang);
 
 export type Video = {
   id: string;

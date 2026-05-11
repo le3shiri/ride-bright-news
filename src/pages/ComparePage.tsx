@@ -10,29 +10,31 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 type Metric = {
   key: keyof Pick<CompareBike, "price" | "power" | "torque" | "weight" | "topSpeed" | "fuel" | "range" | "zeroToHundred" | "rating">;
-  label: string;
+  labelKey: string;
   unit: string;
   better: "higher" | "lower";
   format?: (v: number) => string;
 };
 
-const metrics: Metric[] = [
-  { key: "price", label: "Price", unit: "USD", better: "lower", format: (v) => `$${v.toLocaleString()}` },
-  { key: "power", label: "Power", unit: "hp", better: "higher" },
-  { key: "torque", label: "Torque", unit: "Nm", better: "higher" },
-  { key: "topSpeed", label: "Top Speed", unit: "km/h", better: "higher" },
-  { key: "zeroToHundred", label: "0–100 km/h", unit: "s", better: "lower", format: (v) => v.toFixed(1) },
-  { key: "weight", label: "Weight", unit: "kg", better: "lower" },
-  { key: "range", label: "Range", unit: "km", better: "higher" },
-  { key: "fuel", label: "Fuel use", unit: "L/100km", better: "lower", format: (v) => (v === 0 ? "—" : v.toFixed(1)) },
-  { key: "rating", label: "Editor rating", unit: "/5", better: "higher", format: (v) => v.toFixed(1) },
-];
-
 const ComparePage = () => {
+  const { t } = useTranslation();
   const [selected, setSelected] = useState<CompareBike[]>([compareBikes[0], compareBikes[1]]);
+
+  const metrics: Metric[] = [
+    { key: "price", labelKey: "compare.metrics.price", unit: "USD", better: "lower", format: (v) => `$${v.toLocaleString()}` },
+    { key: "power", labelKey: "compare.metrics.power", unit: "hp", better: "higher" },
+    { key: "torque", labelKey: "compare.metrics.torque", unit: "Nm", better: "higher" },
+    { key: "topSpeed", labelKey: "compare.metrics.topSpeed", unit: "km/h", better: "higher" },
+    { key: "zeroToHundred", labelKey: "compare.metrics.zeroToHundred", unit: "s", better: "lower", format: (v) => v.toFixed(1) },
+    { key: "weight", labelKey: "compare.metrics.weight", unit: "kg", better: "lower" },
+    { key: "range", labelKey: "compare.metrics.range", unit: "km", better: "higher" },
+    { key: "fuel", labelKey: "compare.metrics.fuel", unit: "L/100km", better: "lower", format: (v) => (v === 0 ? "—" : v.toFixed(1)) },
+    { key: "rating", labelKey: "compare.metrics.rating", unit: "/5", better: "higher", format: (v) => v.toFixed(1) },
+  ];
 
   const addBike = (bike: CompareBike) => {
     if (selected.find((b) => b.id === bike.id) || selected.length >= 3) return;
@@ -54,10 +56,10 @@ const ComparePage = () => {
     <>
       <section className="border-b border-border bg-surface">
         <div className="container-x py-16 md:py-20">
-          <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-3">Side-by-side</p>
-          <h1 className="font-display text-5xl md:text-7xl font-bold text-ink leading-none">Compare Bikes</h1>
+          <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-3">{t('compare.tagline')}</p>
+          <h1 className="font-display text-5xl md:text-7xl font-bold text-ink leading-none">{t('compare.title')}</h1>
           <p className="mt-6 text-lg text-muted-foreground max-w-2xl">
-            Pick up to three motorcycles and see how they stack up — performance, price, and Throttle's verdict.
+            {t('compare.description')}
           </p>
         </div>
       </section>
@@ -98,13 +100,13 @@ const ComparePage = () => {
                     <span className="flex h-14 w-14 items-center justify-center rounded-full bg-background text-ink group-hover:bg-accent group-hover:text-accent-foreground transition-smooth">
                       <Plus className="h-6 w-6" />
                     </span>
-                    <span className="mt-3 font-display text-lg font-semibold text-ink">Add a bike</span>
-                    <span className="mt-1 text-xs text-muted-foreground">Up to 3</span>
+                    <span className="mt-3 font-display text-lg font-semibold text-ink">{t('compare.addBike')}</span>
+                    <span className="mt-1 text-xs text-muted-foreground">{t('compare.upTo3')}</span>
                   </button>
                 </DialogTrigger>
                 <DialogContent className="max-w-2xl">
                   <DialogHeader>
-                    <DialogTitle className="font-display text-2xl">Choose a motorcycle</DialogTitle>
+                    <DialogTitle className="font-display text-2xl">{t('compare.chooseBike')}</DialogTitle>
                   </DialogHeader>
                   <div className="grid gap-3 max-h-[60vh] overflow-y-auto pr-1">
                     {available.map((b) => (
@@ -136,7 +138,7 @@ const ComparePage = () => {
               <table className="w-full text-sm">
                 <thead>
                   <tr className="bg-surface">
-                    <th className="text-left px-6 py-4 text-xs font-semibold uppercase tracking-widest text-muted-foreground">Specification</th>
+                    <th className="text-left px-6 py-4 text-xs font-semibold uppercase tracking-widest text-muted-foreground">{t('compare.specification')}</th>
                     {selected.map((b) => (
                       <th key={b.id} className="text-left px-6 py-4 font-display text-base font-bold text-ink min-w-[180px]">
                         {b.brand} {b.name}
@@ -148,7 +150,7 @@ const ComparePage = () => {
                   {metrics.map((m, i) => (
                     <tr key={m.key} className={cn("border-t border-border", i % 2 === 0 ? "bg-card" : "bg-surface/40")}>
                       <td className="px-6 py-4 text-sm font-medium text-muted-foreground">
-                        {m.label} <span className="text-xs">({m.unit})</span>
+                        {t(m.labelKey)} <span className="text-xs">({m.unit})</span>
                       </td>
                       {selected.map((b) => {
                         const value = b[m.key];
@@ -178,17 +180,17 @@ const ComparePage = () => {
           <div className="mt-12 rounded-3xl bg-ink p-8 md:p-12 text-primary-foreground">
             <div className="flex items-center gap-2 mb-4">
               <Star className="h-5 w-5 text-accent fill-accent" />
-              <p className="text-xs font-semibold uppercase tracking-widest text-accent">Throttle verdict</p>
+              <p className="text-xs font-semibold uppercase tracking-widest text-accent">{t('compare.verdict')}</p>
             </div>
             <h2 className="font-display text-3xl md:text-4xl font-bold leading-tight max-w-3xl">
-              Best overall:{" "}
+              {t('compare.bestOverall')}{" "}
               <span className="text-accent italic">
                 {[...selected].sort((a, b) => b.rating - a.rating)[0].brand}{" "}
                 {[...selected].sort((a, b) => b.rating - a.rating)[0].name}
               </span>
             </h2>
             <p className="mt-4 text-primary-foreground/70 leading-relaxed max-w-2xl">
-              Highlighted cells show category leaders. Choose the one that matches your riding — the spec sheet only tells half the story.
+              {t('compare.verdictDesc')}
             </p>
           </div>
         )}

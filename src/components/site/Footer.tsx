@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { Instagram, Youtube, Facebook, Mail, Music2 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export const Footer = () => {
+  const { t } = useTranslation();
   const socialLinks = [
     { Icon: Instagram, href: "https://www.instagram.com/iride.ma", label: "Instagram" },
     { Icon: Youtube, href: "https://youtube.com/@iridemorocco?si=FEmwtskipf4mM9wI", label: "YouTube" },
@@ -21,32 +23,32 @@ export const Footer = () => {
             <span className="font-display text-2xl font-bold">iRide Morocco</span>
           </div>
           <p className="text-sm text-primary-foreground/60 leading-relaxed">
-            Leading the ride through Morocco. News, reviews, and motorcycle adventures since 2014.
+            {t('common.footerDesc')}
           </p>
         </div>
 
         <div>
-          <h4 className="font-display text-sm uppercase tracking-widest text-accent mb-4">Sections</h4>
+          <h4 className="font-display text-sm uppercase tracking-widest text-accent mb-4">{t('common.sections')}</h4>
           <ul className="space-y-3 text-sm">
-            <li><Link to="/news" className="text-primary-foreground/70 hover:text-accent transition-smooth">Latest News</Link></li>
-            <li><Link to="/reviews" className="text-primary-foreground/70 hover:text-accent transition-smooth">Reviews</Link></li>
-            <li><Link to="/news" className="text-primary-foreground/70 hover:text-accent transition-smooth">Racing</Link></li>
+            <li><Link to="/news" className="text-primary-foreground/70 hover:text-accent transition-smooth">{t('common.latestNews')}</Link></li>
+            <li><Link to="/reviews" className="text-primary-foreground/70 hover:text-accent transition-smooth">{t('nav.reviews')}</Link></li>
+            <li><Link to="/news" className="text-primary-foreground/70 hover:text-accent transition-smooth">{t('common.racing')}</Link></li>
           </ul>
         </div>
 
         <div>
-          <h4 className="font-display text-sm uppercase tracking-widest text-accent mb-4">Company</h4>
+          <h4 className="font-display text-sm uppercase tracking-widest text-accent mb-4">{t('common.company')}</h4>
           <ul className="space-y-3 text-sm">
-            <li><Link to="/about" className="text-primary-foreground/70 hover:text-accent transition-smooth">About Us</Link></li>
-            <li><Link to="/contact" className="text-primary-foreground/70 hover:text-accent transition-smooth">Contact</Link></li>
-            <li><Link to="/compare" className="text-primary-foreground/70 hover:text-accent transition-smooth">Compare Bikes</Link></li>
-            <li><Link to="/contact" className="text-primary-foreground/70 hover:text-accent transition-smooth">Advertise</Link></li>
+            <li><Link to="/about" className="text-primary-foreground/70 hover:text-accent transition-smooth">{t('common.aboutUs')}</Link></li>
+            <li><Link to="/contact" className="text-primary-foreground/70 hover:text-accent transition-smooth">{t('nav.contact')}</Link></li>
+            <li><Link to="/compare" className="text-primary-foreground/70 hover:text-accent transition-smooth">{t('common.compareBikes')}</Link></li>
+            <li><Link to="/contact" className="text-primary-foreground/70 hover:text-accent transition-smooth">{t('common.advertise')}</Link></li>
           </ul>
         </div>
 
         <div>
-          <h4 className="font-display text-sm uppercase tracking-widest text-accent mb-4">Newsletter</h4>
-          <p className="text-sm text-primary-foreground/70 mb-4">Weekly drops. No spam.</p>
+          <h4 className="font-display text-sm uppercase tracking-widest text-accent mb-4">{t('common.newsletter')}</h4>
+          <p className="text-sm text-primary-foreground/70 mb-4">{t('common.noSpam')}</p>
           <form className="flex gap-2">
             <input
               type="email"
@@ -54,7 +56,7 @@ export const Footer = () => {
               className="flex-1 rounded-full bg-primary-foreground/10 border border-primary-foreground/20 px-4 py-2 text-sm placeholder:text-primary-foreground/40 outline-none focus:border-accent"
             />
             <button type="submit" className="rounded-full bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground hover:bg-accent/90 transition-smooth">
-              Join
+              {t('common.join')}
             </button>
           </form>
         </div>
@@ -63,7 +65,7 @@ export const Footer = () => {
       <div className="border-t border-primary-foreground/10">
         <div className="container-x py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-primary-foreground/50">
-            © {new Date().getFullYear()} iRide Morocco. All rights reserved.
+            {t('common.rights', { year: new Date().getFullYear() })}
           </p>
           <div className="flex items-center gap-3">
             {socialLinks.map(({ Icon, href, label }, i) => (

@@ -1,19 +1,33 @@
 import { Link } from "react-router-dom";
 import { Clock } from "lucide-react";
-import type { Article } from "@/data/content";
+import { Article, getLocalized } from "@/data/content";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 export const ArticleCard = ({ article, variant = "default" }: { article: Article; variant?: "default" | "compact" | "wide" }) => {
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
+  
+  const title = getLocalized(article.title, lang);
+  const excerpt = getLocalized(article.excerpt, lang);
+  const readTimeLabel = t('news.readTime', { min: article.readTime.split(' ')[0] });
+
+  const getCategoryLabel = (cat: string) => {
+    const key = cat.toLowerCase().replace(/\s+/g, '');
+    const mappedKey = key === 'newbikes' ? 'newBikes' : key;
+    return t(`common.categories.${mappedKey}`) || cat;
+  };
+
   if (variant === "compact") {
     return (
       <Link to={`/news/${article.id}`} className="group flex gap-4 items-start">
         <div className="relative h-20 w-24 flex-shrink-0 overflow-hidden rounded-xl">
-          <img src={article.image} alt={article.title} loading="lazy" className="h-full w-full object-cover transition-smooth group-hover:scale-105" />
+          <img src={article.image} alt={title} loading="lazy" className="h-full w-full object-cover transition-smooth group-hover:scale-105" />
         </div>
         <div className="flex-1 min-w-0">
-          <span className="text-[10px] font-semibold uppercase tracking-widest text-accent">{article.category}</span>
+          <span className="text-[10px] font-semibold uppercase tracking-widest text-accent">{getCategoryLabel(article.category)}</span>
           <h4 className="font-display text-base font-semibold leading-snug text-ink line-clamp-2 group-hover:text-accent transition-smooth">
-            {article.title}
+            {title}
           </h4>
         </div>
       </Link>
@@ -24,18 +38,18 @@ export const ArticleCard = ({ article, variant = "default" }: { article: Article
     return (
       <Link to={`/news/${article.id}`} className="group grid md:grid-cols-2 gap-6 items-center">
         <div className="relative aspect-[4/3] overflow-hidden rounded-2xl shadow-soft">
-          <img src={article.image} alt={article.title} loading="lazy" className="h-full w-full object-cover transition-smooth group-hover:scale-105" />
+          <img src={article.image} alt={title} loading="lazy" className="h-full w-full object-cover transition-smooth group-hover:scale-105" />
           <span className="absolute top-4 left-4 rounded-full bg-background/95 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-ink">
-            {article.category}
+            {getCategoryLabel(article.category)}
           </span>
         </div>
         <div>
-          <p className="text-xs font-medium uppercase tracking-widest text-accent mb-3">{article.category}</p>
+          <p className="text-xs font-medium uppercase tracking-widest text-accent mb-3">{getCategoryLabel(article.category)}</p>
           <h3 className="font-display text-3xl md:text-4xl font-bold leading-tight text-ink group-hover:text-accent transition-smooth text-balance">
-            {article.title}
+            {title}
           </h3>
-          <p className="mt-4 text-base text-muted-foreground leading-relaxed text-pretty">{article.excerpt}</p>
-          <p className="mt-4 text-sm text-muted-foreground">{article.readTime} read</p>
+          <p className="mt-4 text-base text-muted-foreground leading-relaxed text-pretty">{excerpt}</p>
+          <p className="mt-4 text-sm text-muted-foreground">{readTimeLabel}</p>
         </div>
       </Link>
     );
@@ -46,22 +60,22 @@ export const ArticleCard = ({ article, variant = "default" }: { article: Article
       <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-muted shadow-soft">
         <img
           src={article.image}
-          alt={article.title}
+          alt={title}
           loading="lazy"
           className="h-full w-full object-cover transition-smooth group-hover:scale-105"
         />
         <span className="absolute top-4 left-4 rounded-full bg-background/95 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-ink">
-          {article.category}
+          {getCategoryLabel(article.category)}
         </span>
       </div>
       <div className="pt-5">
         <div className="flex items-center gap-3 text-xs text-muted-foreground mb-2">
-          <span className="inline-flex items-center gap-1"><Clock className="h-3 w-3" /> {article.readTime}</span>
+          <span className="inline-flex items-center gap-1"><Clock className="h-3 w-3" /> {readTimeLabel}</span>
         </div>
         <h3 className={cn("font-display font-bold leading-tight text-ink group-hover:text-accent transition-smooth text-balance", "text-xl")}>
-          {article.title}
+          {title}
         </h3>
-        <p className="mt-2 text-sm text-muted-foreground line-clamp-2">{article.excerpt}</p>
+        <p className="mt-2 text-sm text-muted-foreground line-clamp-2">{excerpt}</p>
       </div>
     </Link>
   );
