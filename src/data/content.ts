@@ -6,60 +6,12 @@ import news5 from "@/assets/news-5.jpg";
 import news6 from "@/assets/news-6.jpg";
 import reviewFeatured from "@/assets/review-featured.jpg";
 
-export type Author = {
-  name: string;
-  role: string;
-  bio: string;
-  initials: string;
-};
-
-export const authors: Record<string, Author> = {
-  "Marco Rossi": {
-    name: "Marco Rossi",
-    role: "Senior Editor",
-    bio: "Born in Bologna, Marco has covered Italian motorcycle culture for 18 years. Former club racer, lifelong tifoso.",
-    initials: "MR",
-  },
-  "Lena Park": {
-    name: "Lena Park",
-    role: "Electric & Tech Correspondent",
-    bio: "Lena writes about the future of mobility. She owns three EVs and one very loud two-stroke.",
-    initials: "LP",
-  },
-  "James Holloway": {
-    name: "James Holloway",
-    role: "Racing Editor",
-    bio: "Trackside in every paddock that matters. James has covered MotoGP since 2009.",
-    initials: "JH",
-  },
-  "Sofia Greco": {
-    name: "Sofia Greco",
-    role: "Lifestyle Editor",
-    bio: "Sofia explores the culture, fashion, and rituals that surround the motorcycle world.",
-    initials: "SG",
-  },
-  "David Chen": {
-    name: "David Chen",
-    role: "Adventure Correspondent",
-    bio: "100,000+ km across six continents. David tests bikes where the road ends.",
-    initials: "DC",
-  },
-  "Hannah Reyes": {
-    name: "Hannah Reyes",
-    role: "Safety & Gear Editor",
-    bio: "Former crash reconstruction specialist. Hannah translates safety data into rider-friendly advice.",
-    initials: "HR",
-  },
-};
-
 export type Article = {
   id: string;
   title: string;
   excerpt: string;
   image: string;
   category: "Racing" | "New Bikes" | "Electric" | "Safety";
-  date: string;
-  author: string;
   readTime: string;
   body?: string[];
 };
@@ -71,8 +23,6 @@ export const articles: Article[] = [
     excerpt: "The Bologna factory unleashes a sharper, lighter superbike with 220 hp and revised aerodynamics.",
     image: news1,
     category: "New Bikes",
-    date: "Apr 14, 2026",
-    author: "Marco Rossi",
     readTime: "6 min",
   },
   {
@@ -81,8 +31,6 @@ export const articles: Article[] = [
     excerpt: "Silent, brutal, and finally affordable — we ride the bike that may end the combustion era.",
     image: news2,
     category: "Electric",
-    date: "Apr 12, 2026",
-    author: "Lena Park",
     readTime: "8 min",
   },
   {
@@ -91,8 +39,6 @@ export const articles: Article[] = [
     excerpt: "Three riders within seven points. The summer of 2026 will be unforgettable.",
     image: news3,
     category: "Racing",
-    date: "Apr 10, 2026",
-    author: "James Holloway",
     readTime: "5 min",
   },
   {
@@ -101,8 +47,6 @@ export const articles: Article[] = [
     excerpt: "How a generation of riders is rediscovering style, simplicity, and Sunday mornings.",
     image: news4,
     category: "New Bikes",
-    date: "Apr 08, 2026",
-    author: "Sofia Greco",
     readTime: "7 min",
   },
   {
@@ -111,8 +55,6 @@ export const articles: Article[] = [
     excerpt: "From Lisbon to Vladivostok — 14,000 km on the world's most capable adventure bike.",
     image: news5,
     category: "New Bikes",
-    date: "Apr 05, 2026",
-    author: "David Chen",
     readTime: "12 min",
   },
   {
@@ -121,8 +63,6 @@ export const articles: Article[] = [
     excerpt: "ECE 22.07 is here. We break down what it means for your next lid.",
     image: news6,
     category: "Safety",
-    date: "Apr 02, 2026",
-    author: "Hannah Reyes",
     readTime: "4 min",
   },
 ];
@@ -137,64 +77,105 @@ export type Review = {
   specs: { label: string; value: string }[];
   pros: string[];
   cons: string[];
+  videoUrl?: string;
 };
 
 export const reviews: Review[] = [
   {
-    id: "blackline-cruiser-2026",
-    title: "Blackline 1800 Cruiser",
-    subtitle: "A modern classic with chrome and soul",
-    image: reviewFeatured,
-    rating: 4.7,
-    excerpt:
-      "Effortless torque, timeless design, and a soundtrack that turns every commute into theatre. The Blackline 1800 is everything a cruiser should be — and a little more.",
-    specs: [
-      { label: "Engine", value: "1,802 cc V-Twin" },
-      { label: "Top Speed", value: "215 km/h" },
-      { label: "Power", value: "94 hp @ 5,000 rpm" },
-      { label: "Fuel", value: "5.6 L / 100 km" },
-      { label: "Weight", value: "318 kg" },
-      { label: "Price", value: "$22,499" },
-    ],
-    pros: ["Effortless low-end torque", "Premium fit & finish", "Iconic exhaust note", "Comfortable for long hauls"],
-    cons: ["Heavy at low speeds", "Limited lean angle", "Thirsty in city traffic"],
-  },
-  {
-    id: "ducati-panigale-v4-review",
-    title: "Ducati Panigale V4",
-    subtitle: "Track weapon, road poet",
-    image: news1,
+    id: "yamaha-tenere-700-world-raid-2026",
+    title: "Yamaha Ténéré 700 World Raid",
+    subtitle: "Built for those who don’t follow roads",
+    image: news5,
     rating: 4.9,
-    excerpt: "Few bikes manage to be this fast and this rideable. The Panigale V4 redefines the superbike formula.",
+    excerpt: "Adventure isn’t waiting — it’s calling. Meet the new Yamaha Ténéré 700 World Raid 2026 — built for those who don’t follow roads, they create them.",
     specs: [
-      { label: "Engine", value: "1,103 cc V4" },
-      { label: "Top Speed", value: "299 km/h" },
-      { label: "Power", value: "220 hp @ 13,000 rpm" },
-      { label: "Fuel", value: "6.8 L / 100 km" },
-      { label: "Weight", value: "198 kg" },
-      { label: "Price", value: "$28,995" },
+      { label: "Make", value: "Yamaha" },
+      { label: "Model", value: "Ténéré 700 World Raid 2026" },
+      { label: "Category", value: "Adventure" }
     ],
-    pros: ["Stunning acceleration", "Razor-sharp chassis", "World-class electronics"],
-    cons: ["Aggressive seating", "Premium price", "Service intervals"],
+    pros: ["Ultimate off-road capability", "Legendary reliability"],
+    cons: ["Tall seat height"],
+    videoUrl: "https://www.instagram.com/reel/DQ7kRsjjN4W/"
   },
   {
-    id: "zero-srx-review",
-    title: "Zero SR/X Electric",
-    subtitle: "The future, today",
-    image: news2,
-    rating: 4.5,
-    excerpt: "Instant torque, zero emissions, and a 240 km real-world range. Electric motorcycling has finally grown up.",
+    id: "bmw-1300-gs-vs-ktm-1390",
+    title: "BMW 1300 GS vs KTM 1390",
+    subtitle: "The Ultimate Adventure Showdown",
+    image: reviewFeatured,
+    rating: 4.8,
+    excerpt: "الصراع اليوم ماشي غير على الأرقام، الصراع على \"الهيبة\" في الطريق والسيطرة في الـ Off-road. 🇩🇪 BMW 1300 GS: التوازن المثالي والراحة. 🇦🇹 KTM 1390: القوة المفرطة والجنون.",
     specs: [
-      { label: "Motor", value: "ZF75-10 PMAC" },
-      { label: "Top Speed", value: "201 km/h" },
-      { label: "Power", value: "110 hp" },
-      { label: "Range", value: "240 km city" },
-      { label: "Weight", value: "229 kg" },
-      { label: "Price", value: "$23,995" },
+      { label: "BMW Engine", value: "1,300 cc Boxer" },
+      { label: "KTM Power", value: "173 HP" },
+      { label: "Focus", value: "Off-road & Comfort" }
     ],
-    pros: ["Silent and torquey", "Low running costs", "App-connected ride modes"],
-    cons: ["Limited fast charging", "Range drops on highway"],
+    pros: ["Comfortable for long distances (BMW)", "Extreme power and adrenaline (KTM)", "Top tier technology"],
+    cons: ["Very aggressive (KTM)", "Heavy for some (BMW)"],
+    videoUrl: "https://www.instagram.com/reel/DXZwsUlDDvP/"
   },
+  {
+    id: "comfort-vs-adrenaline",
+    title: "Comfort vs Adrenaline",
+    subtitle: "Choosing your next adventure",
+    image: news1,
+    rating: 4.5,
+    excerpt: "كاين اللي كيقلب على الراحة والطريق طويلة..وكاين اللي قلبو ميت وكيقلب على الأدرينالين. أنتم شنو تختاروا لمغامرتكم الجاية؟",
+    specs: [
+      { label: "Type", value: "Touring vs Sport" },
+      { label: "Goal", value: "Comfort / Thrills" }
+    ],
+    pros: ["Long distance comfort", "Heart-pounding adrenaline"],
+    cons: ["Hard to choose just one"],
+    videoUrl: "https://www.instagram.com/reel/DW4VoiqjUce/"
+  },
+  {
+    id: "bmw-f450-gs",
+    title: "BMW F 450 GS",
+    subtitle: "Meet the new “Monster” of the mid-range",
+    image: news2,
+    rating: 4.7,
+    excerpt: "Meet the new “Monster” of the mid-range: The BMW F450 GS. Weight: 175 kg, Power: 48 HP with an Easy Ride Clutch. Keep riding and stay safe!",
+    specs: [
+      { label: "Weight", value: "175 kg" },
+      { label: "Power", value: "48 HP" },
+      { label: "Clutch", value: "Easy Ride (Semi-Auto)" }
+    ],
+    pros: ["Lightweight at 175 kg", "Accessible 48 HP", "Innovative Semi-Auto clutch"],
+    cons: ["Less power for highway cruising"],
+    videoUrl: "https://www.instagram.com/reel/DWes6MajSim/"
+  },
+  {
+    id: "bmw-f450-gs-first-impressions",
+    title: "BMW F 450 GS Impressions",
+    subtitle: "Pure adventure in every shift",
+    image: news3,
+    rating: 4.6,
+    excerpt: "The BMW F 450 GS isn’t just a new model… it’s a new rhythm for every new rider who wants light weight, real control, and pure adventure in every shift.",
+    specs: [
+      { label: "Focus", value: "New Riders" },
+      { label: "Handling", value: "Lightweight" },
+      { label: "Control", value: "Real Control" }
+    ],
+    pros: ["Great for new riders", "Nimble handling"],
+    cons: ["Might outgrow quickly"],
+    videoUrl: "https://www.instagram.com/reel/DRDKvesDaF_/"
+  },
+  {
+    id: "suzuki-sv7gx-vs-yamaha-tracer-7",
+    title: "Suzuki SV7GX vs Yamaha Tracer 7",
+    subtitle: "The Middleweight Battle",
+    image: news4,
+    rating: 4.8,
+    excerpt: "The all-new Suzuki SV7GX with aggressive lines and agile handling faces off against the Yamaha Tracer 7. Built for riders who crave performance and freedom.",
+    specs: [
+      { label: "Suzuki", value: "SV7GX" },
+      { label: "Yamaha", value: "Tracer 7" },
+      { label: "Category", value: "Middleweight" }
+    ],
+    pros: ["Aggressive lines (Suzuki)", "Agile handling", "Proven reliability (Yamaha)"],
+    cons: ["Tough choice between the two"],
+    videoUrl: "https://www.instagram.com/reel/DRAsTIyjB74/"
+  }
 ];
 
 export const articleBody = (a: Article): string[] => [
@@ -202,7 +183,7 @@ export const articleBody = (a: Article): string[] => [
   `Throughout a long week of riding — city traffic, mountain passes, and a long motorway slog at dusk — the bike revealed itself slowly. Engineering decisions that look conservative on paper became obvious strengths once the road opened up. The chassis is composed at speed, the brakes have the kind of progressive bite that gives confidence rather than fear, and the electronics fade into the background until you actually need them.`,
   `Where it shines is harder to describe than where it disappoints, but we'll try. The throttle response in the second-from-soft mode is a small masterpiece — linear, predictable, and perfectly calibrated to the engine's character. Wind protection is better than the silhouette suggests, and the seat is friendly enough for genuinely long days.`,
   `Of course, no machine is without compromise. The instrument cluster could be brighter in direct sun, the mirrors vibrate above 6,000 rpm, and the price has crept up again. None of these are deal-breakers, but in a market this competitive they are worth knowing about before you sign.`,
-  `Verdict: a confident, considered evolution of a formula that already worked. We'll have a full long-term test in the autumn, but our early impression is that ${a.author.split(" ")[0]} has been right to be excited.`,
+  `Verdict: a confident, considered evolution of a formula that already worked. We'll have a full long-term test in the autumn, but our early impression is that we have been right to be excited.`,
 ];
 
 export type Video = {

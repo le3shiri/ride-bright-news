@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Award, Globe, Users, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { authors } from "@/data/content";
 import aboutTeam from "@/assets/about-team.jpg";
 
 const stats = [
@@ -35,8 +34,6 @@ const values = [
 ];
 
 const AboutPage = () => {
-  const team = Object.values(authors);
-
   return (
     <>
       {/* Hero */}
@@ -105,28 +102,6 @@ const AboutPage = () => {
               <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{text}</p>
             </div>
           ))}
-        </div>
-      </section>
-
-      {/* Team */}
-      <section className="bg-surface py-20 md:py-28">
-        <div className="container-x">
-          <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-3">The team</p>
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-ink mb-12">Faces behind the bylines</h2>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {team.map((a) => (
-              <div key={a.name} className="rounded-2xl bg-card p-6 flex gap-5 items-start shadow-soft">
-                <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-ink text-primary-foreground font-display text-xl font-bold">
-                  {a.initials}
-                </div>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-widest text-accent">{a.role}</p>
-                  <h3 className="mt-1 font-display text-xl font-bold text-ink">{a.name}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{a.bio}</p>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 

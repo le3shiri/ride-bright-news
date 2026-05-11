@@ -1,12 +1,8 @@
-import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Rating } from "@/components/site/Rating";
 import { reviews } from "@/data/content";
+import { cn } from "@/lib/utils";
 
 const ReviewsPage = () => {
-  const [featured, ...rest] = reviews;
-
   return (
     <>
       <section className="border-b border-border bg-surface">
@@ -16,53 +12,74 @@ const ReviewsPage = () => {
         </div>
       </section>
 
-      {/* Featured review */}
       <section className="container-x py-16 md:py-20">
-        <div className="grid gap-10 md:grid-cols-2 items-center">
-          <div className="relative aspect-[4/3] overflow-hidden rounded-3xl bg-ink shadow-elev">
-            <img src={featured.image} alt={featured.title} loading="lazy" className="h-full w-full object-cover" />
-            <span className="absolute top-6 left-6 rounded-full bg-accent px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-accent-foreground">
-              Editor's Choice
-            </span>
-          </div>
-          <div>
-            <Rating value={featured.rating} />
-            <h2 className="mt-4 font-display text-4xl md:text-5xl font-bold text-ink leading-tight">{featured.title}</h2>
-            <p className="mt-2 text-base uppercase tracking-widest text-muted-foreground">{featured.subtitle}</p>
-            <p className="mt-6 text-lg text-muted-foreground leading-relaxed">{featured.excerpt}</p>
-            <Button asChild variant="ink" size="lg" className="mt-8">
-              <Link to={`/reviews/${featured.id}`}>Read full review <ArrowRight className="h-4 w-4" /></Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+        <div className="flex flex-col gap-24">
+          {reviews.map((r, index) => {
+            const embedUrl = r.videoUrl ? (r.videoUrl.replace(/\/$/, '') + '/embed/') : null;
+            const isTextLeft = index % 2 === 0;
 
-      {/* List */}
-      <section className="bg-surface py-16 md:py-20">
-        <div className="container-x">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-ink mb-12">All Reviews</h2>
-          <div className="grid gap-8">
-            {rest.map((r) => (
-              <Link
-                to={`/reviews/${r.id}`}
-                key={r.id}
-                className="group grid md:grid-cols-[280px_1fr] gap-6 bg-card rounded-2xl p-4 md:p-6 shadow-soft hover:shadow-elev transition-smooth"
-              >
-                <div className="relative aspect-[4/3] md:aspect-square overflow-hidden rounded-xl bg-ink">
-                  <img src={r.image} alt={r.title} loading="lazy" className="h-full w-full object-cover transition-smooth group-hover:scale-105" />
+            return (
+              <div key={r.id} className="grid gap-10 lg:grid-cols-2 items-center">
+                {/* Video Container */}
+                <div 
+                  className={cn(
+                    "relative aspect-[9/16] w-full max-w-[400px] mx-auto overflow-hidden rounded-3xl bg-ink shadow-elev",
+                    isTextLeft ? "lg:order-last" : ""
+                  )}
+                >
+                  {embedUrl ? (
+                    <iframe 
+                      src={embedUrl}
+                      className="absolute inset-0 w-full h-full border-0"
+                      allow="encrypted-media"
+                    />
+                  ) : (
+                    <img src={r.image} alt={r.title} loading="lazy" className="h-full w-full object-cover" />
+                  )}
                 </div>
-                <div className="flex flex-col justify-center">
+
+                {/* Description Container */}
+                <div>
                   <Rating value={r.rating} />
-                  <h3 className="mt-3 font-display text-2xl md:text-3xl font-bold text-ink group-hover:text-accent transition-smooth">{r.title}</h3>
-                  <p className="text-sm uppercase tracking-widest text-muted-foreground mt-1">{r.subtitle}</p>
-                  <p className="mt-3 text-muted-foreground line-clamp-2">{r.excerpt}</p>
-                  <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-accent">
-                    Read review <ArrowRight className="h-4 w-4" />
-                  </span>
+                  <h2 className="mt-4 font-display text-4xl md:text-5xl font-bold text-ink leading-tight">{r.title}</h2>
+                  <p className="mt-2 text-base uppercase tracking-widest text-muted-foreground">{r.subtitle}</p>
+                  <p className="mt-6 text-lg text-muted-foreground leading-relaxed whitespace-pre-line">{r.excerpt}</p>
+                  
+                  <div className="grid grid-cols-2 gap-6 mt-8">
+                    {r.pros.length > 0 && (
+                      <div className="rounded-2xl bg-highlight-soft p-4">
+                        <h3 className="font-display text-lg font-bold text-ink mb-2">Pros</h3>
+                        <ul className="space-y-1 text-sm">
+                          {r.pros.map(p => <li key={p}>• {p}</li>)}
+                        </ul>
+                      </div>
+                    )}
+                    {r.cons.length > 0 && (
+                      <div className="rounded-2xl bg-secondary p-4">
+                        <h3 className="font-display text-lg font-bold text-ink mb-2">Cons</h3>
+                        <ul className="space-y-1 text-sm">
+                          {r.cons.map(p => <li key={p}>• {p}</li>)}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                  
+                  {r.videoUrl && (
+                    <div className="mt-8">
+                      <a 
+                        href={r.videoUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="inline-flex h-12 items-center justify-center rounded-full bg-accent px-8 text-sm font-semibold text-accent-foreground hover:bg-accent/90 transition-smooth"
+                      >
+                        Watch on Instagram
+                      </a>
+                    </div>
+                  )}
                 </div>
-              </Link>
-            ))}
-          </div>
+              </div>
+            );
+          })}
         </div>
       </section>
     </>

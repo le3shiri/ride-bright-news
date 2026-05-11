@@ -15,7 +15,6 @@ export const ArticleCard = ({ article, variant = "default" }: { article: Article
           <h4 className="font-display text-base font-semibold leading-snug text-ink line-clamp-2 group-hover:text-accent transition-smooth">
             {article.title}
           </h4>
-          <p className="mt-1 text-xs text-muted-foreground">{article.date}</p>
         </div>
       </Link>
     );
@@ -31,12 +30,12 @@ export const ArticleCard = ({ article, variant = "default" }: { article: Article
           </span>
         </div>
         <div>
-          <p className="text-xs font-medium uppercase tracking-widest text-accent mb-3">{article.category} · {article.date}</p>
+          <p className="text-xs font-medium uppercase tracking-widest text-accent mb-3">{article.category}</p>
           <h3 className="font-display text-3xl md:text-4xl font-bold leading-tight text-ink group-hover:text-accent transition-smooth text-balance">
             {article.title}
           </h3>
           <p className="mt-4 text-base text-muted-foreground leading-relaxed text-pretty">{article.excerpt}</p>
-          <p className="mt-4 text-sm text-muted-foreground">By {article.author} · {article.readTime} read</p>
+          <p className="mt-4 text-sm text-muted-foreground">{article.readTime} read</p>
         </div>
       </Link>
     );
@@ -57,8 +56,6 @@ export const ArticleCard = ({ article, variant = "default" }: { article: Article
       </div>
       <div className="pt-5">
         <div className="flex items-center gap-3 text-xs text-muted-foreground mb-2">
-          <span>{article.date}</span>
-          <span>·</span>
           <span className="inline-flex items-center gap-1"><Clock className="h-3 w-3" /> {article.readTime}</span>
         </div>
         <h3 className={cn("font-display font-bold leading-tight text-ink group-hover:text-accent transition-smooth text-balance", "text-xl")}>

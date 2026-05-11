@@ -3,13 +3,12 @@ import { ArrowRight, Play, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ArticleCard } from "@/components/site/ArticleCard";
 import { Rating } from "@/components/site/Rating";
-import { articles, reviews, videos } from "@/data/content";
+import { articles, reviews } from "@/data/content";
 
 const HomePage = () => {
   const latest = articles.slice(0, 6);
   const trending = articles.slice(0, 4);
   const featuredReview = reviews[0];
-  const homeVideos = videos.slice(0, 4);
 
   return (
     <>
@@ -103,45 +102,11 @@ const HomePage = () => {
                 <p className="mt-2 text-sm uppercase tracking-widest text-muted-foreground">{featuredReview.subtitle}</p>
                 <p className="mt-4 text-base text-muted-foreground leading-relaxed">{featuredReview.excerpt}</p>
                 <Button asChild variant="ink" size="lg" className="mt-6">
-                  <Link to={`/reviews/${featuredReview.id}`}>Read full review <ArrowRight className="h-4 w-4" /></Link>
+                  <Link to="/reviews">All reviews <ArrowRight className="h-4 w-4" /></Link>
                 </Button>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* LATEST VIDEOS */}
-      <section className="container-x py-20 md:py-28">
-        <div className="flex items-end justify-between mb-12">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-2">Watch</p>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-ink">Latest Videos</h2>
-          </div>
-          <Link to="/videos" className="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-ink hover:text-accent transition-smooth">
-            All videos <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {homeVideos.map((v) => (
-            <Link to="/videos" key={v.id} className="group">
-              <div className="relative aspect-video overflow-hidden rounded-2xl bg-ink shadow-soft">
-                <img src={v.thumb} alt={v.title} loading="lazy" className="h-full w-full object-cover opacity-90 transition-smooth group-hover:scale-105 group-hover:opacity-100" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="flex h-14 w-14 items-center justify-center rounded-full bg-background/95 text-ink shadow-elev transition-smooth group-hover:bg-accent group-hover:text-accent-foreground">
-                    <Play className="h-5 w-5 ml-0.5 fill-current" />
-                  </span>
-                </div>
-                <span className="absolute bottom-3 right-3 rounded-md bg-ink/90 px-2 py-1 text-xs font-semibold text-primary-foreground">
-                  {v.duration}
-                </span>
-              </div>
-              <h4 className="mt-4 font-display font-semibold text-ink leading-snug line-clamp-2 group-hover:text-accent transition-smooth">
-                {v.title}
-              </h4>
-              <p className="mt-1 text-xs text-muted-foreground">{v.views} views · {v.category}</p>
-            </Link>
-          ))}
         </div>
       </section>
 

@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, Clock, Calendar, Twitter } from "lucide-react";
-import { articles, articleBody, authors } from "@/data/content";
+import { ArrowLeft, Clock, Twitter } from "lucide-react";
+import { articles, articleBody } from "@/data/content";
 import { ArticleCard } from "@/components/site/ArticleCard";
 import { ShareButtons } from "@/components/site/ShareButtons";
 import { Button } from "@/components/ui/button";
@@ -26,7 +26,6 @@ const NewsDetailPage = () => {
     );
   }
 
-  const author = authors[article.author];
   const body = article.body ?? articleBody(article);
   const related = articles.filter((a) => a.id !== article.id && a.category === article.category).slice(0, 3);
   const fallbackRelated = articles.filter((a) => a.id !== article.id).slice(0, 3);
@@ -51,13 +50,6 @@ const NewsDetailPage = () => {
               {article.excerpt}
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-muted-foreground">
-              <span className="inline-flex items-center gap-2">
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-ink text-primary-foreground text-xs font-bold">
-                  {author?.initials ?? "TM"}
-                </span>
-                <span className="font-semibold text-ink">{article.author}</span>
-              </span>
-              <span className="inline-flex items-center gap-2"><Calendar className="h-4 w-4" /> {article.date}</span>
               <span className="inline-flex items-center gap-2"><Clock className="h-4 w-4" /> {article.readTime} read</span>
             </div>
           </div>
@@ -95,7 +87,6 @@ const NewsDetailPage = () => {
               <p className="font-display text-2xl md:text-3xl font-semibold text-ink leading-snug italic text-balance">
                 "Engineering decisions that look conservative on paper become obvious strengths once the road opens up."
               </p>
-              <footer className="mt-3 text-sm uppercase tracking-widest text-muted-foreground">— {article.author}</footer>
             </blockquote>
 
             {/* Share */}
@@ -103,25 +94,6 @@ const NewsDetailPage = () => {
               <ShareButtons title={article.title} />
             </div>
 
-            {/* Author bio card */}
-            {author && (
-              <div className="mt-12 rounded-3xl bg-surface p-6 md:p-8 flex flex-col sm:flex-row gap-6 items-start">
-                <div className="flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-full bg-ink text-primary-foreground font-display text-2xl font-bold">
-                  {author.initials}
-                </div>
-                <div className="flex-1">
-                  <p className="text-xs font-semibold uppercase tracking-widest text-accent">{author.role}</p>
-                  <h3 className="mt-1 font-display text-2xl font-bold text-ink">{author.name}</h3>
-                  <p className="mt-2 text-muted-foreground leading-relaxed">{author.bio}</p>
-                  <a
-                    href="#"
-                    className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-ink hover:text-accent transition-smooth"
-                  >
-                    <Twitter className="h-4 w-4" /> Follow on Twitter
-                  </a>
-                </div>
-              </div>
-            )}
           </div>
 
           {/* Sticky sidebar share */}
