@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, Clock, Twitter } from "lucide-react";
-import { articles, articleBody } from "@/data/content";
+import { articles } from "@/data/content";
 import { ArticleCard } from "@/components/site/ArticleCard";
 import { ShareButtons } from "@/components/site/ShareButtons";
 import { Button } from "@/components/ui/button";
@@ -26,7 +26,7 @@ const NewsDetailPage = () => {
     );
   }
 
-  const body = article.body ?? articleBody(article);
+  const body = article.body || [];
   const related = articles.filter((a) => a.id !== article.id && a.category === article.category).slice(0, 3);
   const fallbackRelated = articles.filter((a) => a.id !== article.id).slice(0, 3);
   const relatedFinal = related.length >= 2 ? related : fallbackRelated;
@@ -68,18 +68,32 @@ const NewsDetailPage = () => {
         <div className="grid gap-16 lg:grid-cols-[1fr_320px]">
           <div>
             <div className="space-y-6">
-              {body.map((p, i) => (
-                <p
-                  key={i}
-                  className={
-                    i === 0
-                      ? "font-display text-2xl text-ink leading-relaxed first-letter:font-display first-letter:text-7xl first-letter:font-bold first-letter:text-accent first-letter:mr-2 first-letter:float-left first-letter:leading-none"
-                      : "text-lg text-foreground leading-relaxed"
-                  }
-                >
-                  {p}
-                </p>
-              ))}
+              {body.map((p, i) => {
+                const extraImages = article.extraImages || [];
+                const imageInterval = Math.max(1, Math.floor(body.length / (extraImages.length + 1)));
+                const shouldShowImage = extraImages.length > 0 && (i + 1) % imageInterval === 0;
+                const imgIndex = Math.floor((i + 1) / imageInterval) - 1;
+                const showImage = shouldShowImage && imgIndex >= 0 && imgIndex < extraImages.length;
+
+                return (
+                  <div key={i} className="space-y-6">
+                    <p
+                      className={
+                        i === 0
+                          ? "font-display text-2xl text-ink leading-relaxed first-letter:font-display first-letter:text-7xl first-letter:font-bold first-letter:text-accent first-letter:mr-2 first-letter:float-left first-letter:leading-none"
+                          : "text-lg text-foreground leading-relaxed"
+                      }
+                    >
+                      {p}
+                    </p>
+                    {showImage && (
+                      <div className="my-10 aspect-[16/9] overflow-hidden rounded-3xl bg-ink shadow-elev">
+                        <img src={extraImages[imgIndex]} alt="" className="h-full w-full object-cover" />
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
 
             {/* Pull quote */}

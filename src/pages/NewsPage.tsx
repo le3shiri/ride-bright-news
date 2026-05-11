@@ -5,16 +5,13 @@ import { ArticleCard } from "@/components/site/ArticleCard";
 import { articles } from "@/data/content";
 import { cn } from "@/lib/utils";
 
-const categories = ["All", "Racing", "New Bikes", "Electric", "Safety"] as const;
+
 
 const NewsPage = () => {
-  const [filter, setFilter] = useState<(typeof categories)[number]>("All");
   const [page, setPage] = useState(1);
   const perPage = 6;
 
-  const filtered = filter === "All" ? articles : articles.filter((a) => a.category === filter);
-  // duplicate to demonstrate pagination
-  const all = [...filtered, ...filtered].slice(0, 12);
+  const all = articles;
   const totalPages = Math.max(1, Math.ceil(all.length / perPage));
   const paginated = all.slice((page - 1) * perPage, page * perPage);
 
@@ -35,20 +32,7 @@ const NewsPage = () => {
       </section>
 
       <section className="container-x py-12 md:py-16">
-        <div className="flex flex-wrap gap-2 mb-12">
-          {categories.map((c) => (
-            <button
-              key={c}
-              onClick={() => { setFilter(c); setPage(1); }}
-              className={cn(
-                "rounded-full px-5 py-2 text-sm font-semibold transition-smooth",
-                filter === c ? "bg-ink text-primary-foreground" : "bg-secondary text-foreground hover:bg-ink/10"
-              )}
-            >
-              {c}
-            </button>
-          ))}
-        </div>
+
 
         <div className="grid gap-12 lg:grid-cols-[1fr_320px]">
           <div>
