@@ -27,9 +27,6 @@ const HomePage = () => {
         <div className="absolute inset-0 gradient-hero" />
         <div className="relative container-x py-24 md:py-36 lg:py-44">
           <div className="max-w-3xl animate-fade-up">
-            <span className="inline-flex items-center gap-2 rounded-full bg-accent px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-accent-foreground">
-              {t('home.hero.issue')}
-            </span>
             <h1 className="mt-6 font-display text-5xl md:text-7xl lg:text-8xl font-bold text-primary-foreground leading-[0.95] text-balance">
               {t('home.hero.titlePrefix')}<br />
               <span className="italic text-accent">{t('home.hero.titleAccent')}</span>{t('home.hero.titleSuffix')}
