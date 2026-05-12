@@ -14,110 +14,94 @@ const AboutPage = () => {
     { value: "4,200+", label: t('about.stats.reviews') },
   ];
 
-  const values = [
-    {
-      icon: Award,
-      title: t('about.values.honest'),
-      text: t('about.values.honestText'),
-    },
-    {
-      icon: Globe,
-      title: t('about.values.global'),
-      text: t('about.values.globalText'),
-    },
-    {
-      icon: Users,
-      title: t('about.values.reader'),
-      text: t('about.values.readerText'),
-    },
-    {
-      icon: Zap,
-      title: t('about.values.future'),
-      text: t('about.values.futureText'),
-    },
-  ];
-
   return (
     <>
       {/* Hero */}
-      <section className="border-b border-border bg-surface">
-        <div className="container-x py-16 md:py-24">
-          <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-3">{t('about.tagline')}</p>
+      <section className="border-b border-border bg-surface relative overflow-hidden">
+        <div className="absolute right-0 top-0 w-1/3 h-full bg-accent/5 -skew-x-12 transform translate-x-20" />
+        <div className="container-x py-20 md:py-32 relative z-10">
+          <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-4">{t('about.tagline')}</p>
           <h1 
-            className="font-display text-5xl md:text-7xl font-bold text-ink leading-[1.05] text-balance max-w-4xl"
+            className="font-display text-6xl md:text-8xl font-bold text-ink leading-[0.95] text-balance max-w-5xl"
             dangerouslySetInnerHTML={{ __html: t('about.heroTitle') }}
           />
-          <p className="mt-8 text-xl text-muted-foreground leading-relaxed max-w-3xl text-pretty">
+          <p className="mt-10 text-xl md:text-2xl text-muted-foreground leading-relaxed max-w-3xl text-pretty font-light">
             {t('about.heroDesc')}
           </p>
         </div>
       </section>
 
-      {/* Cover image */}
-      <section className="container-x py-16">
-        <div className="aspect-[16/9] overflow-hidden rounded-3xl bg-ink shadow-elev">
-          <img src={aboutTeam} alt="The iRide Morocco editorial team" loading="lazy" className="h-full w-full object-cover" />
+      {/* Cinematic Vision */}
+      <section className="bg-ink py-24 md:py-32 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-ink z-10" />
+          <img src={aboutTeam} alt="The iRide Morocco journey" className="w-full h-full object-cover grayscale" />
         </div>
-      </section>
-
-      {/* Stats */}
-      <section className="container-x pb-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-          {stats.map((s) => (
-            <div key={s.label} className="rounded-2xl bg-surface p-8 text-center">
-              <p className="font-display text-4xl md:text-5xl font-bold text-ink">{s.value}</p>
-              <p className="mt-2 text-xs uppercase tracking-widest text-muted-foreground">{s.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Mission */}
-      <section className="bg-surface py-20 md:py-28">
-        <div className="container-x grid gap-12 md:grid-cols-[1fr_2fr]">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-3">Mission</p>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-ink leading-tight">
-              {t('about.missionTitle')}
+        <div className="container-x relative z-20 text-center">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="font-display text-3xl md:text-5xl font-bold text-white mb-8 leading-tight italic">
+              "We're here to fuel the MENA biking community with a fresh, authentic look at the machines and the lifestyle we love."
             </h2>
-          </div>
-          <div className="space-y-6 text-lg text-foreground leading-relaxed">
-            <p>{t('about.missionDesc1')}</p>
-            <p>{t('about.missionDesc2')}</p>
+            <div className="h-1 w-24 bg-accent mx-auto" />
           </div>
         </div>
       </section>
 
-      {/* Values */}
-      <section className="container-x py-20 md:py-28">
-        <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-3">{t('about.valuesTagline')}</p>
-        <h2 className="font-display text-4xl md:text-5xl font-bold text-ink mb-12">{t('about.valuesTitle')}</h2>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {values.map(({ icon: Icon, title, text }) => (
-            <div key={title} className="rounded-2xl bg-card border border-border p-6 hover:shadow-elev transition-smooth">
-              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-highlight-soft text-accent">
-                <Icon className="h-5 w-5" />
-              </div>
-              <h3 className="mt-5 font-display text-xl font-bold text-ink">{title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{text}</p>
+      {/* The Journey */}
+      <section className="container-x py-24 md:py-32">
+        <div className="grid gap-16 md:grid-cols-2 items-center">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-4">Our Journey</p>
+            <h3 className="font-display text-4xl md:text-5xl font-bold text-ink mb-8 leading-tight">
+              {t('about.missionTitle')}
+            </h3>
+            <div className="space-y-8 text-lg md:text-xl text-foreground/80 leading-relaxed font-light">
+              <p>{t('about.missionDesc1')}</p>
+              <p>{t('about.missionDesc2')}</p>
             </div>
-          ))}
+          </div>
+          <div className="relative">
+            <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-smooth duration-700">
+              <img src={aboutTeam} alt="Team story" className="w-full h-full object-cover" />
+            </div>
+            <div className="absolute -bottom-8 -left-8 bg-accent text-white p-8 rounded-2xl hidden md:block">
+              <p className="font-display text-4xl font-bold italic">12+</p>
+              <p className="text-xs uppercase tracking-widest opacity-80">Years on the road</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats - Grid style */}
+      <section className="bg-surface border-y border-border py-20">
+        <div className="container-x">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((s) => (
+              <div key={s.label} className="text-center group">
+                <p className="font-display text-5xl md:text-6xl font-bold text-ink group-hover:text-accent transition-colors duration-300">{s.value}</p>
+                <p className="mt-2 text-xs uppercase tracking-widest text-muted-foreground font-semibold">{s.label}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className="container-x py-20">
-        <div className="rounded-3xl bg-ink p-10 md:p-16 text-primary-foreground relative overflow-hidden">
-          <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-accent/30 blur-3xl" />
-          <div className="relative max-w-2xl">
-            <h2 className="font-display text-4xl md:text-5xl font-bold leading-tight">
+      <section className="container-x py-24 md:py-32">
+        <div className="rounded-[3rem] bg-ink p-12 md:p-24 text-primary-foreground relative overflow-hidden text-center">
+          <div className="absolute -right-40 -top-40 h-96 w-96 rounded-full bg-accent/20 blur-[100px]" />
+          <div className="absolute -left-40 -bottom-40 h-96 w-96 rounded-full bg-accent/10 blur-[100px]" />
+          <div className="relative max-w-3xl mx-auto">
+            <h2 className="font-display text-5xl md:text-7xl font-bold leading-[0.95] mb-8">
               {t('about.ctaTitle')}
             </h2>
-            <p className="mt-4 text-primary-foreground/70 text-lg">
+            <p className="text-primary-foreground/60 text-xl md:text-2xl mb-12 font-light">
               {t('about.ctaDesc')}
             </p>
-            <Button asChild variant="hero" size="xl" className="mt-8">
-              <Link to="/contact">{t('about.getInTouch')} <ArrowRight className="h-5 w-5" /></Link>
+            <Button asChild variant="hero" size="xl" className="h-16 px-10 text-lg rounded-full">
+              <Link to="/contact" className="flex items-center gap-3">
+                {t('about.getInTouch')} <ArrowRight className="h-6 w-6" />
+              </Link>
             </Button>
           </div>
         </div>

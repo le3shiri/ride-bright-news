@@ -10,6 +10,13 @@ const ContactPage = () => {
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    const subject = `Contact iRide Morocco - ${form.name}`;
+    const body = `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`;
+    
+    const mailtoUrl = `mailto:SATAYMAN41@GMAIL.COM?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoUrl;
+
     toast({ title: t('contact.successTitle'), description: t('contact.successDesc') });
     setForm({ name: "", email: "", message: "" });
   };
@@ -81,13 +88,13 @@ const ContactPage = () => {
             <div>
               <h3 className="font-display text-2xl font-bold text-ink mb-4">{t('contact.reachUs')}</h3>
               <div className="space-y-4">
-                <a href="mailto:iridemorocco@gmail.com" className="flex items-start gap-4 group">
+                <a href="mailto:SATAYMAN41@GMAIL.COM" className="flex items-start gap-4 group">
                   <div className="flex h-11 w-11 items-center justify-center rounded-full bg-highlight-soft text-accent flex-shrink-0">
                     <Mail className="h-5 w-5" />
                   </div>
                   <div>
                     <p className="text-xs uppercase tracking-widest text-muted-foreground">{t('contact.email')}</p>
-                    <p className="font-display text-lg font-semibold text-ink group-hover:text-accent transition-smooth">iridemorocco@gmail.com</p>
+                    <p className="font-display text-lg font-semibold text-ink group-hover:text-accent transition-smooth">SATAYMAN41@GMAIL.COM</p>
                   </div>
                 </a>
                 <a href="tel:+212661796563" className="flex items-start gap-4 group">
