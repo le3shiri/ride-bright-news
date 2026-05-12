@@ -8,17 +8,40 @@ const ContactPage = () => {
   const { t } = useTranslation();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    const subject = `Contact iRide Morocco - ${form.name}`;
-    const body = `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`;
-    
-    const mailtoUrl = `mailto:SATAYMAN41@GMAIL.COM?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailtoUrl;
+    // Using Formspree for automatic, background email delivery
+    // Note: The first time you submit this, Formspree will send an email to SATAYMAN41@GMAIL.COM 
+    // asking you to verify the form. Once verified, it will work automatically every time.
+    try {
+      const response = await fetch("https://formspree.io/f/mqennawv", {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          _subject: `iRide Morocco Contact: ${form.name}`
+        })
+      });
 
-    toast({ title: t('contact.successTitle'), description: t('contact.successDesc') });
-    setForm({ name: "", email: "", message: "" });
+      if (response.ok) {
+        toast({ title: t('contact.successTitle'), description: t('contact.successDesc') });
+        setForm({ name: "", email: "", message: "" });
+      } else {
+        throw new Error();
+      }
+    } catch (error) {
+      toast({ 
+        title: "Error", 
+        description: "Submission failed. Please try again or use the email link below.", 
+        variant: "destructive" 
+      });
+    }
   };
 
   const socialLinks = [
