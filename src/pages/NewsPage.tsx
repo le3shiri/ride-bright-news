@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ArticleCard } from "@/components/site/ArticleCard";
@@ -8,6 +8,10 @@ import { useTranslation } from "react-i18next";
 const NewsPage = () => {
   const { t } = useTranslation();
   const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [page]);
   const perPage = 6;
 
   const all = articles;
