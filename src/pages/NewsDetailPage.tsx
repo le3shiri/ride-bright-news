@@ -107,6 +107,17 @@ const NewsDetailPage = () => {
                   </div>
                 );
               })}
+
+              {/* Show any remaining images that were not shown between paragraphs */}
+              {article.extraImages && article.extraImages.length > 0 && (
+                <div className="space-y-10 pt-10">
+                  {article.extraImages.slice(Math.min(article.extraImages.length, body.length)).map((img, idx) => (
+                    <div key={`rem-${idx}`} className="aspect-[16/9] overflow-hidden rounded-3xl bg-ink shadow-elev">
+                      <img src={img} alt="" className="h-full w-full object-cover" />
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Pull quote */}

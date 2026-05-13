@@ -8,10 +8,40 @@ const ContactPage = () => {
   const { t } = useTranslation();
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({ title: t('contact.successTitle'), description: t('contact.successDesc') });
-    setForm({ name: "", email: "", message: "" });
+    
+    // Using Formspree for automatic, background email delivery
+    // Note: The first time you submit this, Formspree will send an email to SATAYMAN41@GMAIL.COM 
+    // asking you to verify the form. Once verified, it will work automatically every time.
+    try {
+      const response = await fetch("https://formspree.io/f/mqennawv", {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          _subject: `iRide Morocco Contact: ${form.name}`
+        })
+      });
+
+      if (response.ok) {
+        toast({ title: t('contact.successTitle'), description: t('contact.successDesc') });
+        setForm({ name: "", email: "", message: "" });
+      } else {
+        throw new Error();
+      }
+    } catch (error) {
+      toast({ 
+        title: "Error", 
+        description: "Submission failed. Please try again or use the email link below.", 
+        variant: "destructive" 
+      });
+    }
   };
 
   const socialLinks = [
@@ -81,13 +111,13 @@ const ContactPage = () => {
             <div>
               <h3 className="font-display text-2xl font-bold text-ink mb-4">{t('contact.reachUs')}</h3>
               <div className="space-y-4">
-                <a href="mailto:iridemorocco@gmail.com" className="flex items-start gap-4 group">
+                <a href="mailto:SATAYMAN41@GMAIL.COM" className="flex items-start gap-4 group">
                   <div className="flex h-11 w-11 items-center justify-center rounded-full bg-highlight-soft text-accent flex-shrink-0">
                     <Mail className="h-5 w-5" />
                   </div>
                   <div>
                     <p className="text-xs uppercase tracking-widest text-muted-foreground">{t('contact.email')}</p>
-                    <p className="font-display text-lg font-semibold text-ink group-hover:text-accent transition-smooth">iridemorocco@gmail.com</p>
+                    <p className="font-display text-lg font-semibold text-ink group-hover:text-accent transition-smooth">SATAYMAN41@GMAIL.COM</p>
                   </div>
                 </a>
                 <a href="tel:+212661796563" className="flex items-start gap-4 group">
