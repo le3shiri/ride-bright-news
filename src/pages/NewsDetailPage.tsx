@@ -88,17 +88,27 @@ const NewsDetailPage = () => {
                 const imgIndex = Math.floor((i + 1) / imageInterval) - 1;
                 const showImage = shouldShowImage && imgIndex >= 0 && imgIndex < extraImages.length;
 
+                const trimmed = p.trim();
+                const isHtml = trimmed.startsWith('<') && trimmed.endsWith('>');
+
                 return (
                   <div key={i} className="space-y-6">
-                    <p
-                      className={
-                        i === 0
-                          ? "font-display text-2xl text-ink leading-relaxed first-letter:font-display first-letter:text-7xl first-letter:font-bold first-letter:text-accent first-letter:mr-2 first-letter:float-left first-letter:leading-none"
-                          : "text-lg text-foreground leading-relaxed"
-                      }
-                    >
-                      {p}
-                    </p>
+                    {isHtml ? (
+                      <div
+                        dangerouslySetInnerHTML={{ __html: p }}
+                        className="article-html-block"
+                      />
+                    ) : (
+                      <p
+                        className={
+                          i === 0
+                            ? "font-display text-2xl text-ink leading-relaxed first-letter:font-display first-letter:text-7xl first-letter:font-bold first-letter:text-accent first-letter:mr-2 first-letter:float-left first-letter:leading-none"
+                            : "text-lg text-foreground leading-relaxed"
+                        }
+                      >
+                        {p}
+                      </p>
+                    )}
                     {showImage && (
                       <div className="my-10 aspect-[16/9] overflow-hidden rounded-3xl bg-ink shadow-elev">
                         <img src={extraImages[imgIndex]} alt="" className="h-full w-full object-cover" />

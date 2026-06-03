@@ -63,17 +63,17 @@ import newsNew31 from "@/assets/news_new_31.jpg";
 import newsNew32 from "@/assets/news_new_32.jpg";
 import newsNew33 from "@/assets/news_new_33.jpg";
 import newsNew34 from "@/assets/news_new_34.jpg";
-import newsMore33 from "@/assets/news_more_33.jpeg";
-import newsMore34 from "@/assets/news_more_34.jpeg";
-import newsMore35 from "@/assets/news_more_35.jpeg";
-import newsMore36 from "@/assets/news_more_36.jpeg";
-import newsMore37 from "@/assets/news_more_37.jpeg";
-import newsMore38 from "@/assets/news_more_38.jpeg";
-import newsMore39 from "@/assets/news_more_39.jpeg";
-import newsMore40 from "@/assets/news_more_40.jpeg";
-import newsMore41 from "@/assets/news_more_41.jpeg";
-import newsMore42 from "@/assets/news_more_42.jpeg";
-import newsMore43 from "@/assets/news_more_43.jpeg";
+import newsMore22 from "@/assets/news_more_22.jpeg";
+import newsMore23 from "@/assets/news_more_23.jpeg";
+import newsMore24 from "@/assets/news_more_24.jpeg";
+import newsMore25 from "@/assets/news_more_25.jpeg";
+import newsMore26 from "@/assets/news_more_26.jpeg";
+import newsMore27 from "@/assets/news_more_27.jpeg";
+import newsMore28 from "@/assets/news_more_28.jpeg";
+import newsMore29 from "@/assets/news_more_29.jpeg";
+import newsMore30 from "@/assets/news_more_30.jpeg";
+import newsMore31 from "@/assets/news_more_31.jpeg";
+import newsMore32 from "@/assets/news_more_32.jpeg";
 
 
 
@@ -127,7 +127,7 @@ export const articles: Article[] = [
         "es": "The Moroccan motorcycle community recently gathered for a major event focused on fellowship and road safety. Among the many passionate riders in attendance, one individual stood out, drawing a crowd with his powerful story of resilience: Ilyas, widely known within the biking community as One Foot Rider.\nTraveling all the way from France to take part in the gathering, Ilyas sat down for an exclusive interview to share how a life-altering accident transformed into a mission to advocate for responsible riding.",
         "it": "The Moroccan motorcycle community recently gathered for a major event focused on fellowship and road safety. Among the many passionate riders in attendance, one individual stood out, drawing a crowd with his powerful story of resilience: Ilyas, widely known within the biking community as One Foot Rider.\nTraveling all the way from France to take part in the gathering, Ilyas sat down for an exclusive interview to share how a life-altering accident transformed into a mission to advocate for responsible riding."
     },
-    "image": newsMore33,
+    "image": newsMore22,
     "category": "New Bikes",
     "readTime": "2 min",
     "body": {
@@ -181,7 +181,7 @@ export const articles: Article[] = [
         ]
     },
     "extraImages": [
-        newsMore34
+        newsMore23
     ]
 },
 {
@@ -198,7 +198,7 @@ export const articles: Article[] = [
         "es": "El Jadida, Morocco — The atmosphere at the \"Be Careful\" event, organized by the All Riding Family association, was charged with community spirit and a shared love for the open road. Among the vibrant exhibits, the Cyclone stand drew substantial crowds, showcasing a striking alignment of machines that immediately caught the attention of Moroccan riders.",
         "it": "El Jadida, Morocco — The atmosphere at the \"Be Careful\" event, organized by the All Riding Family association, was charged with community spirit and a shared love for the open road. Among the vibrant exhibits, the Cyclone stand drew substantial crowds, showcasing a striking alignment of machines that immediately caught the attention of Moroccan riders."
     },
-    "image": newsMore35,
+    "image": newsMore24,
     "category": "New Bikes",
     "readTime": "2 min",
     "body": {
@@ -272,9 +272,9 @@ export const articles: Article[] = [
         ]
     },
     "extraImages": [
-        newsMore36,
-        newsMore37,
-        newsMore38
+        newsMore25,
+        newsMore26,
+        newsMore27
     ]
 },
 {
@@ -291,7 +291,7 @@ export const articles: Article[] = [
         "es": "The Moroccan biking scene is experiencing a massive boom, and with it, riders are increasingly seeking the perfect blend of heritage, raw power, and modern reliability. During the recent motorcycle gathering organized by the All Riding Family Association, we caught up with Mohamed, the commercial representative for Royal Enfield Morocco. In an exclusive interview, he walked us through the brand's latest lineup hitting Moroccan roads and their strategy to meet the evolving demands of local \"Motards.\"",
         "it": "The Moroccan biking scene is experiencing a massive boom, and with it, riders are increasingly seeking the perfect blend of heritage, raw power, and modern reliability. During the recent motorcycle gathering organized by the All Riding Family Association, we caught up with Mohamed, the commercial representative for Royal Enfield Morocco. In an exclusive interview, he walked us through the brand's latest lineup hitting Moroccan roads and their strategy to meet the evolving demands of local \"Motards.\""
     },
-    "image": newsMore39,
+    "image": newsMore28,
     "category": "New Bikes",
     "readTime": "2 min",
     "body": {
@@ -349,10 +349,10 @@ export const articles: Article[] = [
         ]
     },
     "extraImages": [
-        newsMore40,
-        newsMore41,
-        newsMore42,
-        newsMore43
+        newsMore29,
+        newsMore30,
+        newsMore31,
+        newsMore32
     ]
 },
 ,
